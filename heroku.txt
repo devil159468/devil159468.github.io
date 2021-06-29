@@ -1,0 +1,9 @@
+HeroKu 留存信息
+
+heroku apps:create vuepress-knowledge
+Creating ⬢ vuepress-knowledge... done
+https://vuepress-knowledge.herokuapp.com/ | https://git.heroku.com/vuepress-knowledge.git
+
+heroku buildpacks:set https://github.com/heroku/heroku-buildpack-static.git
+Buildpack set. Next release on vuepress-knowledge will use https://github.com/heroku/heroku-buildpack-static.git.
+Run git push heroku main to create a new release using this buildpack.
