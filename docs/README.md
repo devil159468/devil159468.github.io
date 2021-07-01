@@ -32,6 +32,9 @@ footer: MIT Licensed | Copyright © 2018-present Elliot Knight Yu
 - 20210629 Init VuePress：
   - 初始化项目并部署至Heroku
   - 将代码放置在Gitee上托管(私有库)
+- 20210701 更新：计划发布List
+  - 前端（CSS、JavaScript及工程化计划发布列表）
+  - 后端（NodeJS、Golang）
 
 ## 框架支持
 [VuePress](https://vuepress.vuejs.org/zh/)
