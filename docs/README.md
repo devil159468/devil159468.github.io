@@ -35,6 +35,7 @@ footer: MIT Licensed | Copyright © 2018-present Elliot Knight Yu
 - 20210701 更新：计划发布List
   - 前端（CSS、JavaScript及工程化计划发布列表）
   - 后端（NodeJS、Golang）
+- 20210702 更新：MongoDB(基于开发 ExpressAPI 项目获知的可用链接)
 
 ## 框架支持
 [VuePress](https://vuepress.vuejs.org/zh/)
