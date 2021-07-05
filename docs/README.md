@@ -4,20 +4,19 @@ heroImage: /p-logo.jpg
 actionText: 浏览详情 →
 actionLink: /pages/01FE/HTML.md
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present Elliot Knight Yu
+- title: 编程知识
+  details: 记录编程知识，持续精进自身
+- title: 个人总结
+  details: 记录个人学习，总结心得经验
+- title: 项目实战
+  details: 结合项目实战，加深知识理解
+footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 ---
 
 ## 知识库介绍
-该项目作为编程知识库，针对编程知识进行系统化梳理及总结，避免遗忘知识点。
+该项目作为编程知识库，针对编程知识进行系统化梳理及并结合个人总结与项目实践，希望我的经验可以帮助到你。
 
-## 计划分类
-计划将该项目作为储备知识库，主要包含以下内容：
+## 分类详情
 - 前端
 - 后端
 - 服务器 & CI/CD
@@ -26,6 +25,14 @@ footer: MIT Licensed | Copyright © 2018-present Elliot Knight Yu
 - 程序素养
 - 面试相关
 - 其他
+
+## 2021年下半年学习计划
+- 7月【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1)】（进行中）
+- 8月【小程序全家桶(前端+云后台)】
+- 9月【工程化(Webpack、Rollup及Vite源码及实现) + 插件开发】
+- 10月【Vue3源码及实现】
+- 11月【Vue插件 + Webpack插件 + NPM包开发(SDK) + 自建Cli】
+- 12月【封装通用组件库 && 自建工程化流程】(暂定)
 
 ## 更新日志
 知识库更新记录时间顺序
@@ -36,6 +43,7 @@ footer: MIT Licensed | Copyright © 2018-present Elliot Knight Yu
   - 前端（CSS、JavaScript及工程化计划发布列表）
   - 后端（NodeJS、Golang）
 - 20210702 更新：MongoDB(基于开发 ExpressAPI 项目获知的可用链接)
+- 20210705 更新：2021年下半年学习计划
 
 ## 框架支持
 [VuePress](https://vuepress.vuejs.org/zh/)
