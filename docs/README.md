@@ -28,6 +28,9 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 
 ## 2021年下半年学习计划
 - 7月【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1)】（进行中）
+    - NodeJS【已完成】
+        - 开发时间：20210701 ~ 20210713 [线上地址(基于PostMan发布)](https://documenter.getpostman.com/view/3694200/Tzm8Fb1G#542ba7a3-c910-4076-b1a1-7bbbc61bfb86)
+    - Go 【进行中】
 - 8月【小程序全家桶(前端+云后台)】
 - 9月【工程化(Webpack、Rollup及Vite源码及实现) + 插件开发】
 - 10月【Vue3源码及实现】
@@ -44,6 +47,7 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
   - 后端（NodeJS、Golang）
 - 20210702 更新：MongoDB(基于开发 ExpressAPI 项目获知的可用链接)
 - 20210705 更新：2021年下半年学习计划
+- 20210713 更新：ExpressAPI接口系统开发时间及链接更新
 
 ## 框架支持
 [VuePress](https://vuepress.vuejs.org/zh/)
