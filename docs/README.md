@@ -27,15 +27,19 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 - 其他
 
 ## 2021年下半年学习计划
-- 7月【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1)】（进行中）
-    - NodeJS【已完成】
+- 7月【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1) + Node深入】（进行中）
+    - NodeJS(ExpressAPI)【已完成】
         - 开发时间：20210701 ~ 20210713 [线上地址(基于PostMan发布)](https://documenter.getpostman.com/view/3694200/Tzm8Fb1G#542ba7a3-c910-4076-b1a1-7bbbc61bfb86)
-    - Go 【进行中】
-- 8月【小程序全家桶(前端+云后台)】
-- 9月【工程化(Webpack、Rollup及Vite源码及实现) + 插件开发】
-- 10月【Vue3源码及实现】
-- 11月【Vue插件 + Webpack插件 + NPM包开发(SDK) + 自建Cli】
-- 12月【封装通用组件库 && 自建工程化流程】(暂定)
+    - Go(Gin) 【进行中】
+    - 埋点系统V1【Pending】
+    - Node深入
+- 8月【工程化(Webpack、Rollup及Vite源码及实现) + 插件开发】
+- 9月【Vue3源码解析及手写实现 + Vue3应用构建 + Vue3插件】
+- 10月【NPM包开发(SDK) + 自建工程化流程及Cli + 封装通用组件库】
+- 11月【Go + Rust】
+    - Golang系统学习【微服务、区块链、游戏服务器等】
+    - Rust
+- 12月【小程序全家桶(前端+云后台)】(暂定)
 
 ## 更新日志
 知识库更新记录时间顺序
