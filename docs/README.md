@@ -38,7 +38,7 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 - 【NPM包开发(SDK) + 自建工程化流程及Cli + 封装通用组件库】
 - 【Go + Rust】
   - Golang系统学习【微服务、区块链、游戏服务器等】
-  - Rust1
+  - Rust
 - 【小程序全家桶(前端+云后台)】(暂定)
 
 
