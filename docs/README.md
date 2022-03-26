@@ -26,6 +26,14 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 - 面试相关
 - 其他
 
+# 2022年度计划(上半年)
+- 2月(已完成)：Koa2接口（已完成）、Coding链接Docker部署（已完成）
+- 3月（进行中）：React基础（已完成）、React全栈 （进行中）
+- 4月计划：TypeScript、Vue3
+- 5月计划：Next(React) 
+- 6月计划：Nuxt 3
+
+
 ## 学习计划
 - 【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1) + Node深入】
     - NodeJS(ExpressAPI)【已完成】
