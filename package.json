@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "push-mirror": "git --version"
+    "push-mirror": "git push --mirror git@e.coding.net:knightarmy/KnightArmyMainSite/vuepress-knowledge.git"
   },
   "license": "MIT",
   "devDependencies": {
