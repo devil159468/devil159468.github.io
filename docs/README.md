@@ -26,7 +26,7 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 - 面试相关
 - 其他
 
-# 2022年度计划(上半年)
+## 2022年度计划(上半年)
 - 2月(已完成)：Koa2接口（已完成）、Coding链接Docker部署（已完成）
 - 3月（进行中）：React基础（已完成）、React全栈 （进行中）
 - 4月计划：TypeScript、Vue3
@@ -35,20 +35,19 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 
 
 ## 学习计划
-- 【Node(ExpressAPI) + Go(Gin) + 埋点系统(V1) + Node深入】
-    - NodeJS(ExpressAPI)【已完成】
-        - 开发时间：20210701 ~ 20210713 [线上地址(基于PostMan发布)](https://documenter.getpostman.com/view/3694200/Tzm8Fb1G#542ba7a3-c910-4076-b1a1-7bbbc61bfb86)
-    - Go(Gin) 【Pending】
-    - 埋点系统V1【Pending】
-    - Node深入
-- 【工程化(Webpack、Rollup及Vite源码及实现) + 插件开发】
-- 【Vue3源码解析及手写实现 + Vue3应用构建 + Vue3插件】
-- 【NPM包开发(SDK) + 自建工程化流程及Cli + 封装通用组件库】
-- 【Go + Rust】
+- 前台
+  - 【小程序全家桶(前端+云后台)】(暂定)
+  - 【Vue3源码解析及手写实现 + Vue3应用构建 + Vue3插件】
+- 后台
+  - NodeJS(ExpressAPI)【已完成】
+     - 开发时间：20210701 ~ 20210713 [线上地址(基于PostMan发布)](https://documenter.getpostman.com/view/3694200/Tzm8Fb1G#542ba7a3-c910-4076-b1a1-7bbbc61bfb86)
   - Golang系统学习【微服务、区块链、游戏服务器等】
   - Rust
-- 【小程序全家桶(前端+云后台)】(暂定)
-
+- 应用类
+  - 埋点系统SDK V1
+  - 自建工程化流程及Cli
+  - 封装通用组件库
+  - 工程化(Webpack、Rollup及Vite源码及实现) + 插件开发
 
 [comment]: <> (## 更新日志)
 [comment]: <> (知识库更新记录时间顺序)

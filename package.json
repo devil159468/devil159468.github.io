@@ -1,10 +1,11 @@
 {
-  "name": "vuepress-starter",
+  "name": "vuepress-knowledge",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "push-mirror": "git --version"
   },
   "license": "MIT",
   "devDependencies": {
