@@ -29,8 +29,10 @@ footer: MIT Licensed | Copyright © 2021-present Elliot Knight Yu
 ## 2022年度计划(上半年)
 - 2月(已完成)：Koa2接口（已完成）、Coding链接Docker部署（已完成）
 - 3月（进行中）：React基础（已完成）、React全栈 （进行中）
-- 4月计划：TypeScript、Vue3
-- 5月计划：Next(React) 
+- 4月计划：
+  - [TypeScript基础（已完成）](https://gitee.com/Elliot-Devil/typescript-learn)、[Vue3Demo（已完成）](https://gitee.com/Elliot-Devil/vuepress-knowledge)
+  - Vue3新全家桶（进行中）
+- 5月计划：Next（React） 
 - 6月计划：Nuxt 3
 
 
