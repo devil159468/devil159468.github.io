@@ -94,14 +94,92 @@ MongoDB Compass:
 ![img.png](./img.png)
 
 ## 5.数据库相关操作
-|     命令     |    解释     | 说明           |
-|:----------:|:---------:|:-------------|
-|     db     |  显示当前数据库  | -            |
-| use runoob | 使用(创建)数据库 | 存在则切换，不存在则创建 |
-|  show dbs  |  查看所有数据库  | 空数据库不会展示     |
+| 命令                | 解释        | 说明           |
+|:------------------|:----------|:-------------|
+| show dbs          | 查看所有数据库   | 空数据库不会展示     |
+| use 库命            | 使用(创建)数据库 | 存在则切换，不存在则创建 |
+| db                | 显示当前数据库   | -            |
+| db.dropDatabase() | 删除数据库     | 删除数据库        |
 
-### 增删改查
-|              命令               |  解释   | 说明  |
-|:-----------------------------:|:-----:|:----|
-| db.数据库名.insert({"name":"名称"}) | 插入数据  | 增加  |
-|       db.dropDatabase()       | 删除数据库 | 增加  |
+> 默认库说明：
+> 
+> admin: 是"root"数据库，如果将一个用户添加到这个数据库中，这个用户自动继承数据库的权限，一些特定的服务器命令也只能从这个数据库运行(如：列出所有数据库或关闭服务器)
+> 
+> local: 这个库永远不会被复制，可用来存储咸鱼本地单台服务器的任意集合
+> 
+> config: 当MongoDB用于分片设置时，config数据库在内部使用，用于保存分片的相关信息
+
+## 6.集合相关操作
+| 命令                                     | 解释        | 说明                 |
+|:---------------------------------------|:----------|:-------------------|
+| show collections/tables                | 查看所有集合    | -                  |
+| db.createCollection('集合名称',[options]) | 创建集合      | 向不存在的集合插入数据会自动创建集合 |
+| db.集合名称.drop()                         | 删除集合      | -                  |
+
+> createCollection说明：
+> 
+> capped(布尔值)：如果为true，则创建固定集合(指有固定大小的集合，当打到最大值时，会覆盖最早的文档，**当值为true时，必须指定size参数**)
+> 
+> size(数值)：为固定集合指定的一个最大值(字节数)，**如 capped为true，也需要指定该字段**
+> 
+> max(数值)：指固定集合中包含文档的最大数量
+
+## 7.文档相关操作
+
+- 插入文档
+  - 单条
+    - ```
+      db.集合名称.insert({name: 'Elliot',age: 32})
+      ```
+  - 多条
+    - ```
+        db.集合名称.insertMany(
+            [<document 1>],[<document 2>],
+            {
+                writeConcern: 1, // 写入策略，默认1，要求确认写操作，0则不要求，
+                ordered: true, // 指定是否按顺序写入，默认true，按顺序写入
+            }
+        )
+      
+       // insert 也可以添加多条
+        db.集合名称.insert(
+            [<document 1>],[<document 2>],
+            {
+                writeConcern: 1, // 写入策略，默认1，要求确认写操作，0则不要求，
+                ordered: true, // 指定是否按顺序写入，默认true，按顺序写入
+            }
+        )
+      ```
+  - 脚本
+    - ```
+        for (let i=0;i<100;i++) {
+            db.user.insert({"_id":1,"name":"Elliot" + 1,"age": 32})
+        }
+      ```
+- 查询
+  - ```
+    db.集合名称.find();
+    ```
+- 删除
+  - ```
+    db.集合名词.remove(
+      <query>,
+      {
+        justOne: <boolean>,
+        writeConcern: <document>,
+      }
+    )
+    ```
+- 更新
+  - ```
+    db.集合名称.update(
+        <query>, // update的查询条件，类似于sql update 查询neiwhere后的部分
+        <update>, // update对象和一些更新的操作符等，也可以理解为sql upate查询内set后的部分
+        {
+            upsert: <boolean>, // 可选，默认false，如果不存在update，是否插入objNew，true：插入，false：不插入
+            multi: <boolean>, // 可选，默认false，只更新找到的第一条记录，如果这个参数为true，则会把按照条件查出来的多条记录全部更新
+            writeConcern: <document>, // 可选，抛出异常的级别
+        }
+    )
+    ```
+  - > db.集合名称.update({"name":"Elliot"},{$set:{"name":"Elliot"}})，如果不加$set,会将原始数据全部删除后再添加
