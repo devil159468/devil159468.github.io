@@ -1,4 +1,5 @@
 # MongoDB
+> [视频地址](https://www.bilibili.com/video/BV1vL4y1J7i3?p=11&vd_source=5d78fd36d57a6318eced8020d4c4c6f9)
 
 ## 1.NoSQL 简介
 > [菜鸟教程](https://www.runoob.com/mongodb/nosql.html)
