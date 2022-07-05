@@ -91,6 +91,7 @@ module.exports = {
         items: [
           { text: '游戏开发', link: '/pages/08Other/GameDevelopment.md' },
           { text: '人工智能', link: '/pages/08Other/ArtificialIntelligence.md' },
+          { text: '三维开发', link: '/pages/08Other/ThreeDimensions.md' },
         ]
       },
 
@@ -285,6 +286,12 @@ module.exports = {
           collapsable: false,
           sidebarDepth: 1,
           children: []
+        },
+        {
+	      title: '三维开发',
+	      collapsable: false,
+	      sidebarDepth: 1,
+	      children: []
         }
       ]
     },
