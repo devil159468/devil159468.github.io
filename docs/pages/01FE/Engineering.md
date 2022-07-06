@@ -4,52 +4,22 @@
 
 ```javascript
 {
-	"name"
-:
-	"vuepress-knowledge",
-		"version"
-:
-	"1.0.0",
-		"main"
-:
-	"index.js",
-		"license"
-:
-	"MIT",
-		"scripts"
-:
-	{
-		"dev"
-	:
-		"vuepress dev docs",
-			"build"
-	:
-		"vuepress build docs",
-			"push-mirror"
-	:
-		"git push --mirror xxx",
-			"push-github"
-	:
-		"git push --mirror xxx"
-	}
-,
-	"devDependencies"
-:
-	{
-		"vuepress"
-	:
-		"^1.8.2"
-	}
-,
-	"keywords"
-:
-	"vue",
-		"author"
-:
-	"ElliotKnight",
-		"description"
-:
-	"编程知识积累"
+	"name": "vuepress-knowledge",
+    "version": "1.0.0",
+    "main":" index.js",
+    "license": "MIT",
+    "scripts": {
+		"dev": "vuepress dev docs",
+        "build": "vuepress build docs",
+        "push-mirror": "git push --mirror xxx",
+        "push-github": "git push --mirror xxx"
+	},
+	"devDependencies": {
+		"vuepress": "^1.8.2"
+	},
+	"keywords": "vue",
+    "author": "ElliotKnight",
+    "description": "编程知识积累"
 }
 ```
 
