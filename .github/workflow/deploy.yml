@@ -1,0 +1,28 @@
+
+on:
+  push:
+    branches:
+      - master  # 基于 master 分支，如果你的分支不是这个，请切换
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+#        with:
+#          persist-credentials: false
+      - name: install and build
+        run: |        # 这里执行 安装 打包
+          npm install
+          npm run build
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@master  # 引用别人的部署插件
+#        with:
+#          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}   # 这里需要设置成你的 token
+#          BRANCH: gh-pages
+#          FOLDER: ./docs/.vuepress/dist
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: npm install && npm run build
