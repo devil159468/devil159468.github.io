@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: deploy to http://124.70.83.234:8088
+name: deploy
 
 # Controls when the workflow will run
 on:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: 获取项目
         # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-        uses: actions/checkout@v3
+        uses: actions/pages-build-deployment
         with:
           persist-credentials: false
       - name: 代码打包
@@ -34,5 +34,5 @@ jobs:
 #          user: ${{ secrets.HW_USERNAME }}
 #          pass: ${{ secrets.HW_PASSWORD }}
           connect_timeout: 10s
-          local: "docs/.vuepress/dist/*" # 这里是下一步要创建的vue项目构建完成后的静态资源路径
+          local: "./docs/.vuepress/dist/*" # 这里是下一步要创建的vue项目构建完成后的静态资源路径
 #          remote: "/root/www/learndocs-vuepress2/dist" # 这里是 step1 中，在服务器上创建用于存放静态资源的文件夹
