@@ -1,4 +1,5 @@
 module.exports = {
+  base: 'devil159468.github.io',
   title: "Elliot's Press",
   description: '编程知识汇总及总结',
   // 注入到当前页面的 HTML <head> 中的标签
