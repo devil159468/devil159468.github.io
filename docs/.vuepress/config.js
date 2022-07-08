@@ -109,64 +109,73 @@ module.exports = {
     // 侧边导航栏：会根据当前的文件路径是否匹配侧边栏数据，自动显示/隐藏
     sidebar: {
       '/pages/01FE/': [
-        {
-          title: 'HTML',   // 一级菜单名称
-          collapsable: false, // false为默认展开菜单, 默认值true是折叠,
-          sidebarDepth: 3,    //  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
-          children: [
-            // ['HTML.md', 'HTML'],  //菜单名称为'子菜单1'，跳转至/pages/01FE/HTML.md
-          ]
-        },
-        {
-          title: 'CSS',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: 'JavaScript',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: '工程化',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        }
+		  'HTML',
+		  'CSS',
+		  'JavaScript',
+		  'Engineering',
+        // {
+        //   title: 'HTML',   // 一级菜单名称
+        //   collapsable: false, // false为默认展开菜单, 默认值true是折叠,
+        //   sidebarDepth: 3,    //  设置侧边导航自动提取markdown文件标题的层级，默认1为h2层级
+        //   children: [
+        //     // ['HTML.md', 'HTML'],  //菜单名称为'子菜单1'，跳转至/pages/01FE/HTML.md
+        //   ]
+        // },
+        // {
+        //   title: 'CSS',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: 'JavaScript',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: '工程化',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // }
       ],
       '/pages/02BE/': [
-        {
-          title: 'NodeJS',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: 'Golang',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: 'Rust',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: 'MongoDB',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
-        {
-          title: 'MySQL',
-          collapsable: false,
-          sidebarDepth: 1,
-          children: []
-        },
+		  'NodeJS',
+		  'Golang',
+		  'Rust',
+		  'MongoDB',
+		  'MySQL',
+        // {
+        //   title: 'NodeJS',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: 'Golang',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: 'Rust',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: 'MongoDB',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
+        // {
+        //   title: 'MySQL',
+        //   collapsable: false,
+        //   sidebarDepth: 1,
+        //   children: []
+        // },
       ],
       '/pages/03Server/': [
         {

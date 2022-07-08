@@ -7,7 +7,8 @@
     "build": "vuepress build docs",
     "push-mirror": "git push --mirror git@e.coding.net:knightarmy/KnightArmyMainSite/vuepress-knowledge.git",
     "push-github": "git push --mirror git@github.com:devil159468/devil159468.github.io.git",
-    "pushAll": "git push && yarn push-github"
+    "pushAll": "git push && yarn push-github",
+    "deploy": "bash deploy.sh"
   },
   "license": "MIT",
   "devDependencies": {
