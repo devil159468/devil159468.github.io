@@ -21,4 +21,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}   # 这里需要设置成你的 token
           BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
+          FOLDER: ./docs/.vuepress/dist
