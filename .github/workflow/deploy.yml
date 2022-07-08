@@ -1,4 +1,4 @@
-name: 'github actions build and deploy gh-pages'
+
 on:
   push:
     branches:
@@ -8,17 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.1
-        with:
-          persist-credentials: false
+        uses: actions/checkout@master
+#        with:
+#          persist-credentials: false
       - name: install and build
         run: |        # 这里执行 安装 打包
           npm install
           npm run build
-
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@3.5.9  # 引用别人的部署插件
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}   # 这里需要设置成你的 token
+        uses: JamesIves/github-pages-deploy-action@master  # 引用别人的部署插件
+#        with:
+#          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}   # 这里需要设置成你的 token
+#          BRANCH: gh-pages
+#          FOLDER: ./docs/.vuepress/dist
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: ./docs/.vuepress/dist
+          FOLDER: build
+          BUILD_SCRIPT: npm install && npm run build
