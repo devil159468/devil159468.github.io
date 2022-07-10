@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: Gitee
       link: https://gitee.com/Elliot-Devil
+    - theme: brand
+      text: 更新日志
+      link: /Log
 
 features:
   - icon: 📚️
