@@ -85,7 +85,7 @@ export default {
 				]
 			},
 			{
-				text: '执业规划',
+				text: '职业规划',
 				items: [
 					{ text: '职业规划', link: '/06Interview/CareerPlanning.md' },
 					{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
@@ -95,11 +95,11 @@ export default {
 				]
 			},
 			{
-				text: '其他',
+				text: '游戏开发',
 				items: [
-					{ text: '游戏开发', link: '/07Other/GameDevelopment.md' },
-					{ text: '人工智能', link: '/07Other/ArtificialIntelligence.md' },
-					{ text: '三维开发', link: '/07Other/ThreeDimensions.md' },
+					{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
+					{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
+					{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
 				]
 			},
 
@@ -193,13 +193,13 @@ export default {
 					]
 				}
 			],
-			'/07Other/': [
+			'/07Game/': [
 				{
-					text: '基础技能',
+					text: '游戏开发',
 					items: [
-						{ text: '游戏开发', link: '/07Other/GameDevelopment.md' },
-						{ text: '人工智能', link: '/07Other/ArtificialIntelligence.md' },
-						{ text: '三维开发', link: '/07Other/ThreeDimensions.md' },
+						{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
+						{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
+						{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
 					]
 				}
 			],

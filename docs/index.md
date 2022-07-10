@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: MyBlog
-  text: VitePress
-  tagline: 前端/后端
+  name: Elliot Knight's Blog
+  text: 知识总结
+  tagline: 前端、后端、服务器、基础技能及工具、职业规划、游戏开发等
   actions:
     - theme: brand
       text: Get Started
@@ -17,21 +17,19 @@ hero:
       link: https://gitee.com/Elliot-Devil
 
 features:
-  - icon: ⚡️
-    title: Vite, The DX that can't be beat
-    details: Lorem ipsum...
-  - icon: 🖖
-    title: Power of Vue meets Markdown
-    details: Lorem ipsum...
+  - icon: 📚️
+    title: 编程知识
+    details: 记录编程知识，持续精进自身
+  - icon: 📒
+    title: 个人总结
+    details: 记录个人学习，总结心得经验
   - icon: 🛠️
-    title: Simple and minimal, always
-    details: Lorem ipsum...
+    title: 项目实战
+    details: 结合项目实战，加深知识理解
 
 
 ---
 
-<!-- # Hello VitePress
-> this is a quote -->
 
 <style>
 :root {
