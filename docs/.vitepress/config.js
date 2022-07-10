@@ -1,30 +1,116 @@
-module.exports = {
-	title: "我的博客",// 网站标题
-	description: '我的vitepress博客.', //网站描述
-	base: '/', //  部署时的路径 默认 /  可以使用二级地址 /base/
-	// lang: 'en-US', //语言
-	// 网页头部配置，引入需要图标，css，js
-	// head: [
-	// 	// 改变title的图标
-	// 	[
-	// 		'link',
-	// 		{
-	// 			rel: 'icon',
-	// 			href: '/img/linktolink.png',//图片放在public文件夹下
-	// 		},
-	// 	],
-	// ],
-	// 主题配置
-	// themeConfig: {
-	// 	repo: 'vuejs/vitepress', // 你的 github 仓库地址，网页的右上角会跳转
-	// 	//   头部导航
-	// 	nav: [
-	// 		{ text: '首页', link: '/' },
-	// 		{ text: '关于', link: '/about/' },
-	// 	],
-	// 	//   侧边导航
-	// 	sidebar: [
-	// 		{ text: '我的', link: '/mine/' }
-	// 	]
-	// }
+export default {
+	// 全局配置
+	themeConfig: {
+		// 顶部导航栏设置：左侧
+		siteTitle: 'Elliot Knight',
+		logo: '/img.png',
+
+		// 顶部导航栏设置：右侧
+		nav: [
+			{
+				text: '前端',
+				items: [
+					// 单一菜单
+					// {text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/01FE/'},
+					// {text: 'Engineering', link: '/01FE/Engineering', activeMatch: '/01FE/'},
+
+					// 下拉菜单
+					{
+						text: 'JavaScript',
+						items: [
+							{ text: 'JavaScript', link: '/01FE/JavaScript' },
+							{ text: '工程化', link: '/01FE/Engineering' }
+						]
+					},
+					{
+						text: 'H && C',
+						items: [
+							{ text: 'Html', link: '/01FE/HTML' },
+							{ text: 'CSS', link: '/01FE/CSS' }
+						]
+					}
+				]
+			},
+			{
+				text: '后端',
+				items: [
+					{
+						text: '语言',
+						items: [
+							{ text: 'NodeJS', link: '/02BE/NodeJS' },
+							{ text: 'Go', link: '/02BE/Golang' },
+							{ text: 'Rust', link: '/02BE/Rust' }
+						]
+					},
+					{
+						text: '数据库',
+						items: [
+							{ text: 'MongoDB', link: '/02BE/MongoDB' },
+							{ text: 'MySQL', link: '/02BE/MySQL' }
+						]
+					}
+				]
+			},
+
+			{ text: 'Gitee', link: 'https://gitee.com/Elliot-Devil' },
+		],
+
+		// 社交账号
+		socialLinks: [
+			{ icon: 'github', link: 'https://github.com/devil159468' },
+		],
+
+
+
+		// 侧边栏配置
+		sidebar: {
+			'/01FE/': [
+				{
+					text: 'JavaScript',
+					items: [
+						{ text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/config/01FE/' },
+						{ text: 'Engineering', link: '/01FE/Engineering' },
+					]
+				},
+				{
+					text: 'H && C',
+					items: [
+						{ text: 'HTML', link: '/01FE/HTML' },
+						{ text: 'CSS', link: '/01FE/CSS' },
+					]
+				}
+			],
+			'/02BE/': [
+				{
+					text: '语言',
+					items: [
+						{ text: 'NodeJS', link: '/02BE/NodeJS' },
+						{ text: 'Go', link: '/02BE/Golang' },
+						{ text: 'Rust', link: '/02BE/Rust' }
+					]
+				},
+				{
+					text: '数据库',
+					items: [
+						{ text: 'MongoDB', link: '/02BE/MongoDB' },
+						{ text: 'MySQL', link: '/02BE/MySQL' }
+					]
+				}
+			],
+
+		},
+
+
+
+
+
+
+		// 页脚
+		footer: {
+			message: 'Released under the MIT License.',
+			copyright: 'Copyright © Elliot Knight'
+		}
+	},
+
+
 }
