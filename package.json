@@ -7,6 +7,10 @@
         "docs:dev": "vitepress dev docs",
         "docs:build": "vitepress build docs",
         "docs:serve": "vitepress serve docs",
+
+        "github": "git push git@github.com:devil159468/devil159468.github.io.git",
+        "gitee": "git push --mirror git@gitee.com:Elliot-Devil/vuepress-knowledge.git",
+
         "push": "git push && yarn deploy",
         "deploy": "bash deploy.sh"
     },
