@@ -7,13 +7,13 @@ hero:
   tagline: 前端、后端、服务器、基础技能及工具、职业规划、游戏开发等
   actions:
     - theme: brand
-      text: Get Started
-      link: /test
+      text: 立即进入
+      link: /01FE/JavaScript
     - theme: alt
-      text: View on GitHub
+      text: GitHub
       link: https://github.com/devil159468
     - theme: alt
-      text: View on Gitee
+      text: Gitee
       link: https://gitee.com/Elliot-Devil
 
 features:
