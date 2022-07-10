@@ -1,20 +1,17 @@
 {
-  "name": "vuepress-knowledge",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "push-mirror": "git push --mirror git@e.coding.net:knightarmy/KnightArmyMainSite/vuepress-knowledge.git",
-    "push-github": "git push --mirror git@github.com:devil159468/devil159468.github.io.git",
-    "pushAll": "git push && yarn push-github",
-    "deploy": "bash deploy.sh"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "vuepress": "^1.8.2"
-  },
-  "devDependencies": {
-    "vuepress": "^1.8.2"
-  }
+    "name": "vitepress",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:serve": "vitepress serve docs",
+        "push": "git push && yarn deploy",
+        "deploy": "bash deploy.sh"
+    },
+    "devDependencies": {
+        "vitepress": "^1.0.0-alpha.4",
+        "vue": "^3.2.37"
+    }
 }
