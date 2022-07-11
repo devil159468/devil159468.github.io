@@ -7,6 +7,9 @@
   - 推送且部署(GitHubPages)：yarn pushAndDeploy
 
 ## 更新日志
+- 20220711
+  - 添加GiteePages部署
+  - 添加Gitee README文档
 - 20220710
   - 配置导航栏、侧边栏、页脚等
   - 整合原有 VuePress 文件
