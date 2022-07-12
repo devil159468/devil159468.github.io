@@ -22,6 +22,8 @@ git log
 git log -p
 # 查看所有历史记录（包含回退的记录）
 git reflog
+# 查看其他分支的 reflog
+git reflog master
 # 查看简要统计
 git log --stat
 # 查看具体的 commit
@@ -68,6 +70,24 @@ git rebase master
 commit --amend
 # 修复几个版本以前的错误提交信息文案
 git rebase -i HEAD^^
+
+# 回滚前一条commit
+git reset --hard HEAD^
+# 或者
+git reset --hard 目标commit
+
+# 撤销提交
+git rebase -i HEAD^^
+# 撤销多个提交
+git rebase --onto HEAD^^ HEAD^ branch1
+
+# 暂存
+git stash
+# 取出暂存
+git stash pop
+# 暂存包含未追踪的文件
+git stash -u
+
 ```
 > 在 Git 中，有两个「偏移符号」： ^ 和 ~。
 > ^ 的用法：在 commit 的后面加一个或多个 ^ 号，可以把 commit 往回偏移，偏移的数量是 ^ 的数量。例如：master^ 表示 master 指向的 commit 之前的那个 commit； HEAD^^ 表示 HEAD 所指向的 commit 往前数两个 commit。
