@@ -60,6 +60,11 @@ git merge --abort
 
 ## 高级命令
 ```bash
+# rebase
+git checkout branch1
+git rebase master
 
+# 
+commit --amend
 
 ```
