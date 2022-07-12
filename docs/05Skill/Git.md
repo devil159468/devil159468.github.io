@@ -64,7 +64,11 @@ git merge --abort
 git checkout branch1
 git rebase master
 
-# 
+# 修复错误的提交记录文案（针对最近的一条记录写错的情况）
 commit --amend
-
+# 修复几个版本以前的错误提交信息文案
+git rebase -i HEAD^^
 ```
+> 在 Git 中，有两个「偏移符号」： ^ 和 ~。
+> ^ 的用法：在 commit 的后面加一个或多个 ^ 号，可以把 commit 往回偏移，偏移的数量是 ^ 的数量。例如：master^ 表示 master 指向的 commit 之前的那个 commit； HEAD^^ 表示 HEAD 所指向的 commit 往前数两个 commit。
+> ~ 的用法：在 commit 的后面加上 ~ 号和一个数，可以把 commit 往回偏移，偏移的数量是 ~ 号后面的数。例如：HEAD~5 表示 HEAD 指向的 commit往前数 5 个 commit。
