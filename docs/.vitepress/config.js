@@ -62,22 +62,22 @@ export default {
 				]
 			},
 			{
-				text: '基础技能及工具',
+				text: '基础技能',
 				items: [
 					{
-						text: '基础技能',
+						// text: '基础技能',
 						items: [
-							{ text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
+							// { text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
 							{ text: '数据结构与算法', link: '/05Skill/DataStructuresAndAlgorithms.md' },
 							{ text: '设计模式', link: '/05Skill/DesignPatterns.md' },
 						]
 					},
 					{
-						text: '工具',
+						// text: '工具',
 						items: [
 							{ text: 'Git', link: '/05Skill/Git.md' },
-							{ text: '自有库', link: '/05Skill/PrivateLib.md' },
-							{ text: '思维导图', link: '/05Skill/MindMap.md' },
+							// { text: '自有库', link: '/05Skill/PrivateLib.md' },
+							// { text: '思维导图', link: '/05Skill/MindMap.md' },
 						]
 					},
 
@@ -85,13 +85,13 @@ export default {
 				]
 			},
 			{
-				text: '职业规划',
+				text: '面试',
 				items: [
-					{ text: '职业规划', link: '/06Interview/CareerPlanning.md' },
-					{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
+					// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
 					{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
 					{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
-					{ text: '管理', link: '/06Interview/Management.md' },
+					{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
+					// { text: '管理', link: '/06Interview/Management.md' },
 				]
 			},
 			{
@@ -152,44 +152,44 @@ export default {
 					items: [
 						{ text: 'Linux', link: '/03Server/Linux' },
 						{ text: 'Shell', link: '/03Server/Shell' },
-						{ text: 'Docker', link: '/03Server/Docker' },
 					]
 				},
 				{
 					text: '架构',
 					items: [
-						{ text: '架构', link: '/03Server/Architecture.md' },
+						{ text: 'Docker', link: '/03Server/Docker' },
 						{ text: 'CI & CD', link: '/03Server/CICD' },
+						{ text: '架构', link: '/03Server/Architecture.md' },
 					]
 				},
 			],
 			'/05Skill/': [
 				{
-					text: '基础技能',
+					// text: '基础技能',
 					items: [
-						{ text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
+						// { text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
 						{ text: '数据结构与算法', link: '/05Skill/DataStructuresAndAlgorithms.md' },
 						{ text: '设计模式', link: '/05Skill/DesignPatterns.md' },
 					]
 				},
 				{
-					text: '工具',
+					// text: '工具',
 					items: [
 						{ text: 'Git', link: '/05Skill/Git.md' },
-						{ text: '自有库', link: '/05Skill/PrivateLib.md' },
-						{ text: '思维导图', link: '/05Skill/MindMap.md' },
+						// { text: '自有库', link: '/05Skill/PrivateLib.md' },
+						// { text: '思维导图', link: '/05Skill/MindMap.md' },
 					]
 				}
 			],
 			'/06Interview/': [
 				{
-					text: '基础技能',
+					text: '面经',
 					items: [
-						{ text: '职业规划', link: '/06Interview/CareerPlanning.md' },
-						{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
+						// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
 						{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
 						{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
-						{ text: '管理', link: '/06Interview/Management.md' },
+						{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
+						// { text: '管理', link: '/06Interview/Management.md' },
 					]
 				}
 			],
@@ -203,7 +203,6 @@ export default {
 					]
 				}
 			],
-
 		},
 
 

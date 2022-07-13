@@ -1,5 +1,18 @@
 # JavaScript
 
+## 基础
+
+### 类型
+- 原始类型（基础类型）
+  - boolean
+  - null
+  - undefined
+  - number
+  - string
+  - symbol
+- 对象类型（引用类型）
+  - 
+
 ## 计划发布List
 
 - 原生JS
