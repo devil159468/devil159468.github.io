@@ -7,6 +7,8 @@
   - 推送且部署(GitHubPages)：yarn pushAndDeploy
 
 ## 更新日志
+- 20220713
+  - 整理目录
 - 20220712
   - 更新工程化
   - 更新Git命令
