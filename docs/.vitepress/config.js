@@ -1,9 +1,14 @@
 export default {
+	// 浏览器默认标签栏文本：左侧
+	title: 'Elliot Knight\'s Blog',
+	// 浏览器默认标签栏文本：右侧
+	titleTemplate: 'Elliot Knight',
+
 	// 全局配置
 	themeConfig: {
 		// 顶部导航栏设置：左侧
-		siteTitle: 'Elliot Knight',
 		logo: '/img.png',
+		siteTitle: 'Elliot Knight',
 
 		// 顶部导航栏设置：右侧
 		nav: [
@@ -126,14 +131,14 @@ export default {
 		sidebar: {
 			'/01FE/': [
 				{
-					text: 'JavaScript',
+					// text: 'JavaScript',
 					items: [
-						{ text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/config/01FE/' },
+						{ text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/01FE/' },
 						{ text: 'Engineering', link: '/01FE/Engineering' },
 					]
 				},
 				{
-					text: 'H && C',
+					// text: 'H && C',
 					items: [
 						{ text: 'HTML', link: '/01FE/HTML' },
 						{ text: 'CSS', link: '/01FE/CSS' },
@@ -206,7 +211,7 @@ export default {
 			],
 			'/07Game/': [
 				{
-					text: '游戏开发',
+					// text: '游戏开发',
 					items: [
 						{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
 						{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
@@ -215,8 +220,6 @@ export default {
 				}
 			],
 		},
-
-
 
 
 
