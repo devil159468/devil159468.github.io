@@ -1,11 +1,5 @@
 # 更新日志
 
-## 基础设置
-- nodeJS使用版本：v14.19.0
-- 命令：
-  - 仅推送：yarn push
-  - 推送且部署(GitHubPages)：yarn pushAndDeploy
-
 ## 更新日志
 - 20220713
   - 整理及优化目录结构
@@ -25,7 +19,13 @@
   - 配置
   - 测试部署
 
-### Github YML部署脚本备份
+## 基础设置
+- nodeJS使用版本：v14.19.0
+- 命令：
+    - 仅推送：yarn push
+    - 推送且部署(GitHubPages)：yarn pushAndDeploy
+
+## Github YML部署脚本备份
 ```bash
 # 目录地址：docs/.github/workflows/deploy.yml
 name: Deploy
