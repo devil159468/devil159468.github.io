@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "dev": "vitepress dev docs",
+        "dev": "vitepress dev docs --port 8086",
         "docs:build": "vitepress build docs",
         "docs:serve": "vitepress serve docs",
 

@@ -54,11 +54,21 @@ export default {
 			{
 				text: '服务器',
 				items: [
-					{ text: 'Linux', link: '/03Server/Linux.md' },
-					{ text: 'Shell', link: '/03Server/Shell.md' },
-					{ text: 'Docker', link: '/03Server/Docker.md' },
-					{ text: 'CI & CD', link: '/03Server/CICD.md' },
-					{ text: '架构', link: '/03Server/Architecture.md' },
+					{
+						// text: '服务器',
+						items: [
+							{ text: 'Linux', link: '/03Server/Linux' },
+							{ text: 'Shell', link: '/03Server/Shell' },
+						]
+					},
+					{
+						// text: '架构',
+						items: [
+							{ text: 'Docker', link: '/03Server/Docker' },
+							{ text: 'CI & CD', link: '/03Server/CICD' },
+							{ text: '架构', link: '/03Server/Architecture.md' },
+						]
+					},
 				]
 			},
 			{
@@ -103,13 +113,14 @@ export default {
 				]
 			},
 
+			{ text: 'Github', link: 'https://github.com/devil159468' },
 			{ text: 'Gitee', link: 'https://gitee.com/Elliot-Devil' },
 		],
 
 		// 社交账号
-		socialLinks: [
-			{ icon: 'github', link: 'https://github.com/devil159468' },
-		],
+		// socialLinks: [
+			// { icon: 'github', link: 'https://github.com/devil159468' },
+		// ],
 
 		// 侧边栏配置
 		sidebar: {
