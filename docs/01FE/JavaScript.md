@@ -4,14 +4,21 @@
 
 ### 类型
 - 原始类型（基础类型）
-  - boolean
-  - null
-  - undefined
-  - number
-  - string
-  - symbol
+  - Boolean
+  - String
+  - Number
+  - Null
+  - Undefined
+  - Symbol（ES6 新定义）
 - 对象类型（引用类型）
-  - 
+  - Array
+  - Object
+  - Function
+  - Math
+  - ...
+
+## ES6
+
 
 ## 计划发布List
 
