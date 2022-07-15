@@ -1,7 +1,7 @@
 # CI & CD
 
 ## PM2 自动化部署脚本示例
-```ecosystem.config.js
+```javascript
 module.exports = {
     apps: [
         {
