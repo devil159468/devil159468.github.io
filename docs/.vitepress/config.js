@@ -1,4 +1,18 @@
 export default {
+	// Head及SEO设置
+	head: [
+		[
+			"meta",
+			{
+				name: "viewport",
+				content:
+					"width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
+			},
+		],
+		["meta", { name: "keywords", content: "Elliot Knight的Blog" }],
+		["link", { rel: "icon", href: "./public/favicon.ico" }],
+	],
+
 	// 浏览器默认标签栏文本：左侧
 	title: 'Elliot Knight\'s Blog',
 	// 浏览器默认标签栏文本：右侧
