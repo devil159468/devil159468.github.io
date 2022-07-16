@@ -21,7 +21,7 @@ export default {
 	// 全局配置
 	themeConfig: {
 		// 顶部导航栏设置：左侧
-		logo: '/img.png',
+		logo: '/avatar.png',
 		siteTitle: 'Elliot Knight',
 
 		// 顶部导航栏设置：右侧
@@ -150,7 +150,7 @@ export default {
 					items: [
 						{ text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/01FE/' },
 						{ text: 'TypeScript', link: '/01FE/TypeScript' },
-						{ text: 'Engineering', link: '/01FE/Engineering' },
+						{ text: '工程化', link: '/01FE/Engineering' },
 					]
 				},
 				{
