@@ -1,6 +1,14 @@
 import {defineConfig} from "vitepress";
 
 export default defineConfig({
+	// 全局设置
+	lang: 'zh-CH',
+	lastUpdated: true,
+	markdown: {
+		theme: 'material-palenight',
+		lineNumbers: true
+	},
+
 	// Head及SEO设置
 	head: [
 		[
@@ -15,12 +23,12 @@ export default defineConfig({
 		["link", { rel: "icon", href: "/favicon.ico" }],
 	],
 
-	// 浏览器默认标签栏文本：左侧
+	// 浏览器Tab标签栏文本：左侧
 	title: 'Elliot Knight\'s Blog',
 	// 浏览器默认标签栏文本：右侧
 	titleTemplate: 'Elliot Knight',
 
-	// 全局配置
+	// 主题配置
 	themeConfig: {
 		// 顶部导航栏设置：左侧
 		logo: '/avatar.png',
