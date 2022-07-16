@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Elliot Knight's Blog
   text: 知识总结及实战笔记
-  tagline: 前端、后端、服务器、基础技能及工具、职业规划、游戏开发等
+  tagline: 前端、后端、服务器、基础技能及工具、游戏开发等
   actions:
     - theme: brand
       text: 立即进入
