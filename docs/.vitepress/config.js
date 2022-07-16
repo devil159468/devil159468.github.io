@@ -1,4 +1,6 @@
-export default {
+import {defineConfig} from "vitepress";
+
+export default defineConfig({
 	// Head及SEO设置
 	head: [
 		[
@@ -10,7 +12,7 @@ export default {
 			},
 		],
 		["meta", { name: "keywords", content: "Elliot Knight的Blog" }],
-		["link", { rel: "icon", href: "./public/favicon.ico" }],
+		["link", { rel: "icon", href: "/favicon.ico" }],
 	],
 
 	// 浏览器默认标签栏文本：左侧
@@ -248,4 +250,4 @@ export default {
 	},
 
 
-}
+})
