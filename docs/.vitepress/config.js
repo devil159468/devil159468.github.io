@@ -49,6 +49,8 @@ export default defineConfig({
 						items: [
 							{ text: 'JavaScript', link: '/01FE/JavaScript' },
 							{ text: 'TypeScript', link: '/01FE/TypeScript' },
+							{ text: 'Vue', link: '/01FE/Vue' },
+							{ text: 'React', link: '/01FE/React' },
 							{ text: '工程化', link: '/01FE/Engineering' }
 						]
 					},
@@ -171,6 +173,8 @@ export default defineConfig({
 					items: [
 						{ text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/01FE/' },
 						{ text: 'TypeScript', link: '/01FE/TypeScript' },
+						{ text: 'Vue', link: '/01FE/Vue' },
+						{ text: 'React', link: '/01FE/React' },
 						{ text: '工程化', link: '/01FE/Engineering' },
 					]
 				},

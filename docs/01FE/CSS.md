@@ -59,7 +59,14 @@
 ## 垂直边距塌陷
 > 垂直边距塌陷：块级元素的外边距(margin)在垂直方向上的边距会重叠
 
-解决方法：形成BFC
+### BFC(Block Formatting Context)
+使用以下方式都能创建 BFC
+1. float 的值不是 none。
+2. position 的值不是 static 或者 relative。
+3. display 的值是 inline-block、table-cell、flex、table-caption 或者inline-flex
+4. overflow 的值不是 visible
+
+
 
 
 
