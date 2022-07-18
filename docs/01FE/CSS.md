@@ -66,6 +66,32 @@
 3. display 的值是 inline-block、table-cell、flex、table-caption 或者inline-flex
 4. overflow 的值不是 visible
 
+### CSS Reset
+	简介	代码	最后提交	star
+| Reset方案       | 简介                                | 解释/说明    |
+|:--------------|:----------------------------------|----------|
+| reset.css     | CSS Tools: Reset CSS              | 旧项目	     |
+| normalize.css | CSS Reset 的现代替代方案                 | 推荐(新项目)	 |
+| reseter.css   | Normalize.css 和 CSS Reset 的未来替代方案 | 推荐(新项目)	 |
+
+## CSS过度
+
+## CSS动画
+### @keyframes的两种方式
+- from…to…
+- 每个阶段百分比
+
+#### animation相关属性
+| 属性名称                      | 解释           |
+|:--------------------------|:-------------|
+| animation-name            | 动画名称         |
+| animation-duration        | 动画的持续时间      |
+| animation-timing-function | 动画的过渡类型      |
+| animation-delay           | 动画延迟的时间      |
+| animation-iteration-count | 动画的循环次数      |
+| animation-direction       | 动画在循环中是否反向运动 |
+| animation-fill-mode       | 动画时间之外的状态    |
+| animation-play-state      | 对象动画的状态      |
 
 
 
@@ -84,8 +110,6 @@
 
 
 ## 计划发布List
-
-- CSS Reset及方案
 - CSS动画
 - CSS特殊效果库(幽灵按钮及特效类整合)
 
