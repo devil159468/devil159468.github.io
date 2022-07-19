@@ -6,15 +6,15 @@
 
 ## 2.MongoDB 概念解析
 
-|   SQL术语/概念    | MongoDB术语/概念 | 解释/说明 |
-|:-----------:|:-----------:|:------------|
-|database |	database | 	数据库|
-|table |	collection | 	数据库表/集合|
-|row |	document | 	数据记录行/文档|
-|column | field | 数据字段/域 |
-|index |	index | 	索引|
-|table | joins | 	 	表连接,MongoDB不支持|
-|primary | key | 	primary key	主键,MongoDB自动将_id字段设置为主键|
+| SQL术语/概念 | MongoDB术语/概念 | 解释/说明                               |
+|:---------|:-------------|:------------------------------------|
+| database | database     | 数据库                                 |
+| table    | collection   | 数据库表/集合                             |
+| row      | document     | 数据记录行/文档                            |
+| column   | field        | 数据字段/域                              |
+| index    | index        | 索引                                  |
+| table    | joins        | 表连接,MongoDB不支持                      |
+| primary  | key          | primary key 主键,MongoDB自动将_id字段设置为主键 |
 
 
 
@@ -101,11 +101,11 @@ MongoDB Compass:
 > config: 当MongoDB用于分片设置时，config数据库在内部使用，用于保存分片的相关信息
 
 ## 6.集合相关操作
-| 命令                                     | 解释        | 说明                 |
-|:---------------------------------------|:----------|:-------------------|
-| show collections/tables                | 查看所有集合    | -                  |
-| db.createCollection('集合名称',[options]) | 创建集合      | 向不存在的集合插入数据会自动创建集合 |
-| db.集合名称.drop()                         | 删除集合      | -                  |
+| 命令                                    | 解释     | 说明                 |
+|:--------------------------------------|:-------|:-------------------|
+| show collections/tables               | 查看所有集合 | -                  |
+| db.createCollection('集合名称',[options]) | 创建集合   | 向不存在的集合插入数据会自动创建集合 |
+| db.集合名称.drop()                        | 删除集合   | -                  |
 
 > createCollection说明：
 >
