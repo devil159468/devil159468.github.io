@@ -66,7 +66,7 @@
 3. display 的值是 inline-block、table-cell、flex、table-caption 或者inline-flex
 4. overflow 的值不是 visible
 
-### CSS Reset
+## CSS Reset
 	简介	代码	最后提交	star
 | Reset方案       | 简介                                | 解释/说明    |
 |:--------------|:----------------------------------|----------|
@@ -81,7 +81,7 @@
 - from…to…
 - 每个阶段百分比
 
-#### animation相关属性
+### animation相关属性
 | 属性名称                      | 解释           |
 |:--------------------------|:-------------|
 | animation-name            | 动画名称         |
@@ -97,6 +97,7 @@
 
 
 
+## CSS特殊效果库(幽灵按钮及特效类整合)
 
 
 
@@ -107,11 +108,6 @@
 
 
 
-
-
-## 计划发布List
-- CSS动画
-- CSS特殊效果库(幽灵按钮及特效类整合)
 
 
 

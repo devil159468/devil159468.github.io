@@ -17,22 +17,20 @@
   - Math
   - ...
 
-## ES6
 
+## ES规范
+### ES2021规范
+### ES2020规范
+### ES2019规范
+### ES2018规范
+### ES2017规范
 
-## 计划发布List
+## JQuery源码解析及实现
+## Lodash源码解析及实现
 
-- 原生JS
-    - 原生JS基础
-    - 原生JS工具库
-- JQuery源码解析及实现
-- 框架
-    - Vue全家桶
-        - Vue2源码解析及实现
-        - Vue3源码解析及实现
-        - SSR实现及Nuxt
-    - React使用(非重点)
-        - React 17
-- 跨端应用
-    - Uni-app
-    - Electron
+## SDK开发
+
+## 跨端应用
+### 小程序
+### Uni-app
+### Electron
