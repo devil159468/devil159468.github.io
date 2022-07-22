@@ -10,13 +10,35 @@
   - Null
   - Undefined
   - Symbol（ES6 新定义）
+  - BigInt
 - 对象类型（引用类型）
   - Array
   - Object
   - Function
+  - Date
   - Math
   - ...
 
+#### 原始类型
+1. 布尔值（Boolean）
+2. 字符串（String）
+3. 数字（Number）
+4. 空（Null）
+5. 未定义（Undefined）
+6. 符号（Symbol）
+7. 大型数字（BigInt）
+
+#### 引用类型
+1. 数组（Array）
+循环遍历方法：
+- ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
+- ES6： find、findIndex、keys、values、entries
+
+2. 对象（Object）
+3. 函数（Function）
+4. 日期（Date）
+5. 数学计算（Math）
+6. 正则(RegExp)
 
 ## ES规范
 ### ES2021规范
