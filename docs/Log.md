@@ -41,8 +41,10 @@
 ## 基础设置
 - nodeJS使用版本：v14.19.0
 - 命令：
-    - 仅推送：yarn push
-    - 推送且部署(GitHubPages)：yarn pushAndDeploy
+  - 同步推送(Github 及 Gitee)：yarn push
+  - 同步部署(GitHubPages 及 GitePages)：yarn deploy
+  - 推送且部署：yarn pushAndDeploy
+> PS: GiteePages 需在项目内手动部署
 
 ## Github YML部署脚本备份
 ```bash
