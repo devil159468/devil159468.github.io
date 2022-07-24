@@ -22,7 +22,27 @@
 #### 原始类型
 1. 布尔值（Boolean）
 2. 字符串（String）
+   1. 模板字符串
+    ```javascript
+    let name = 'Elliot'
+    const str = `我是${name}~` // 输出： 我是Elliot
+    ```
+   2. 属性：length
+   3. 方法
+      2. 转大写字符：toUpperCase()『不修改原始值』
+      3. 转小写字符：toLowerCase()『不修改原始值』
+      4. 是否包含：includes(str)【返回布尔值】
+      5. 获取下标：indexOf(str)【返回字符串中指定字符的第一个下标 或 -1】
+      6. 获取最后一个下标lastIndexOf(str)【返回最后出现的指定字符下标 或 -1】
+      7. 截取下标：slice(start,end)【截取包含 start 且 不包含 end 的字符串】
+      8. 截取长度：substr(start,length)【截取从 start 开始，长度为 length 的字符串】
+      9. 替换：replace(oldFlag,newFlag)【将 oldFlag 替换为 newFlag 且仅替换一次】
 3. 数字（Number）
+   1. 运算符：+ - * / **(幂运算) %(取余)
+   2. 运算顺序：括号、次方、除法、乘法、加法、减法
+   3. 快速加/减1：++ --
+   4. 快速加/减N：+= N  -=N
+   5. 非数字：NaN(Not A Number)
 4. 空（Null）
 5. 未定义（Undefined）
 6. 符号（Symbol）
@@ -30,9 +50,22 @@
 
 #### 引用类型
 1. 数组（Array）
-循环遍历方法：
-- ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
-- ES6： find、findIndex、keys、values、entries
+   1. 定义
+      1. new Array()
+      2. let arr = []
+   2. 属性：length
+   3. 方法
+      1. 数组转字符串：arr.join(flag)【flag 为转换为字符串中的连接符】
+      2. 获取下标：indexOf(str)【返回数组中指定字符的第一个下标 或 -1】
+      3. 是否包含：includes(str)【返回布尔值】
+      4. 连接数组：concat(arr1,arr2...)【合并多个数组】
+      5. 尾添加：push(sth)【会更改原始值，返回值为新数组的长度】
+      6. 尾删除：pop(sth)【会更改原始值，返回值为删除项的值】
+      7. 首添加：unshift()【会更改原始值，返回值为新数组的长度】
+      8. 首删除：shift()【会更改原始值，返回值为删除项的值】
+   4. 循环遍历：
+   - ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
+   - ES6： find、findIndex、keys、values、entries
 
 2. 对象（Object）
 3. 函数（Function）
