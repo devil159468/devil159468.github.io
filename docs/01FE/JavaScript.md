@@ -29,14 +29,14 @@
     ```
    2. 属性：length
    3. 方法
-      2. 转大写字符：toUpperCase()『不修改原始值』
-      3. 转小写字符：toLowerCase()『不修改原始值』
-      4. 是否包含：includes(str)【返回布尔值】
-      5. 获取下标：indexOf(str)【返回字符串中指定字符的第一个下标 或 -1】
-      6. 获取最后一个下标lastIndexOf(str)【返回最后出现的指定字符下标 或 -1】
-      7. 截取下标：slice(start,end)【截取包含 start 且 不包含 end 的字符串】
-      8. 截取长度：substr(start,length)【截取从 start 开始，长度为 length 的字符串】
-      9. 替换：replace(oldFlag,newFlag)【将 oldFlag 替换为 newFlag 且仅替换一次】
+      1. 转大写字符：toUpperCase()『不修改原始值』
+      2. 转小写字符：toLowerCase()『不修改原始值』
+      3. 是否包含：includes(str)【返回布尔值】
+      4. 获取下标：indexOf(str)【返回字符串中指定字符的第一个下标 或 -1】
+      5. 获取最后一个下标lastIndexOf(str)【返回最后出现的指定字符下标 或 -1】
+      6. 截取下标：slice(start,end)【截取包含 start 且 不包含 end 的字符串】
+      7. 截取长度：substr(start,length)【截取从 start 开始，长度为 length 的字符串】
+      8. 替换：replace(oldFlag,newFlag)【将 oldFlag 替换为 newFlag 且仅替换一次】
 3. 数字（Number）
    1. 运算符：+ - * / **(幂运算) %(取余)
    2. 运算顺序：括号、次方、除法、乘法、加法、减法
@@ -69,6 +69,21 @@
 
 2. 对象（Object）
 3. 函数（Function）
+   1. 函数声明与表达式：函数声明有变量提升，表达式则没有
+   ```javascript
+	// 函数声明
+    function logName () {
+        console.log('Elliot')
+    }
+    // 函数表达式
+    const name = function name() {
+	    console.log('Knight')
+    }
+   ```
+   2. 函数默认值
+   ```javascript
+   function showName (name = '111') {console.log(name)}
+   ```
 4. 日期（Date）
 5. 数学计算（Math）
 6. 正则(RegExp)
