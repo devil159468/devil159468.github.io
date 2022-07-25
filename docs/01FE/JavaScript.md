@@ -88,9 +88,7 @@
 5. 数学计算（Math）
 6. 正则(RegExp)
 
-### 数组与对象的循环
-1. 数组
-
+## 数组与对象的循环
 ```javascript
 let arr = [1,2,3,4,5]
 
@@ -275,7 +273,6 @@ console.timeEnd("map循环"); //map循环: 0.086ms
 // 引用链接：https://juejin.cn/post/6844903865947521031
 
 ```
-2. 对象
 
 
 ## ES规范
