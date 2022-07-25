@@ -71,13 +71,13 @@
 3. 函数（Function）
    1. 函数声明与表达式：函数声明有变量提升，表达式则没有
    ```javascript
-	// 函数声明
+    // 函数声明
     function logName () {
         console.log('Elliot')
     }
     // 函数表达式
     const name = function name() {
-	    console.log('Knight')
+        console.log('Knight')
     }
    ```
    2. 函数默认值
@@ -87,6 +87,196 @@
 4. 日期（Date）
 5. 数学计算（Math）
 6. 正则(RegExp)
+
+### 数组与对象的循环
+1. 数组
+
+```javascript
+let arr = [1,2,3,4,5]
+
+// for 循环
+for (let i = 0; i < arr.length; i++) {
+	console.log("for循环：",i,arr[i]) // i 为 index，arr[i] 为对应元素
+}
+// for 循环优化版
+for(let i = 0; len = arr.length,i < len; i++) {
+	console.log("for循环：",i,arr[i]) // i 为 index，arr[i] 为对应元素
+}
+
+
+
+/*
+ * forEach
+ * value: 当前值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：无
+ * 不改变原数组
+ */ 
+arr.forEach((value, index, array) => {
+	return value * 2;
+});
+console.log('forEach',arr);  //[1, 2, 3, 4, 5]
+
+
+
+/*
+ * map
+ * value: 当前值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：符合表达式的新数组
+ * 改变原数组
+ */
+let mapArr = arr.map((value, index, array) => {
+	return value * 2;
+});
+console.log('map',mapArr,arr); // [2, 4, 6, 8, 10], [1, 2, 3, 4, 5]
+
+
+
+/*
+ * filter：过滤
+ * value: 当前值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：符合filter表达式的数组
+ * 不改变原数组
+ */
+let filterArrs = arr.filter((value, index, array) => {
+	if (value > 2) {
+		return true;
+	} else {
+		return false;
+	}
+});
+console.log('filter',filterArrs,arr); //[3, 4, 5], [1, 2, 3, 4, 5]
+
+
+
+/*
+ * reduce：累加器
+ * prev：前两个值的和；next：下一个值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：所有元素累加后的结果
+ * 不改变原数组
+ */
+let reduceArrs = arr.reduce((prev, next, index, array) => {
+	console.log('reduceArrs',prev, next, index, array)
+	console.log(prev);   // 1，3，6，10
+	console.log(next);   // 2，3，4，5
+	return prev + next;
+});
+console.log('reduce',reduceArrs, arr);  // 15, [1, 2, 3, 4, 5]
+
+
+
+/*
+ * some
+ * value: 当前值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：数组中存在一个符合表达式的值则返回true，否则返回false
+ * 不改变原数组
+ */
+let someArrs = arr.some((value, index, array) => {
+	return value > 3;
+});
+console.log('some',someArrs, arr);  // true, [1, 2, 3, 4, 5]
+
+/*
+ * every
+ * value: 当前值；index：下标；array：当前数组
+ * return不能中断函数继续执行，
+ * 返回值：数组中每一项都符合表达式则返回true，否则返回false
+ * 不改变原数组
+ */
+let everyArrs = arr.every((value, index, array) => {
+	return value > 3;
+});
+console.log('every', everyArrs, arr);  //false, [1, 2, 3, 4, 5]
+
+
+
+/*
+ * for...in
+ * 不能使用return
+ * 返回值：无
+ * 不改变原数组
+ */
+// 数组
+let arr = [1, 2, 3, 4, 5];
+for(let i in arr) {
+	console.log(i,arr[i]);  // i 为 index，arr[i] 为对应元素
+}
+
+// 对象
+let arr = {name: "Elliot", age: 30};
+for(let i in arr) {
+	console.log(i);  // name, age
+}
+
+
+
+/*
+ * for...of
+ * 不能使用return
+ * 返回值：无
+ * 不改变原数组
+ */
+let arr = [1, 2, 3, 4, 5];
+for (let i of arr) {
+	console.log(i);  // i：数组中每个元素
+}
+`
+总结：
+一般的循环用for,for in,for of 和 forEach
+需要映射为新数组的用map，
+需要筛选出想要的用filter，
+数值需要进行累加的用reduce，
+如果要找一些值用some和every，
+并且想知道值的具体位置的可以用indexOf和lastIndexOf
+`
+
+
+// 性能对比测试
+let arr = Array(100).fill(5);
+
+console.time("for循环");
+for(let i = 0; i < arr.length; i++) {
+	arr[i] = arr[i] * 2;
+}
+console.timeEnd("for循环");  // for循环: 0.041ms
+
+console.time("for...in循环");
+for(let i in arr) {
+	arr[i] = arr[i] * 2;
+}
+console.timeEnd("for...in循环"); // for...in循环: 0.126ms
+
+console.time("for...of循环");
+for(let i of arr) {
+	arr[i] = arr[i] * 2;
+}
+console.timeEnd("for...of循环");  // for...of循环: 3532.695ms
+
+console.time("forEach循环");
+arr.forEach((value, index, arr) => {
+	arr[index] = value * 2;
+});
+console.timeEnd("forEach循环");  // forEach循环: 0.103ms
+
+console.time("map循环");
+arr.map((value, index, arr) => {
+	arr[index] = value * 2;
+});
+console.timeEnd("map循环"); //map循环: 0.086ms
+
+`
+结论：for > for in > for of > forEach > map
+`
+
+// 引用链接：https://juejin.cn/post/6844903865947521031
+
+```
+2. 对象
+
 
 ## ES规范
 ### ES2021规范
