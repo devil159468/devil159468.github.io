@@ -90,6 +90,8 @@
 
 ## 数组与对象的循环
 ```javascript
+ES5
+
 let arr = [1,2,3,4,5]
 
 // for 循环
@@ -222,13 +224,53 @@ let arr = [1, 2, 3, 4, 5];
 for (let i of arr) {
 	console.log(i);  // i：数组中每个元素
 }
+
+
+ES6
+/*
+ * find、findIndex
+ * 不能使用return
+ * 返回值：符合表达式的值的数组元素/下标
+ * 不改变原数组
+ */
+let arrFind = [
+	{name: 'a', age: 1},
+	{name: 'b', age: 2},
+	{name: 'c', age: 3},
+	{name: 'd', age: 4},
+];
+console.log(arrFind.find((value => value.age === 3)))
+console.log(arrFind.findIndex((value => value.age === 3)))
+
+
+/*
+ * keys(键名/下标)，values(值)，entries(键值对)   
+ * 不能使用return
+ * 返回值：无
+ * 不改变原数组
+ */
+for (let index of arr.keys()) {
+	console.log(index)
+}
+for (let elem of arr.values()) {
+	console.log(elem)
+}
+for (let [index, elem] of arr.entries()) {
+	console.log(index, elem)
+} 
+    
+    
+    
+    
 `
 总结：
 一般的循环用for,for in,for of 和 forEach
 需要映射为新数组的用map，
 需要筛选出想要的用filter，
 数值需要进行累加的用reduce，
-如果要找一些值用some和every，
+找值用some和every，
+数组对象查找用find、findIndex
+获取下标、值、或键值对用keys，values，entries   
 并且想知道值的具体位置的可以用indexOf和lastIndexOf
 `
 
@@ -272,6 +314,8 @@ console.timeEnd("map循环"); //map循环: 0.086ms
 
 // 引用链接：https://juejin.cn/post/6844903865947521031
 
+
+
 ```
 
 
@@ -283,7 +327,6 @@ console.timeEnd("map循环"); //map循环: 0.086ms
 - 逻辑赋值运算符
 - 逻辑赋值运算符
 - Promise.all
-
 
 ### ES2020规范
 - String.protype.matchAll
