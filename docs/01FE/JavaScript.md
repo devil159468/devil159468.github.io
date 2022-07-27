@@ -51,8 +51,10 @@
 #### 引用类型
 1. 数组（Array）
    1. 定义
-      1. new Array()
-      2. let arr = []
+   ```javascript
+      new Array()
+      let arr = []
+   ```
    2. 属性：length
    3. 方法
       1. 数组转字符串：arr.join(flag)【flag 为转换为字符串中的连接符】
@@ -63,10 +65,7 @@
       6. 尾删除：pop(sth)【会更改原始值，返回值为删除项的值】
       7. 首添加：unshift()【会更改原始值，返回值为新数组的长度】
       8. 首删除：shift()【会更改原始值，返回值为删除项的值】
-   4. 循环遍历：
-   - ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
-   - ES6： find、findIndex、keys、values、entries
-
+      9. 删除指定下标：splice(index,length，item?)【会改变原始值，返回值为该数组下标元素，index为下标，length为删除长度数字，item为可选项，如果有值，则会替换删除的元素】
 2. 对象（Object）
 3. 函数（Function）
    1. 函数声明与表达式：函数声明有变量提升，表达式则没有
@@ -89,6 +88,8 @@
 6. 正则(RegExp)
 
 ## 数组与对象的循环
+- ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
+- ES6： find、findIndex、keys、values、entries
 ```javascript
 ES5
 
