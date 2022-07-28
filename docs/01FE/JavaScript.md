@@ -88,6 +88,7 @@
 6. 正则(RegExp)
 
 ## 数组与对象的循环
+### 数组
 - ES5： forEach、every 、some、 filter、map、reduce、reduceRight、
 - ES6： find、findIndex、keys、values、entries
 ```javascript
@@ -201,17 +202,11 @@ console.log('every', everyArrs, arr);  //false, [1, 2, 3, 4, 5]
  * 返回值：无
  * 不改变原数组
  */
-// 数组
 let arr = [1, 2, 3, 4, 5];
 for(let i in arr) {
 	console.log(i,arr[i]);  // i 为 index，arr[i] 为对应元素
 }
 
-// 对象
-let arr = {name: "Elliot", age: 30};
-for(let i in arr) {
-	console.log(i);  // name, age
-}
 
 
 
@@ -319,6 +314,40 @@ console.timeEnd("map循环"); //map循环: 0.086ms
 
 ```
 
+### 对象
+```javascript
+let obj = {
+	name: "Elliot",
+	age: 30,
+	isAdmin: true
+};
+
+/*
+ * for...in
+ * 不能使用return
+ * 返回值：无
+ * 不改变原数组
+ */
+for (let i in obj) {
+	console.log(i, arr[i]);  // name, Elliot; age, 30;  isAdmin, true
+}
+
+
+
+/*
+ * Object.keys：返回 key 值的数组
+ * Object.values：返回 values 值的数组
+ * Object.entries：返回 key 及 values 值的二维数组
+ */
+let keys = Object.keys(obj);
+console.log(keys);  // ['name', 'age', 'isAdmin']
+
+let values = Object.values(obj);
+console.log(values); // ['Elliot', 30, true]
+
+var entries = Object.entries(obj);
+console.log(entries);
+```
 
 ## ES规范
 ### ES2021规范
