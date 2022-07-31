@@ -79,7 +79,47 @@ fmt.Println("FMT s1, address, s3:", s1, address, s3)
 - 变量 = 变量名 + 值 + 数据类型
 - 未赋值时，默认有初始值(int 为0，string为''，小数为0 等)
 
+## 数据类型
+- 基础数据类型
+  - 数值
+    - 整数类型（int,int8,int16,int32,int64,uint,uint8,uint16,uint32,unit64,byte）
+    - 浮点类型（float32,float64）
+  - 字符型（使用byte保存打个字母字符）
+  - 布尔型（bool）
+  - 字符串（string）
+- 复杂数据类型
+  - 指针（pointer）
+  - 数组
+  - 结构体（struct）
+  - 管道（channel）
+  - 函数
+  - 切片（slice）
+  - 接口（interface）
+  - map
 
+### 数值
+1. 整数类型区分：有符号 和 无符号，int unit大小与系统有关
+2. 整型默认声明为int
+> PS: bit 计算机最小存储大卫；byte：计算机中基本存储单元
+3. 浮点型有固定的范围和字段长度，不受操作系统影响
+4. 浮点型默认声明为float64，通常情况下也应该用float64，比较精确
+5. 浮点型常亮有两种表现形式
+   1. 十进制：3.14    .1415926
+   2. 科学计数法：3.14e2 = 3.14 * 10的2次方
+
+### 字符串
+Go没有专门的字符类型，使用byte存储单个字符，Go的字符串是由字节组成
+
+```
+println 输出码值，printf 输出内容
+存储 ASCII 码可使用byte，否则建议使用 int
+```
+
+### 布尔
+- 只有 true 和 false
+- 占用1个字节
+- 逻辑运算时使用
+> Go是强类型语言，不能用 0 或 非0 的整数替代 false 和 true
 
 ## 框架
 ### Gin
