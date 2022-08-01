@@ -138,21 +138,21 @@ export default defineConfig({
 			// 		// { text: '管理', link: '/06Interview/Management.md' },
 			// 	]
 			// },
-			{
-				text: '游戏开发',
-				items: [
-					{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
-					{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
-					{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
-				]
-			},
+			// {
+			// 	text: '游戏开发',
+			// 	items: [
+			// 		{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
+			// 		{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
+			// 		{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
+			// 	]
+			// },
 			{
 				text: '关注我',
 				items: [
 					{ text: 'Github', link: 'https://github.com/devil159468' },
-					{ text: '国外地址', link: 'https://devil159468.github.io/' },
 					{ text: 'Gitee', link: 'https://gitee.com/Elliot-Devil' },
-					{ text: '国内地址', link: 'https://elliot-devil.gitee.io/' },
+					{ text: '博客国外地址', link: 'https://devil159468.github.io/' },
+					{ text: '博客国内地址', link: 'https://elliot-devil.gitee.io/' },
 				]
 			},
 
