@@ -128,24 +128,24 @@ export default defineConfig({
 			},
 
 			// 暂时注释，后期有需要再开放
-			// {
-			// 	text: '面试',
-			// 	items: [
-			// 		// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
-			// 		{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
-			// 		{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
-			// 		{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
-			// 		// { text: '管理', link: '/06Interview/Management.md' },
-			// 	]
-			// },
-			// {
-			// 	text: '游戏开发',
-			// 	items: [
-			// 		{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
-			// 		{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
-			// 		{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
-			// 	]
-			// },
+			{
+				text: '面试',
+				items: [
+					// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
+					{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
+					{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
+					{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
+					// { text: '管理', link: '/06Interview/Management.md' },
+				]
+			},
+			{
+				text: '游戏开发',
+				items: [
+					{ text: '游戏开发', link: '/07Game/GameDevelopment.md' },
+					{ text: '人工智能', link: '/07Game/ArtificialIntelligence.md' },
+					{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
+				]
+			},
 			{
 				text: '关注我',
 				items: [
