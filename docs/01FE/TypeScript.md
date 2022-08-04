@@ -215,8 +215,102 @@ class Car {
 
 ```
 
-## TypeScript 泛型
+## TypeScript 泛型（Generices）
+```typescript
+// T 为类型
+function type<T>(arg:T):T {
+	return arg
+}
+// 显示指定类型
+let hd = type<string>('Elliot') // Elliot
+// 自动推断类型
+let xj = type(true) // true
 
+// 参数泛型
+function getLength<T extends string | any[]>(arg: T): number {
+    return arg.length
+}
+console.log(getLength('Elliot')); // 6
+console.log(getLength(['Elliot', 'Knight'])) // 2
+
+
+
+// 泛型类
+class CollectionNumber<T> {
+    data: T[] = []
+
+    public push(...items: T[]) {
+        this.data.push(...items)
+    }
+
+    public shift(): T {
+        return this.data.shift()
+    }
+}
+// 字符串类型
+const collectionsString = new CollectionNumber<string>()
+collectionsString.push('Elliot', 'Knight')
+console.log(collectionsString.shift()) // Elliot
+// 数字类型
+const collectionsNumber = new CollectionNumber<number>()
+collectionsNumber.push(1, 2, 3, 4, 5)
+console.log(collectionsNumber.shift()) // 1
+// 自定义类型
+type User = { name: string; age: number }
+const user1: User = {name: 'Elliot', age: 30}
+const user2: User = {name: 'Knight', age: 30}
+const collectionsUser = new CollectionNumber<User>()
+collectionsUser.push(user1, user2)
+console.log(collectionsUser.shift())
+
+
+
+// 构造函数泛型
+class User<T> {
+    public constructor(private _user: T) {
+    }
+
+    public get(): T {
+        return this._user
+    }
+}
+
+interface UserInterface {
+    name: string
+    age: number
+}
+
+const obj = new User<UserInterface>({name: 'Elliot', age: 30})
+console.log(obj.get().name) // Elliot
+
+
+
+// 接口泛型
+interface ArticleInterface<B, C> {
+    title: string
+    isLock: B
+    comments: C[]
+}
+
+type CommentType = {
+    content: string
+    author: string
+}
+
+const article: ArticleInterface<boolean, CommentType> = {
+    title: 'Elliot Knight的博客',
+    isLock: true,
+    comments: [{content: '内容', author: '作者'}]
+}
+
+console.log(article)
+// {
+//     title: 'Elliot Knight的博客',
+//     isLock: true,
+//     comments: [{content: '内容', author: '作者'}]
+// }
+
+```
 
 
 
