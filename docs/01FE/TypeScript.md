@@ -13,6 +13,8 @@ const hello:string = "Hello World!"
 console.log(hello) // Hello World!
 ```
 
+
+
 ## 基础数据类型
 - any：任意类型
 - number：数字
@@ -26,6 +28,8 @@ console.log(hello) // Hello World!
 - null：表示对象值缺失
 - undefined：用于初始化变量为一个未定义的值
 
+
+
 ## 变量
 ### 声明
 ```bash
@@ -35,7 +39,81 @@ let [变量名] : [类型] = 值;
 let name:string = "Elliot";
 ```
 
-## 函数
+
+
+## Array数组
+```typescript
+// 语法
+let array_name[:datatype]= [val1, val2…valn]
+
+// 示例
+let numList: number[] = [2, 4, 6, 8]
+let stringList: string[] = new Array("Google", "Runoob", "Taobao", "Facebook") 
+```
+
+
+
+## Map对象
+```typescript
+let myMap = new Map();
+
+let myMap2 = new Map([
+    ["key1", "value1"],
+    ["key2", "value2"]
+]); 
+```
+Map函数与属性
+- map.clear() – 移除 Map 对象的所有键/值对 。
+- map.set() – 设置键值对，返回该 Map 对象。
+- map.get() – 返回键对应的值，如果不存在，则返回 undefined。
+- map.has() – 返回一个布尔值，用于判断 Map 中是否包含键对应的值。
+- map.delete() – 删除 Map 中的元素，删除成功返回 true，失败返回 false。
+- map.size – 返回 Map 对象键/值对的数量。
+- map.keys() - 返回一个 Iterator 对象， 包含了 Map 对象中每个元素的键 。
+- map.values() – 返回一个新的Iterator对象，包含了Map对象中每个元素的值 。
+```typescript
+let mapText = new Map();
+ 
+// 设置 Map 对象
+mapText.set("Google", 1);
+mapText.set("Runoob", 2);
+mapText.set("Taobao", 3);
+ 
+// 获取键对应的值
+console.log(mapText.get("Runoob"));     // 2
+ 
+// 判断 Map 中是否包含键对应的值
+console.log(mapText.has("Taobao"));       // true
+console.log(mapText.has("Zhihu"));        // false
+ 
+// 返回 Map 对象键/值对的数量
+console.log(mapText.size);                // 3
+ 
+// 删除 Runoob
+console.log(mapText.delete("Runoob"));    // true
+console.log(mapText);
+// 移除 Map 对象的所有键/值对
+mapText.clear();             // 清除 Map
+console.log(mapText);
+```
+
+
+
+## Tuple元组
+存储的元素数据类型不同
+```typescript
+let tuple_name = [value1,value2,value3,…value n]
+
+// 示例
+let a = [10, "Runoob"]
+let [b, c] = a
+console.log(b)
+console.log(c)
+```
+
+
+
+## Function函数
 ```typescript
 // 无参数
 function function_name():return_type { 
@@ -59,7 +137,7 @@ function addNumber(x: number, y: number): number {
 function function_name(param1[:type],param2[:type]= default_value) {}
 // 示例
 function calculate_discount(price: number, rate: number = 0.50) {
-    var discount = price * rate;
+    let discount = price * rate;
     console.log("计算结果: ", discount);
 }
 
@@ -70,8 +148,8 @@ function buildName(firstName: string, ...restOfName: string[]) {
 }
 // 示例
 function addNumbers(...nums: number[]) {
-    var i;
-    var sum: number = 0;
+    let i;
+    let sum: number = 0;
 
     for (i = 0; i < nums.length; i++) {
         sum = sum + nums[i];
@@ -92,17 +170,17 @@ console.log(res(12, 2))
 
 // 匿名函数自调用
 (function () {
-    var x = "Hello!!";
+    let x = "Hello!!";
     console.log(x)
 })()
 
 
 
 // 构造函数
-var res = new Function([arg1[, arg2[, ...argN]],] functionBody)
+let res = new Function([arg1[, arg2[, ...argN]],] functionBody)
 // 示例
-var myFunction = new Function("a", "b", "return a * b");
-var x = myFunction(4, 3);
+let myFunction = new Function("a", "b", "return a * b");
+let x = myFunction(4, 3);
 console.log(x);
 
 
@@ -122,17 +200,17 @@ console.log(factorial(6));
 // Lambda函数
 ([param1, parma2, …param n]) => statement;
 // 示例1
-var foo = (x: number) => 10 + x
+let foo = (x: number) => 10 + x
 console.log(foo(100))
 // 示例2
-var foo = (x: number) => {
+let foo = (x: number) => {
     x = 10 + x
     console.log(x)
 }
 foo(100)
 
 // 不指定函数的参数类型，通过函数内来推断参数类型:
-var func = (x) => {
+let func = (x) => {
     if (typeof x == "number") {
         console.log(x + " 是一个数字")
     } else if (typeof x == "string") {
@@ -162,7 +240,7 @@ interface IPerson {
     sayHi: () => string
 }
 
-var customer: IPerson = {
+let customer: IPerson = {
     firstName: "Tom",
     lastName: "Hanks",
     sayHi: (): string => {
@@ -174,7 +252,7 @@ console.log(customer.firstName)
 console.log(customer.lastName)
 console.log(customer.sayHi())
 
-var employee: IPerson = {
+let employee: IPerson = {
     firstName: "Jim",
     lastName: "Blakes",
     sayHi: (): string => {
@@ -207,11 +285,6 @@ class Car {
         console.log("发动机为 :   " + this.engine)
     }
 }
-
-
-
-
-
 
 ```
 
