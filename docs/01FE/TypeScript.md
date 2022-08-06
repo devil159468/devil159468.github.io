@@ -387,7 +387,18 @@ console.log(article)
 
 
 
-
+## TypeScript 对象
+```typescript
+// 示例
+let object_name = { 
+    key1: "value1", // 标量
+    key2: "value",  
+    key3: function() {
+        // 函数
+    }, 
+    key4:["content1", "content2"] //集合
+}
+```
 
 
 
