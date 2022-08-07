@@ -4,7 +4,17 @@
     </div>
 </template>
 
-<script setup ></script>
+<script setup lang="ts">
+const props = defineProps({
+    title: {
+        type: String,
+        default: () => {
+            return '测试信息'
+        }
+    }
+})
+console.log(props.title);
+</script>
 
 <style scoped>
 .text {
