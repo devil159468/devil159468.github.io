@@ -126,6 +126,35 @@ export default defineConfig({
 
 				]
 			},
+			{
+				text: '常用模板',
+				items: [
+					{
+						items: [
+							{text: 'CSS', link: '/04Tools/css.md'},
+						]
+					},
+					{
+						items: [
+							{text: '原生JS', link: '/04Tools/pureJavascript.md'},
+							{text: 'vue2', link: '/04Tools/vue2.md'},
+							{text: 'vue3', link: '/04Tools/vue3.md'},
+							{text: 'react', link: '/04Tools/react.md'},
+						]
+					},
+					{
+						items: [
+							{text: 'NPM', link: '/04Tools/npm.md'},
+						]
+					},
+					{
+						items: [
+							{text: '小程序', link: '/04Tools/miniprogram.md'},
+							{text: 'Docker', link: '/04Tools/docker.md'},
+						]
+					},
+				]
+			},
 
 			// 暂时注释，后期有需要再开放
 			{
@@ -217,6 +246,38 @@ export default defineConfig({
 						{ text: 'Docker', link: '/03Server/Docker' },
 						{ text: 'CI & CD', link: '/03Server/CICD' },
 						{ text: '架构', link: '/03Server/Architecture.md' },
+					]
+				},
+			],
+			'/04Tools/': [
+				{
+					text: 'CSS',
+					items: [
+						{text: 'CSS', link: '/04Tools/css.md'},
+					]
+				},
+				{
+					text: 'JavaScript',
+					items: [
+						{text: '原生JS', link: '/04Tools/pureJavascript.md'},
+						{text: 'vue2', link: '/04Tools/vue2.md'},
+						{text: 'vue3', link: '/04Tools/vue3.md'},
+						{text: 'react', link: '/04Tools/react.md'},
+					]
+				},
+				{
+					text: 'NodeJS',
+					items: [
+						{text: 'NPM', link: '/04Tools/npm.md'},
+					]
+				},
+				{
+					text: '其他',
+					items: [
+						{text: '小程序', link: '/04Tools/miniprogram.md'},
+						{text: 'Docker', link: '/04Tools/docker.md'},
+						{text: 'WebStorm', link: '/04Tools/webstorm.md'},
+						{text: 'VsCode', link: '/04Tools/vscode.md'},
 					]
 				},
 			],
