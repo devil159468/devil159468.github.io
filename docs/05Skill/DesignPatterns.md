@@ -67,6 +67,6 @@ has-a 关系，表示具有某些功能。对于接口，有一个更加形象�
 
 
 <script setup>
-import vuetest from '../vuetest.vue'
+import vuetest from '../components/vuetest.vue'
 </script>
 
