@@ -33,9 +33,13 @@
 
 ### 封装、抽象、继承、多态 解决什么问题
 - 封装（Encapsulation）也叫作信息隐藏或者数据访问保护
+  - public 完全开放
+  - protected 对子类开放
+  - private 对自己开放
 - 抽象（Abstraction）隐藏方法的具体实现，让调用者只需要关心方法提供了哪些功能，并不需要知道这些功能是如何实现的。
 - 继承（Inheritance）表示类之间的 is-a 关系
 - 多态（Polymorphism）子类可以替换父类，提高代码的可扩展性和复用性
+<DesignPatterns01/>
 
 ### 优势
 - OOP 更加能够应对大规模复杂程序的开发
@@ -62,11 +66,16 @@
 > 总结：抽象类实际上就是类，只不过是一种特殊的类，这种类不能被实例化为对象，只能被子类继承。我们知道，继承关系是一种 is-a 的关系，那抽象类既然属于类，也表示一种 is-a 的关系。相对于抽象类的 is-a 关系来说，接口表示一种
 has-a 关系，表示具有某些功能。对于接口，有一个更加形象的叫法，那就是协议（contract）。
 
+## UML类图
+[processon](https://processon.com/)
 
-<vuetest />
+## 设计原则
+
+
+
 
 
 <script setup>
-import vuetest from '../components/vuetest.vue'
+import DesignPatterns01 from './components/DesignPatterns/designPatterns01.vue'
 </script>
 
