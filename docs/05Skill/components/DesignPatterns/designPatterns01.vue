@@ -88,26 +88,10 @@ window.$ = function (selector) {
 }
 // 选择 vuetest.vue 中的 p.selectP
 let _select = $('p')
-console.log('_select', _select);
-console.log('_select 方法', _select.addClass);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+setTimeout(() => {
+    console.log('_select', _select);
+    console.log('_select 方法', _select.addClass);
+})
 
 
 </script>
