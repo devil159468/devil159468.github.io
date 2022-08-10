@@ -17,7 +17,7 @@
    - 常用的有：单例模式、工厂模式（工厂方法和抽象工厂）、建造者模式。
    - 不常用的有：原型模式。
 
-2. 结构型
+2. 结构型/组合型
    - 常用的有：代理模式、桥接模式、装饰者模式、适配器模式。
    - 不常用的有：门面模式、组合模式、享元模式。
 
@@ -40,6 +40,7 @@
 - 继承（Inheritance）表示类之间的 is-a 关系
 - 多态（Polymorphism）子类可以替换父类，提高代码的可扩展性和复用性
 <DesignPatterns01/>
+<DesignPatterns02/>
 
 ### 优势
 - OOP 更加能够应对大规模复杂程序的开发
@@ -86,10 +87,206 @@ has-a 关系，表示具有某些功能。对于接口，有一个更加形象�
 14. 各部分之和大于整体
 15. 寻求90%的解决方案（二八定律）
 
+## 练习题
+### 题目一
+1. 打车时由专车和快车，每个车辆都有车牌号和名称
+2. 不同的车价格不同，快车1元/公里，专车2元/公里
+3. 行程开始显示车辆信息
+4. 行程结束显示打车金额（固定5公里）
+```typescript
+{
+    // 父类：车
+    class Car {
+        constructor(name, number) {
+            this.name = name
+            this.number = number
+        }
+    }
 
+    // 子类：快车
+    class Kuaiche extends Car {
+        constructor(name, number) {
+            super(name, number);
+            this.price = 1;
+        }
+    }
+
+    // 子类：专车
+    class Zhuanche extends Car {
+        constructor(name, number) {
+            super(name, number);
+            this.price = 2;
+        }
+    }
+
+    // 行程：
+    class Trip {
+        constructor(car) {
+            this.car = car
+        }
+
+        start() {
+            console.log(`${this.car.name}行程开始,车牌号码为：${this.car.number}`)
+        }
+
+        end() {
+            console.log(`行程结束，价格为：${this.car.price * 5}`)
+        }
+    }
+
+    let car = new Kuaiche('快车A',100)
+    let trip = new Trip(car)
+    trip.start()
+    trip.end()
+}
+```
+
+### 题目二
+1. 一个3层，每层100车位的停车场
+2. 每个车位都能监控到茶凉的驶入和离开
+3. 车辆进入前，显示每层的空余车位数量
+4. 车辆进入时，摄像头可识别车牌号码并记录时间
+5. 车辆驶出时，出口显示车牌号和停车时长
+```typescript
+{
+    // 停车场
+    class Park {
+        constructor(floors) {
+            this.floors = floors || []
+            this.camera = new Camera()
+            this.screen = new Screen()
+            this.carList = {} // 存储摄像头拍摄返回的车辆信息
+        }
+
+        in(car) {
+            // 通过摄像头获取信息
+            const info = this.camera.shot(car)
+            // 停到某个停车位
+            const i = parseInt(Math.random() * 100 % 100)
+            const place = this.floors[0].places[i]
+            place.in()
+            info.place = place
+            // 记录信息
+            this.carList[car.num] = info
+        }
+
+        out(car) {
+            const info = this.carList[car.num]
+            // 清空停车位
+            const place = info.place
+            place.out()
+            // 显示时间
+            this.screen.show(car, info.inTime)
+            // 清空记录
+            delete this.carList[car.num]
+        }
+
+        emptyNum() {
+            return this.floors.map((floor) => {
+                return `${floor.index} 层还有 ${floor.emptyPlaceMun()} 个车位`
+            }).join('\n')
+        }
+    }
+
+    // 层
+    class Floor {
+        constructor(index, places) {
+            this.index = index
+            this.places = places || []
+        }
+
+        emptyPlaceMun() {
+            let num = 0;
+            this.places.forEach(p => {
+                if (p.empty) {
+                    num = num + 1
+                }
+            })
+
+            return num
+        }
+    }
+
+    // 车位
+    class Place {
+        constructor() {
+            this.empty = true
+        }
+
+        in() {
+            this.empty = false
+        }
+
+        out() {
+            this.empty = true
+        }
+    }
+
+    // 摄像头
+    class Camera {
+        shot(car) {
+            return {
+                num: car.num,
+                inTime: Date.now()
+            }
+        }
+    }
+
+    // 屏幕
+    class Screen {
+        show(car, inTime) {
+            console.log(`车牌号：${car.num}，停车时间${Date.now() - inTime}`)
+        }
+    }
+
+    // 车辆
+    class Car {
+        constructor(num) {
+            this.num = num
+        }
+    }
+
+
+    // 测试
+    // 初始化停车场
+    const floors = []
+    for (let i = 0; i < 3; i++) {
+        const places = []
+        for (let j = 0; j < 100; j++) {
+            places[j] = new Place()
+        }
+        floors[i] = new Floor(i + 1, places)
+    }
+
+    const park = new Park(floors)
+
+    // 初始化车辆
+    const car1 = new Car(100)
+    const car2 = new Car(200)
+    const car3 = new Car(300)
+
+    console.log('第一辆车进入')
+    console.log(park.emptyNum())
+    park.in(car1)
+    console.log('第二辆车进入')
+    console.log(park.emptyNum())
+    park.in(car2)
+    console.log('第一辆车离开')
+    park.out(car1)
+    console.log('第二辆车离开')
+    park.out(car2)
+
+    console.log('第三辆车进入')
+    console.log(park.emptyNum())
+    park.in(car3)
+    console.log('第三辆车离开')
+    park.out(car3)
+}
+```
 
 
 <script setup>
-import DesignPatterns01 from './components/DesignPatterns/designPatterns01.vue'
+import DesignPatterns01 from './components/DesignPatterns/designPatterns01.vue';
+import DesignPatterns02 from './components/DesignPatterns/designPatterns02.vue';
 </script>
 
