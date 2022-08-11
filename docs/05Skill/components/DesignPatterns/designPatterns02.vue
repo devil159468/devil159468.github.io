@@ -44,9 +44,9 @@
     
     let car = new Kuaiche('快车A',100)
     let trip = new Trip(car)
-    trip.start()
-    trip.end()
-    console.info('===')
+    // trip.start()
+    // trip.end()
+    // console.info('===')
 }
 
 // 练习题二
@@ -161,22 +161,22 @@
     const car2 = new Car(200)
     const car3 = new Car(300)
     
-    console.log('第一辆车进入')
-    console.log(park.emptyNum())
-    park.in(car1)
-    console.log('第二辆车进入')
-    console.log(park.emptyNum())
-    park.in(car2)
-    console.log('第一辆车离开')
-    park.out(car1)
-    console.log('第二辆车离开')
-    park.out(car2)
-
-    console.log('第三辆车进入')
-    console.log(park.emptyNum())
-    park.in(car3)
-    console.log('第三辆车离开')
-    park.out(car3)
+    // console.log('第一辆车进入')
+    // console.log(park.emptyNum())
+    // park.in(car1)
+    // console.log('第二辆车进入')
+    // console.log(park.emptyNum())
+    // park.in(car2)
+    // console.log('第一辆车离开')
+    // park.out(car1)
+    // console.log('第二辆车离开')
+    // park.out(car2)
+    //
+    // console.log('第三辆车进入')
+    // console.log(park.emptyNum())
+    // park.in(car3)
+    // console.log('第三辆车离开')
+    // park.out(car3)
 }
 </script>
 

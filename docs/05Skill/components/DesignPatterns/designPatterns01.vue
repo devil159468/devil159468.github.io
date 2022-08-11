@@ -59,9 +59,9 @@ class StudentB extends People {
     }
 }
 let _studentA = new StudentA('Elliot', 30, 131)
-_studentA.say();
 let _studentB = new StudentB('Knight', 30, 180)
-_studentB.say();
+// _studentA.say();
+// _studentB.say();
 
 
 

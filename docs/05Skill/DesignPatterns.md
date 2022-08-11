@@ -284,9 +284,120 @@ has-a 关系，表示具有某些功能。对于接口，有一个更加形象�
 }
 ```
 
+## 工厂模式
+- 将new操作单独封装
+- 遇到new就需要考虑是否使用工厂模式
+```typescript
+// 工厂模式
+class Product {
+    constructor(name) {
+        this.name = name
+    }
+    
+    init () {
+        console.log(`${this.name}init`)
+    }
+    fun1 () {
+        console.log(`${this.name}fun1`)
+    }
+    fun2 () {
+        console.log(`${this.name}fun2`)
+    }
+    
+}
+
+class Creator {
+    create (name) {
+        return new Product(name)
+    }
+}
+
+// 测试
+let _creator = new Creator()
+let item = _creator.create('Factory')
+item.init()
+item.fun1()
+```
+<Patterns01Factory />
+
+
+## 单例模式
+- 系统中被唯一使用
+- 一个类只有一个实例
+```typescript
+// 单例模式
+class SingleObject {
+    login () {
+        console.log('login...')
+    }
+}
+SingleObject.getInstance = (function () {
+    let instance
+    return function () {
+        if (!instance) {
+            instance = new SingleObject()
+        }
+        return instance
+    }
+})()
+
+// 测试
+let obj1 = SingleObject.getInstance()
+obj1.login()
+let obj2 = SingleObject.getInstance()
+obj2.login()
+console.log('obj1 === obj2', obj1 === obj2)
+
+
+// 登录框示例
+class LoginForm {
+    constructor() {
+        this.state = 'hide'
+    }
+
+    show() {
+        if (this.state === 'show') {
+            console.log('已经显示')
+            return
+        }
+        this.state = 'show'
+        console.log('登录框显示成功')
+    }
+
+    hide() {
+        if (this.state === 'hide') {
+            console.log('已经隐藏')
+            return
+        }
+        this.state = 'hide'
+        console.log('登录框隐藏成功')
+    }
+}
+LoginForm.getInstance = (function () {
+    let instance
+    return function () {
+        if (!instance) {
+            instance = new LoginForm()
+        }
+        return instance
+    }
+})()
+
+// 测试
+let login1 = LoginForm.getInstance()
+login1.show()
+let login2 = LoginForm.getInstance()
+login2.hide()
+
+console.log('login1 === login2', login1 === login2)
+
+```
+<Patterns02Singleton />
 
 <script setup>
 import DesignPatterns01 from './components/DesignPatterns/designPatterns01.vue';
 import DesignPatterns02 from './components/DesignPatterns/designPatterns02.vue';
+import Patterns01Factory from './components/DesignPatterns/Patterns01Factory.vue';
+import Patterns02Singleton from './components/DesignPatterns/Patterns02Singleton.vue';
 </script>
 
