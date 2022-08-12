@@ -394,10 +394,178 @@ console.log('login1 === login2', login1 === login2)
 ```
 <Patterns02Singleton />
 
+
+## 适配器模式
+- 旧接口不兼容新模式
+- 使用适配转换接口
+```typescript
+// 适配器模式
+class Adaptee {
+    specificRequest () {
+        return '日版Switch电源'
+    }
+}
+class Target {
+    constructor() {
+        this.adaptee = new Adaptee()
+    }
+    request () {
+        let info = this.adaptee.specificRequest()
+        return `${info} - 转换至 - 国行Switch电源`
+    }
+}
+
+// 测试
+let target = new Target()
+let res = target.request()
+console.log(res)
+```
+<Patterns03Adapter />
+
+
+## 装饰器模式
+- 为对象添加新功能
+
+三方库：core-decorators
+```typescript
+// 装饰器模式
+class Circle {
+    draw () {
+        console.log('绘制方法')
+    }
+}
+class Decorator {
+    constructor(circle) {
+        this.circle = circle
+    }
+    draw () {
+        this.circle.draw()
+        this.setRedBorder(circle)
+    }
+    setRedBorder (circle) {
+        console.log('装饰器新增方法')
+    }
+}
+
+// 测试
+let circle = new Circle()
+circle.draw()
+
+let dec = new Decorator(circle)
+console.log('---使用装饰器---')
+dec.draw()
+```
+
+### 装饰类
+```typescript
+// 示例1：
+function testDec(isDec) {
+    return function (target) {
+        target.isDec = isDec
+    }
+}
+@testDec(false)
+class Demo {}
+console.log(Demo.isDec)
+
+
+// 示例2：
+function mixins(...list) {
+    return function (target) {
+        Object.assign(target.prototype, ...list)
+    }
+}
+const Foo = {
+    foo () {
+        console.log('foo function')
+    }
+}
+
+@mixins(Foo)
+class MyClass {
+}
+
+let obj = new MyClass()
+obj.foo()
+```
+
+### 装饰方法
+```typescript
+// 示例1
+function readonly (target, name, descriptor) {
+    descriptor.writable = false
+    return descriptor
+}
+
+class Person {
+    constructor() {
+        this.first = "A"
+        this.last = "B"
+    }
+    
+    @readonly
+    name () {
+        return `${this.first} ${this.last}`
+    }
+}
+
+let p = new Person()
+console.log(p.name())
+// 重新赋值会报错
+// p.name = function () {
+//     console.log('new p name')
+// }
+
+// 示例2
+function log (target, name, descriptor) {
+    let oldValue = descriptor.value
+    descriptor.value = function () {
+        console.log(`calling ${name} width`, arguments)
+        return oldValue.apply(this, arguments)
+    }
+    return descriptor
+}
+
+class Math {
+    @log
+    add (a, b) {
+        return a + b
+    }
+}
+
+let math = new Math()
+const result = math.add(2,4)
+console.log('result', result)
+```
+<Patterns04Decorator />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script setup>
 import DesignPatterns01 from './components/DesignPatterns/designPatterns01.vue';
 import DesignPatterns02 from './components/DesignPatterns/designPatterns02.vue';
 import Patterns01Factory from './components/DesignPatterns/Patterns01Factory.vue';
 import Patterns02Singleton from './components/DesignPatterns/Patterns02Singleton.vue';
+import Patterns03Adapter from './components/DesignPatterns/Patterns03Adapter.vue';
+import Patterns04Decorator from './components/DesignPatterns/Patterns04Decorator.vue';
 </script>
 
