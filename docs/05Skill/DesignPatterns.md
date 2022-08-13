@@ -539,8 +539,168 @@ console.log('result', result)
 ```
 <Patterns04Decorator />
 
+## 代理模式
+- 使用者无权访问目标对象
+- 通过代理做授权和控制
+- 代理类和目标类分离，隔离开目标类和使用者
+```typescript
+// 代理模式
+class ReadImg {
+    constructor(fileName) {
+        this.fileName = fileName
+        this.loadFormDisk()
+    }
+    
+    display () {
+        console.log(`${this.fileName} is Display ..`)
+    }
+    
+    loadFormDisk () {
+        console.log('loading form disk',this.fileName)
+    }
+}
+class ProxyImg {
+    constructor(fileName) {
+        this.realImg = new ReadImg(fileName)
+    }
+    display () {
+        this.realImg.display()
+    }
+}
+
+// 测试
+let proxyImg = new ProxyImg('1.png')
+proxyImg.display()
 
 
+// 其他示例1：事件代理
+{
+    let div1 = document.getElementById('div1')
+    div1.addEventListener('click', (e) => {
+        const target = e.target
+        if (target.nodeName === 'A') {
+            console.log(target.innerHtml)
+        }
+    })
+}
+
+// 其他示例2：jQuery 代理 this
+{
+    $('#div1').click(function () {
+        let fn = function () {
+            $(this).css('background-color', 'yellow')
+        }
+        fn = $.proxy(, this)
+        setTimeout( fn,1000)
+    })
+}
+
+// 其他示例3：ES6 Proxy
+// 明星
+let star = {
+    name: 'Elliot',
+    age: 30,
+    phone: 'start: 13122223333'
+}
+let agent = new Proxy(star, {
+    get: function (target, key) {
+        if (key === 'phone') {
+            return 'agent: 18011112222'
+        }
+        if (key === 'price') {
+            return 120000
+        }
+        
+        return target[key]
+    },
+    set: function (target, key, val) {
+        if (key === 'customPrice') {
+            if (val < 100000) {
+                throw new Error('价格太低')
+            } else {
+                target[key] = val
+                return true
+            }
+        }
+        
+    }
+})
+
+// 测试
+console.log(agent.name)
+console.log(agent.age)
+console.log(agent.phone)
+console.log(agent.price)
+
+agent.customPrice = 150000
+console.log('agent.customPrice', agent.customPrice)
+
+
+```
+<Patterns05Proxy />
+
+## 代理模式 适配器模式 装饰器模式 对比
+
+适配器模式 vs 代理模式
+- 适配器模式：提供一个不同的接口（不同版本的插头 ）
+- 代理模式：提供一模一样的接口（翻墙）
+
+装饰器模式 && 代理模式 
+- 装饰器模式：扩展功能，原有功能不变且可直接使用
+- 代理模式：显示原有功能，但是进过限制或阉割
+
+## 观察者模式
+- 发布 && 订阅
+- 一对N
+- 将主体与观察者分离，不是主动触发而是被动监听，两者解耦
+```typescript
+class Subject {
+    constructor() {
+        this.state = 0
+        this.observers = []
+    }
+    getState () {
+        return this.state
+    }
+    setState (state) {
+        this.state = state
+        this.notifyAllObservers()
+    }
+    
+    notifyAllObservers () {
+        this.observers.forEach((obs) => {
+            obs.update()
+        })
+    }
+    
+    attach (observer) {
+        this.observers.push(observer)
+    }
+    
+}
+
+class Observer {
+    constructor(name, subject) {
+        this.name = name
+        this.subject = subject
+        this.subject.attach(this)
+    }
+    update () {
+        console.log(`${this.name} update, state: ${this.subject.getState()}`)
+    }
+}
+
+// 测试
+let s = new Subject()
+let o1 = new Observer('o1',s)
+let o2 = new Observer('o2',s)
+let o3 = new Observer('o3',s)
+
+s.setState(1)
+s.setState(2)
+s.setState(3)
+```
+<Patterns06Observer />
 
 
 
@@ -567,5 +727,7 @@ import Patterns01Factory from './components/DesignPatterns/Patterns01Factory.vue
 import Patterns02Singleton from './components/DesignPatterns/Patterns02Singleton.vue';
 import Patterns03Adapter from './components/DesignPatterns/Patterns03Adapter.vue';
 import Patterns04Decorator from './components/DesignPatterns/Patterns04Decorator.vue';
+import Patterns05Proxy from './components/DesignPatterns/Patterns05Proxy.vue';
+import Patterns06Observer from './components/DesignPatterns/Patterns06Observer.vue';
 </script>
 
