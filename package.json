@@ -7,16 +7,17 @@
         "dev": "vitepress dev docs --port 8086",
         "docs:build": "vitepress build docs",
         "docs:serve": "vitepress serve docs",
-
         "github": "git push git@github.com:devil159468/devil159468.github.io.git",
         "gitee": "git push git@gitee.com:Elliot-Devil/elliot-devil.git",
         "push": "yarn github && yarn gitee",
-
         "deploy": "bash deploy.sh",
         "pushAndDeploy": "yarn push && yarn deploy"
     },
     "devDependencies": {
         "vitepress": "^1.0.0-alpha.4",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "javascript-state-machine": "^3.1.0"
     }
 }

@@ -465,6 +465,11 @@ is-core-module@^2.9.0:
   dependencies:
     has "^1.0.3"
 
+javascript-state-machine@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.npmmirror.com/javascript-state-machine/-/javascript-state-machine-3.1.0.tgz#06eeb2136a6a19ae1b56105c25caec283dd5cd14"
+  integrity sha512-BwhYxQ1OPenBPXC735RgfB+ZUG8H3kjsx8hrYTgWnoy6TPipEy4fiicyhT2lxRKAXq9pG7CfFT8a2HLr6Hmwxg==
+
 jsonc-parser@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmmirror.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"

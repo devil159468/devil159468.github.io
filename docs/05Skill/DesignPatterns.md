@@ -703,15 +703,243 @@ s.setState(3)
 <Patterns06Observer />
 
 
+## 迭代器模式
+- 顺序访问一个集合
+- 使用者无需知道集合的内部结构（封装）
+```typescript
+// 迭代器模式
+class Iterator {
+    constructor(container) {
+        this.list = container.list
+        this.index = 0
+    }
+    
+    next () {
+        if (this.hasNext()) {
+            return this.list[this.index++]
+        }
+        return null
+    }
+    
+    hasNext () {
+        if (this.index >= this.list.length) {
+            return false
+        }
+        return true
+    }
+    
+    
+}
+class Container {
+    constructor(list) {
+        this.list = list
+    }
+    // 生成遍历器
+    getInterator () {
+        return new Iterator(this)
+    }
+}
+
+// 测试
+let container = new Container([1, 2, 3, 4, 5])
+let iterator = container.getInterator()
+while (iterator.hasNext()) {
+    console.log('iterator',iterator.next())
+}
+```
+<Patterns07Iterator />
+
+### ES6 Iterator 
+- ES6中的有序集合：Array Map Set String TypedArray arguments NodeList
+- 需要有一个统一的遍历接口来遍历所有数据类型
+- 以上数据类型都有 [Symbol.iterator] 属性
+- 属性值为函数，执行函数返回一个迭代器，迭代器有 next 方法可以顺序迭代子元素
+- 可运行 Array.prototype[Symbol.iterator] 测试
+> PS: Object不是有序集合，但可以用Map代替
+> PS：for of 的底层就是使用 Symbol.iterator 实现的
+```typescript
+Array.prototype[Symbol.iterator] // ƒ values() { [native code] }
+Array.prototype[Symbol.iterator]() // Array Iterator{}
+Array.prototype[Symbol.iterator].next() // {value: undefined, done: true}
+
+// ES6 迭代器
+function each(data) {
+    let iterator = data[Symbol.iterator]()
+
+    let item = {done: false}
+    while (!item.done) {
+        item = iterator.next()
+        if (!item.done) {
+            console.log(item.value)
+        }
+    }
+}
 
 
 
+// for of 实现
+function each2(data) {
+    for (let item of data) {
+        console.log(item)
+    }
+}
+
+// 测试迭代器
+let arr = [1, 2, 3, 4]
+let m = new Map()
+
+each(arr)
+each(m)
+m.set('a', 100)
+m.set('b', 200)
+```
 
 
+## 状态模式
+- 将状态对象和主体对象分离，状态的变化逻辑单独处理
+- [javascript-state-machine 三方库](https://www.npmjs.com/package/javascript-state-machine)
+```typescript
+// 状态模式
+
+// 交通灯示例
+class State {
+    constructor(color) {
+        this.color = color
+    }
+    handle (context) {
+        console.log(`转换为 ${this.color} 灯`)
+        // 设置状态
+        context.setState(this)
+    }
+}
+
+// 主体
+class Context {
+    constructor() {
+        this.state = null
+    }
+    
+    // 获取状态
+    getState () {
+        return this.state
+    }
+    
+    setState (state) {
+        this.state = state
+    }
+}
 
 
+// 测试
+let context = new Context()
+let green = new State('绿')
+let yellow = new State('黄')
+let red = new State('红')
 
+// 绿灯亮了
+green.handle(context)
+console.log(context.getState())
+// 黄灯亮了
+yellow.handle(context)
+console.log(context.getState())
+// 红灯亮了
+red.handle(context)
+console.log(context.getState())
+```
 
+### 状态机版本的Promise
+```typescript
+// 简易版 Promise
+import StateMachine from 'javascript-state-machine'
+// 状态机模型
+let fsm = new StateMachine({
+    init: 'pending', // 初始化状态
+    transitions: [
+        {
+            name: 'resolve', // 事件名称
+            form: 'pending',
+            to: 'fullfilled'
+        },
+        {
+            name: 'reject',
+            form: 'pending',
+            to: 'rejected',
+        }
+    ],
+    methods: {
+        // 监听 resolve
+        onResolve: (state, data) => {
+            // state 当前状态机实例； data - fsm.resolve(xxx) 传递的参数
+            data.successList.forEach(fn => fn())
+        },
+        // 监听 reject
+        onReject: (state, data) => {
+            // state 当前状态机实例； data - fsm.reject(xxx) 传递的参数
+            console.log('data', data)
+            // data.failList.forEach(fn => fn())
+        },
+    }
+    
+    
+})
+
+// 定义 MyPromise
+class MyPromise {
+    constructor(fn) {
+        this.successList = []
+        this.failList = []
+        
+        fn(
+            // resolve 函数
+            () => {
+                fsm.resolve(this)
+            },
+            // reject 函数
+            () => {
+                fsm.reject(this)
+            }
+        )
+    }
+    
+    then (succesFn, failFn) {
+        this.successList.push(succesFn)
+        this.failList.push(failFn)
+    }
+}
+
+// 测试
+function loadImg (src) {
+    const promise = new MyPromise(function (resolve, reject) {
+        let img = document.createElement('img')
+        img.onload = function () {
+            resolve(img)
+        }
+        img.onerror = function () {
+            reject()
+        }
+        img.src = src
+    })
+    
+    return promise
+}
+
+let src = 'https://elliot-devil.gitee.io/avatar.png'
+let result = loadImg(src)
+result.then(() => {
+    console.log('ok1')
+},() => {
+    console.log('fail1')
+})
+
+result.then(() => {
+    console.log('ok2')
+}, () => {
+    console.log('fail2')
+})
+
+```
+
+<Patterns08State />
 
 
 
@@ -729,5 +957,7 @@ import Patterns03Adapter from './components/DesignPatterns/Patterns03Adapter.vue
 import Patterns04Decorator from './components/DesignPatterns/Patterns04Decorator.vue';
 import Patterns05Proxy from './components/DesignPatterns/Patterns05Proxy.vue';
 import Patterns06Observer from './components/DesignPatterns/Patterns06Observer.vue';
+import Patterns07Iterator from './components/DesignPatterns/Patterns07Iterator.vue';
+import Patterns08State from './components/DesignPatterns/Patterns08State.vue';
 </script>
 
