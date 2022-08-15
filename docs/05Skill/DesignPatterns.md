@@ -938,14 +938,336 @@ result.then(() => {
 })
 
 ```
-
 <Patterns08State />
 
 
+## 原型模式
+- 克隆自己，生成一个新对象
+- ES6 Class 底层可以理解为是 prototype
+```typescript
+// 原型模式
+const prototype = {
+    getName () {
+        return this.first + ' ' + this.last
+    },
+    say () {
+        console.log('Say hello')
+    }
+}
+
+// 基于原型创建 x
+let x = Object.create(prototype)
+x.first = "A"
+x.last = "B"
+console.log('x',x.getName())
+x.say()
+
+// 基于原型创建 y
+let y = Object.create(prototype)
+y.first = "C"
+y.last = "D"
+console.log('y', y.getName())
+y.say()
+```
+<Patterns09Prototype />
 
 
+## 桥接模式
+- 用于把抽象化与实现化解耦，使二者可以独立变化
+```typescript
+class Color {
+    constructor(name) {
+        this.name = name
+    }
+}
+class Shape {
+    constructor(name, color) {
+        this.name = name
+        this.color = color
+    }
+    draw() {
+        console.log(`${this.color.name} ${this.name}`)
+    }
+}
+
+// 测试
+let red = new Color('red')
+let yellow = new Color('yellow')
+let circle = new Shape('circle', red)
+circle.draw()
+
+let triangle = new Shape('triangle',yellow)
+triangle.draw()
+```
+<Patterns10Bridging />
 
 
+## 组合模式
+- 整体和单个节点的数据结构及操作都是一致的(类似于文件目录)
+
+
+## 享元模式
+- 共享内存（主要考虑内存，而非效率）
+- 相同数据，共享使用（eg：事件委托开销）
+
+
+## 策略模式
+- 不同策略分开处理
+```typescript
+// 策略模式
+class OrdinaryUser {
+    buy () {
+        console.log('普通用户购买')
+    }
+}
+class MemberUser {
+    buy() {
+        console.log('会员用户购买')
+    }
+}
+class VIPUser {
+    buy() {
+        console.log('VIP用户购买')
+    }
+}
+
+let u1 = new OrdinaryUser()
+let u2 = new MemberUser()
+let u3 = new VIPUser()
+
+u1.buy()
+u2.buy()
+u3.buy()
+```
+<Patterns11Strategy />
+
+## 模板方法模式
+```typescript
+class Action {
+    handle () {
+        handle1()
+        handle2()
+        handle3()
+    }
+
+    handle1 () {
+        console.log(1)
+    }
+    handle2 () {
+        console.log(2)
+    }
+    handle3 () {
+        console.log(3)
+    }
+}
+```
+
+## 责任链模式
+- 一步操作可能分为多个职责角色来完成
+- 将角色分开，并用链条连接起来
+- 将发起者和各个处理者隔离
+```typescript
+// 责任链模式
+class Action {
+    constructor(name) {
+        this.name = name
+    }
+    setNextAction(action) {
+        this.nextAction = action
+    }
+    handle() {
+        console.log(`${this.name} 审批`)
+        if (this.nextAction != null) {
+            this.nextAction.handle()
+        }
+    }
+}
+
+// 测试
+let a1 = new Action('组长')
+let a2 = new Action('经理')
+let a3 = new Action('总监')
+a1.setNextAction(a2)
+a2.setNextAction(a3)
+a1.handle()
+
+```
+<Patterns12ChainOfResponsibility />
+
+
+## 命令模式
+- 执行命令时，发布者和执行者分开
+```typescript
+// 命令模式
+// 接收者
+class Receiver {
+    exec () {
+        console.log('执行')
+    }
+}
+// 命令者
+class Command {
+    constructor(receiver) {
+        this.receiver = receiver
+    }
+    cmd () {
+        console.log('执行命令')
+        this.receiver.exec()
+    }
+}
+// 触发者
+class Invoker {
+    constructor(command) {
+        this.command = command
+    }
+    invoke() {
+        console.log('开始')
+        this.command.cmd()
+    }
+}
+
+// 士兵
+let soldier = new Receiver()
+// 小号手
+let trumpeter = new Command(soldier)
+// 将军
+let general = new Invoker(trumpeter)
+general.invoke()
+```
+<Patterns13Command />
+
+
+## 备忘录模式
+- 状态和使用者解耦
+```typescript
+// 备忘录模式
+
+// 备忘类
+class Memento {
+    constructor(content) {
+        this.content = content
+    }
+    getContent() {
+        return this.content
+    }
+}
+// 备忘列表
+class CareTaker {
+    constructor() {
+        this.list = []
+    }
+    add(memento) {
+        this.list.push(memento)
+    }
+    get(index) {
+        return this.list[index]
+    }
+}
+// 编辑器
+class Editor {
+    constructor() {
+        this.content = null
+    }
+    setContent(content) {
+        this.content = content
+    }
+    getContent(content) {
+        return this.content
+    }
+    saveContentToMemento () {
+        return new Memento(this.content)
+    }
+    getContentToMemento(memento) {
+        this.content = memento.getContent()
+    }
+}
+
+
+// 测试
+let editor = new Editor()
+let careTaker = new CareTaker()
+
+editor.setContent('111')
+editor.setContent('222')
+careTaker.add(editor.saveContentToMemento()) // 备份当前内容
+editor.setContent('333')
+careTaker.add(editor.saveContentToMemento()) // 备份当前内容
+editor.setContent('444')
+console.log(editor.getContent())
+editor.getContentToMemento(careTaker.get(1)) // 撤销
+console.log(editor.getContent())
+editor.getContentToMemento(careTaker.get(0)) // 撤销
+console.log(editor.getContent())
+```
+<Patterns14Memorandum />
+
+
+## 中介者模式
+- 对比生活中的房产中介
+```typescript
+// 中介者模式
+class A {
+    constructor() {
+        this.number = 0
+    }
+    setNumber(num,m) {
+        this.number = num
+        if (m) {
+            m.setB()
+        }
+    }
+}
+
+class B {
+    constructor() {
+        this.number = 0
+    }
+    
+    setNumber(num, m) {
+        this.number = num
+        if (m) {
+            m.setA()
+        }
+    }
+}
+
+class Mediator {
+    constructor(a, b) {
+        this.a = a
+        this.b = b
+    }
+    
+    setA() {
+        let number = this.b.number
+        this.a.setNumber(number / 100)
+    }
+    
+    setB() {
+        let number = this.a.number
+        this.b.setNumber(number * 100)
+    }
+}
+
+
+// 测试
+let a = new A()
+let b = new B()
+let m = new Mediator(a,b)
+a.setNumber(100, m)
+console.log(a.number, b.number)
+b.setNumber(100, m)
+console.log(a.number, b.number)
+
+```
+<Patterns15Mediator />
+
+
+## 访问者模式
+- 将数据操作和数据结构分离
+
+## 解释器模式
+- 描述语言语法如何定义，如何解释和编译
+- 例如：babel开发、创建JS编译器等
 
 
 <script setup>
@@ -959,5 +1281,12 @@ import Patterns05Proxy from './components/DesignPatterns/Patterns05Proxy.vue';
 import Patterns06Observer from './components/DesignPatterns/Patterns06Observer.vue';
 import Patterns07Iterator from './components/DesignPatterns/Patterns07Iterator.vue';
 import Patterns08State from './components/DesignPatterns/Patterns08State.vue';
+import Patterns09Prototype from './components/DesignPatterns/Patterns09Prototype.vue';
+import Patterns10Bridging from './components/DesignPatterns/Patterns10Bridging.vue';
+import Patterns11Strategy from './components/DesignPatterns/Patterns11Strategy.vue';
+import Patterns12ChainOfResponsibility from './components/DesignPatterns/Patterns12ChainOfResponsibility.vue';
+import Patterns13Command from './components/DesignPatterns/Patterns13Command.vue';
+import Patterns14Memorandum from './components/DesignPatterns/Patterns14Memorandum.vue';
+import Patterns15Mediator from './components/DesignPatterns/Patterns15Mediator.vue';
 </script>
 
