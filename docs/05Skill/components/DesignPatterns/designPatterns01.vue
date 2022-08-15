@@ -82,12 +82,12 @@ class jQuery {
         console.log('Append function')
     }
 }
-window.$ = function (selector) {
-    // 工厂模式
-    return new jQuery(selector)
-}
+// window.$ = function (selector) {
+//     // 工厂模式
+//     return new jQuery(selector)
+// }
 // 选择 vuetest.vue 中的 p.selectP
-let _select = $('p')
+// let _select = $('p')
 // setTimeout(() => {
 //     console.log('_select', _select);
 //     console.log('_select 方法', _select.addClass);
