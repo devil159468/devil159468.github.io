@@ -39,9 +39,6 @@ export default defineConfig({
 			{
 				text: '前端',
 				items: [
-					// 单一菜单
-					// {text: 'JavaScript', link: '/01FE/JavaScript', activeMatch: '/01FE/'},
-					// {text: 'Engineering', link: '/01FE/Engineering', activeMatch: '/01FE/'},
 
 					// 下拉菜单
 					{
@@ -60,7 +57,13 @@ export default defineConfig({
 							{ text: 'Html', link: '/01FE/HTML' },
 							{ text: 'CSS', link: '/01FE/CSS' }
 						]
-					}
+					},
+					{
+						// text: '面试题',
+						items: [
+							{text: '前端面试题', link: '/01FE/FEQuestions'},
+						]
+					},
 				]
 			},
 			{
@@ -80,7 +83,8 @@ export default defineConfig({
 							{ text: 'MongoDB', link: '/02BE/MongoDB' },
 							{ text: 'MySQL', link: '/02BE/MySQL' }
 						]
-					}
+					},
+					{text: '后端面试题', link: '/02BE/BEQuestions.md'},
 				]
 			},
 			{
@@ -103,29 +107,7 @@ export default defineConfig({
 					},
 				]
 			},
-			{
-				text: '基础技能',
-				items: [
-					{
-						// text: '基础技能',
-						items: [
-							// { text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
-							{ text: '数据结构与算法', link: '/05Skill/DataStructuresAndAlgorithms.md' },
-							{ text: '设计模式', link: '/05Skill/DesignPatterns.md' },
-						]
-					},
-					{
-						// text: '工具',
-						items: [
-							{ text: 'Git', link: '/05Skill/Git.md' },
-							// { text: '自有库', link: '/05Skill/PrivateLib.md' },
-							// { text: '思维导图', link: '/05Skill/MindMap.md' },
-						]
-					},
 
-
-				]
-			},
 			{
 				text: '常用模板',
 				items: [
@@ -151,20 +133,51 @@ export default defineConfig({
 						items: [
 							{text: '小程序', link: '/04Tools/miniprogram.md'},
 							{text: 'Docker', link: '/04Tools/docker.md'},
+							{text: 'WebStorm', link: '/04Tools/webstorm.md'},
+							{text: 'VsCode', link: '/04Tools/vscode.md'},
 						]
 					},
 				]
 			},
-
-			// 暂时注释，后期有需要再开放
 			{
-				text: '面试',
+				text: '基础技能',
 				items: [
-					// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
-					{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
-					{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
-					{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
-					// { text: '管理', link: '/06Interview/Management.md' },
+					{
+						// text: '基础技能',
+						items: [
+							{ text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
+							{ text: '数据结构与算法', link: '/05Skill/DataStructuresAndAlgorithms.md' },
+							{ text: '设计模式', link: '/05Skill/DesignPatterns.md' },
+							{text: 'Leetcode', link: '/05Skill/Leetcode.md'},
+						]
+					},
+					{
+						// text: '工具',
+						items: [
+							{ text: 'Git', link: '/05Skill/Git.md' },
+							{ text: '思维导图', link: '/05Skill/MindMap.md' },
+						]
+					},
+
+				]
+			},
+
+			{
+				text: '解决方案',
+				items: [
+					{
+						text: 'SDK',
+						items: [
+							{text: '埋点SDK', link: '/06Solution/trackingSdk.md'},
+						]
+					},
+					{
+						text: '方案',
+						items: [
+							{text: '组件库', link: '/06Solution/uiComponentLibrary.md'},
+							{text: '工具库', link: '/06Solution/toolsLibrary.md'},
+						]
+					},
 				]
 			},
 			{
@@ -175,6 +188,7 @@ export default defineConfig({
 					{ text: '三维开发', link: '/07Game/ThreeDimensions.md' },
 				]
 			},
+
 			{
 				text: '关注我',
 				items: [
@@ -184,8 +198,6 @@ export default defineConfig({
 					{ text: '博客国内地址', link: 'https://elliot-devil.gitee.io/' },
 				]
 			},
-
-
 
 		],
 
@@ -213,7 +225,13 @@ export default defineConfig({
 						{ text: 'HTML', link: '/01FE/HTML' },
 						{ text: 'CSS', link: '/01FE/CSS' },
 					]
-				}
+				},
+				{
+					text: '面试题',
+					items: [
+						{text: '前端面试题', link: '/01FE/FEQuestions'},
+					]
+				},
 			],
 			'/02BE/': [
 				{
@@ -230,7 +248,13 @@ export default defineConfig({
 						{ text: 'MongoDB', link: '/02BE/MongoDB' },
 						{ text: 'MySQL', link: '/02BE/MySQL' }
 					]
-				}
+				},
+				{
+					text: '面试题',
+					items: [
+						{text: '后端面试题', link: '/02BE/BEQuestions'},
+					]
+				},
 			],
 			'/03Server/': [
 				{
@@ -285,31 +309,34 @@ export default defineConfig({
 				{
 					// text: '基础技能',
 					items: [
-						// { text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
+						{ text: '计算机组成原理', link: '/05Skill/PrinciplesOfComputerComposition.md' },
 						{ text: '数据结构与算法', link: '/05Skill/DataStructuresAndAlgorithms.md' },
 						{ text: '设计模式', link: '/05Skill/DesignPatterns.md' },
+						{text: 'Leetcode', link: '/05Skill/Leetcode.md'},
 					]
 				},
 				{
 					// text: '工具',
 					items: [
 						{ text: 'Git', link: '/05Skill/Git.md' },
-						// { text: '自有库', link: '/05Skill/PrivateLib.md' },
-						// { text: '思维导图', link: '/05Skill/MindMap.md' },
+						{ text: '思维导图', link: '/05Skill/MindMap.md' },
 					]
-				}
+				},
 			],
-			'/06Interview/': [
+			'/06Solution/': [
 				{
-					text: '面经',
+					text: 'SDK',
 					items: [
-						// { text: '职业规划', link: '/06Interview/CareerPlanning.md' },
-						{ text: '前端面试题', link: '/06Interview/FEQuestions.md' },
-						{ text: '后端面试题', link: '/06Interview/BEQuestions.md' },
-						{ text: 'Leetcode', link: '/06Interview/Leetcode.md' },
-						// { text: '管理', link: '/06Interview/Management.md' },
+						{ text: '埋点SDK', link: '/06Solution/trackingSdk.md' },
 					]
-				}
+				},
+				{
+					text: '方案',
+					items: [
+						{text: '组件库', link: '/06Solution/uiComponentLibrary.md'},
+						{text: '工具库', link: '/06Solution/toolsLibrary.md'},
+					]
+				},
 			],
 			'/07Game/': [
 				{
