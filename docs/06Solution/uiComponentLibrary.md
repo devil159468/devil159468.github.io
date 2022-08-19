@@ -8,12 +8,12 @@ cd ek-ui-vite
 pnpm init
 ```
 
-### 安装vite
+安装vite
 ```bash
 pnpm i vite@"3.0.7" -D
 ```
 
-### 创建测试页面
+创建测试页面
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -30,22 +30,65 @@ pnpm i vite@"3.0.7" -D
 </html>
 ```
 
-### 测试 TypeScript 支持
+测试 TypeScript 支持
 ```typescript
 const str: string = "Hello Vite"
 console.log(str)
 ```
 
-
-### 安装 Vue3 及 Vite 的 vue 插件
+安装 Vue3 及 Vite 的 vue 插件
 ```bash
 pnpm i vue@"3.2.37"
 pnpm i @vitejs/plugin-vue@"3.0.3" -D
 pnpm i @vitejs/plugin-vue-jsx@"2.0.0" -D
 ```
 
-### 安装 UnoCSS 库。
+安装 UnoCSS 库。
 ```bash
 pnpm i -D unocss@"0.45.6"
 pnpm i -D @iconify-json/ic@"1.1.4"
 ```
+
+
+## 文档支持
+
+添加 VitePress 文档
+```bash
+pnpm i vitepress@"0.22.4" -D
+```
+
+Markdown 插槽
+```bash
+pnpm i vitepress-theme-demoblock@"1.4.2" -D
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
