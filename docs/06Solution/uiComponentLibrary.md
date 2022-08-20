@@ -63,7 +63,12 @@ pnpm i vitepress-theme-demoblock@"1.4.2" -D
 ```
 
 
+## 测试保障
 
+添加测试框架
+```bash
+pnpm i -D vitest@"0.21.1" happy-dom@"6.0.4" @vue/test-utils@"2.0.2"
+```
 
 
 
