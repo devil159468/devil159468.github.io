@@ -71,6 +71,59 @@ pnpm i -D vitest@"0.21.1" happy-dom@"6.0.4" @vue/test-utils@"2.0.2"
 ```
 
 
+## 代码风格检查
+```bash
+pnpm i eslint -D
+# ESLint 专门解析 TypeScript 的解析器
+pnpm i @typescript-eslint/parser -D
+
+# 内置各种解析 TypeScript rules 插件
+pnpm i @typescript-eslint/eslint-plugin -D
+
+pnpm i eslint-formatter-pretty -D
+pnpm i eslint-plugin-json -D
+pnpm i eslint-plugin-prettier -D
+pnpm i eslint-plugin-vue -D
+pnpm i @vue/eslint-config-prettier -D
+pnpm i babel-eslint -D
+pnpm i prettier -D
+
+```
+
+### husky
+```bash
+# 安装
+pnpm i husky -D
+
+# 添加 husky 脚本：
+npm set-script prepare "husky install"
+
+# 添加生命周期钩子：
+npx husky add .husky/pre-commit "pnpm lint"
+```
+### 修改 hooks 程序
+```bash
+# .husky/pre-commit
+# !/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+pnpm run lint
+```
+
+### 添加生命周期钩子
+```bash
+npx husky add .husky/pre-push "pnpm test:run"
+```
+
+### 添加脚本
+```bash
+# package.json
+
+"scripts": {
+    "test:run": "vitest run",
+},
+
+```
+
 
 
 
