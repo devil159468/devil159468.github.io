@@ -126,11 +126,27 @@ npx husky add .husky/pre-push "pnpm test:run"
 
 
 
+## 兼容多种 JS 模块标准的软件包
 
+模块规范
+- ESM(常用)：ES 标准的模块化方案 ( ES6 标准提出 )； 
+- CJS(常用)：基于 CommonJS 标准的模块化； 
+- IFFE(常用)：使用立即执行函数实现模块化 例：(function()) {}； 
+- AMD：使用 Require 编写； 
+- CMD：使用 SeaJS 编写； 
+- UMD：兼容 CJS 与 AMD、IFFE 规范。
 
-
-
-
+### vite.config.ts 示例
+```javascript
+const rollupOptions = {
+  external: ["vue"],
+  output: {
+    globals: {
+      vue: "Vue",
+    },
+  },
+};
+```
 
 
 

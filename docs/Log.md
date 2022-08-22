@@ -4,6 +4,9 @@
 
 ::: details 查看详细日志
 
+- 20220822
+  - UI组件库：兼容多种 JS 模块标准的软件包
+  - TrackSDK 项目
 - 20220821
   - UI组件库添加 EsLint Prettier Husky
 - 20220820
