@@ -1,8 +1,9 @@
 # JavaScript
 
-## 基础
+## 代码规范
+[JavaScript代码规范](https://github.com/ecomfe/spec/blob/master/javascript-style-guide.md)
 
-### 类型
+## 类型
 - 原始类型（基础类型）
   - Boolean
   - String
@@ -19,7 +20,7 @@
   - Math
   - ...
 
-#### 原始类型
+### 原始类型
 1. 布尔值（Boolean）
 2. 字符串（String）
    1. 模板字符串
@@ -48,7 +49,7 @@
 6. 符号（Symbol）
 7. 大型数字（BigInt）
 
-#### 引用类型
+### 引用类型
 1. 数组（Array）
    1. 定义
    ```javascript
