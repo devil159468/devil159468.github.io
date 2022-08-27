@@ -48,7 +48,18 @@ export default defineConfig({
 							{ text: 'TypeScript', link: '/01FE/TypeScript' },
 							{ text: 'Vue', link: '/01FE/Vue' },
 							{ text: 'React', link: '/01FE/React' },
-							{ text: '工程化', link: '/01FE/Engineering' }
+						]
+					},
+					{
+						// text: '工程化',
+						items: [
+							{text: '工程化', link: '/01FE/Engineering'},
+							{text: 'NPM', link: '/01FE/NPM'},
+							{text: '构建工具', link: '/01FE/BuildTool'},
+							{text: 'Babel', link: '/01FE/Babel'},
+							{text: 'WebPack', link: '/01FE/WebPack'},
+							{text: 'Rollup', link: '/01FE/Rollup'},
+							{text: 'Vite', link: '/01FE/Vite'}
 						]
 					},
 					{
@@ -216,7 +227,6 @@ export default defineConfig({
 						{ text: 'TypeScript', link: '/01FE/TypeScript' },
 						{ text: 'Vue', link: '/01FE/Vue' },
 						{ text: 'React', link: '/01FE/React' },
-						{ text: '工程化', link: '/01FE/Engineering' },
 					]
 				},
 				{
@@ -224,6 +234,18 @@ export default defineConfig({
 					items: [
 						{ text: 'HTML', link: '/01FE/HTML' },
 						{ text: 'CSS', link: '/01FE/CSS' },
+					]
+				},
+				{
+					text: '工程化',
+					items: [
+						{text: '工程化', link: '/01FE/Engineering'},
+						{text: 'NPM', link: '/01FE/NPM'},
+						{text: '构建工具', link: '/01FE/BuildTool'},
+						{text: 'Babel', link: '/01FE/Babel'},
+						{text: 'WebPack', link: '/01FE/WebPack'},
+						{text: 'Rollup', link: '/01FE/Rollup'},
+						{text: 'Vite', link: '/01FE/Vite'}
 					]
 				},
 				{
