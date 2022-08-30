@@ -81,8 +81,8 @@ import __vite__cjsImport0_lodash from '/node_modules/.vite/lodash.js?v=b6093d67'
 2. 会将传入的 mode 变量进行拼接，并根据我们提供的目录取得对应配置文件进行解析，再放入一个对象中
 3. 最后合并两个对象
 ```javascript
-const baseEnvConfig = 读取 .env 配置
-const modeEnvConfig = 读取 mode env 相关配置
+const baseEnvConfig = 'xxx'; // 读取 .env 配置
+const modeEnvConfig = 'xxx'; // 读取 mode env 相关配置
 const lastEnvConfig = {...baseEnvConfig, ...modeEnvConfig }
 ```
 
@@ -152,7 +152,6 @@ export default defineConfig({
 ```
 
 
-
 ## vite 中 css 配置流程（preprocessorOptions）
 
 preprocessorOptions 用来配置 css 预处理器的全局参数
@@ -199,10 +198,6 @@ export default defineConfig({
 	},
 })
 ```
-
-
-
-
 
 
 ## postcss
@@ -289,6 +284,7 @@ export default defineConfig({
 }
 ```
 
+
 ## Vite加载静态资源
 
 客户端静态资源：图片、视频等
@@ -335,6 +331,7 @@ svgElement.onmouseover = function () {
 }
 ```
 
+
 ## vite 在生产环境对静态资源的处理
 
 打包后的资源为什么要有hash？
@@ -363,6 +360,7 @@ export default defineConfig({
 ## Vite 插件
 > 插件(中间件)：在不同生命周期的不同阶段去调用不同的插件以达到不同的目的
 
+
 ## vite-aliases
 vite-aliases 可以帮助我们自动生成别名：检测当前目录下包括src在内的所有文件夹，并帮助开发者生命别名
 
@@ -377,5 +375,149 @@ export default defineConfig({
 	]
 })
 ```
+
+
+
+
+
+## 手写vite-alias插件
+
+整个插件就是在vite的生命周期的不同阶段去做不同的事
+
+vite 的插件必须返回给 vite 一个配置对象
+
+通过 vite.config.js 返回出去的配置对象以及我们在插件的 config 生命周期中返回的对象都不是最终的配置对象
+
+vite 会把这几个配置对象进行 merge 合并
+```bash
+{ ...defaultConfig, ...specifyVonfig }
+```
+
+手写vite-alias插件代码
+```javascript
+// vite 的插件必须返回给 vite 一个配置对象
+const fs = require('fs');
+const path = require('path')
+
+function diffDirAndFile(dirFilesArr = [], basePath = "") {
+	const result = {
+		dirs: [],
+		files: []
+	}
+	dirFilesArr.forEach(name => {
+		const currentFileStat = fs.statSync(path.resolve(__dirname, basePath + '/' + name));
+		console.log('currentFileStat', name, currentFileStat.isDirectory())
+		const isDirectory = currentFileStat.isDirectory()
+
+		if (isDirectory) {
+			result.dirs.push(name)
+		} else {
+			result.files.push(name)
+		}
+	})
+
+	return result
+}
+
+function getTotalSrcDir (keyName) {
+	const result = fs.readdirSync(path.resolve(__dirname, '../src'))
+	const diffResult = diffDirAndFile(result, '../src')
+	// console.log('diffResult', diffResult)
+	const resolveAliasesObj = {} // 返回一个别名对象
+	diffResult.dirs.forEach(dirName => {
+		const key = `${keyName}${dirName}`
+		const absPath = path.resolve(__dirname, '../src' + '/' + dirName)
+		// console.log('key',key,absPath)
+		resolveAliasesObj[key] = absPath
+	})
+
+	return resolveAliasesObj
+}
+
+module.exports = ({
+	keyName = '@'
+} = {}) => {
+	return {
+		config (config, env) { // config 函数返回一个对象，整个对象是部分的 viteconfig 配置【需要自定义的部分】
+			console.log('config111', config, env)
+			// config: 目前的配置对象
+			// env: mode: string (production || development), command: string
+
+
+			const resolveAliasesObj = getTotalSrcDir(keyName)
+			console.log('resolveAliasesObj', resolveAliasesObj)
+			return {
+				// 发挥一个 resolve ，将 src 目录下的所有文件夹进行别名控制
+				// 读目录
+				resolve: {
+					alias: resolveAliasesObj
+				}
+
+			}
+		}
+	}
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
