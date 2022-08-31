@@ -377,9 +377,6 @@ export default defineConfig({
 ```
 
 
-
-
-
 ## 手写vite-alias插件
 
 整个插件就是在vite的生命周期的不同阶段去做不同的事
@@ -521,3 +518,76 @@ module.exports = ({
 
 
 
+
+
+
+## vite 常用插件 vite-plugin-html
+
+安装
+```bash
+yarn add vite-plugin-html
+```
+
+手写 vite-plugin-html
+```javascript
+// 插件部分
+module.exports = (options) => {
+	return {
+		// 转换html
+		// 将插件的执行时机提前
+		transformIndexHtml: {
+			enforce: 'pre',
+			transform: (html, ctx) => {
+				console.log('html', html)
+				return html.replace(/<%= title %>/g, options.inject.data.title);
+			}
+		}
+	}
+}
+```
+```html
+<!-- HTML部分 -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title><%= title %></title>
+    </head>
+    <body>
+    
+        <script src="main.js" type="module"></script>
+    </body>
+</html>
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##
