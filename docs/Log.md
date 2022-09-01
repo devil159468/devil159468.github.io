@@ -4,6 +4,8 @@
 
 ::: details 查看详细日志
 
+- 20220901
+  - Vite vite-plugin-mock插件
 - 20220831
   - Vite vite-plugin-html
 - 20220830

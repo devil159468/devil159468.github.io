@@ -1,6 +1,7 @@
 # Vite
 
 [Vite官网](https://vitejs.cn/guide/why.html)
+
 优点：开箱即用，不需要读取全部依赖，启动服务很快
 缺点：统一的ESM模式，仅关注浏览器端的开发体验
 
@@ -562,12 +563,57 @@ module.exports = (options) => {
 ```
 
 
+## vite 常用插件 vite-plugin-mock
+
+mock.js 模拟海量数据。 vite-plugin-mock 依赖 mock.js 
+
+安装
+```bash
+yarn add vite-plugin-mock mockjs -D
+```
+
+Mock 接口配置
+```javascript
+// mock/index.js
+
+import mockjs from "mockjs";
+
+const userList = mockjs.mock({
+	'data|100': [{
+		naem: '@cname',
+		ename: '@name',
+		'id|+1': 1,
+		time: '@time',
+		data: '@date',
+	}]
+})
+
+// console.log('userList', userList)
+
+module.exports = [
+	{
+		mothod: 'post',
+		url: '/api/users',
+		response: ({body}) => {
+			// body -> 请求体
+			return userList
+		}
+	}
+]
 
 
+```
 
-
-
-
+项目中的使用示例
+```javascript
+fetch('/api/users', {
+	method: 'post'
+}).then(data => {
+	console.log('data',data)
+}).catch(err => {
+	console.log('err',err)
+})
+```
 
 
 
