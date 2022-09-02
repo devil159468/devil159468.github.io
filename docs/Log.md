@@ -4,6 +4,8 @@
 
 ::: details 查看详细日志
 
+- 20220902
+  - 添加 Algolia 搜索
 - 20220901
   - Vite vite-plugin-mock插件
 - 20220831

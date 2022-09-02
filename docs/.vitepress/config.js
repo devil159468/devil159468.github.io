@@ -379,6 +379,13 @@ export default defineConfig({
 		footer: {
 			message: 'Released under the MIT License.',
 			copyright: 'Copyright © Elliot Knight'
+		},
+
+		// Algolia 搜索
+		algolia: {
+			appId: 'UGUBAQ6XVW',
+			apiKey: '0ec41bfab5492457fd954866ac78e15e',
+			indexName: 'ElliotKnightBlog'
 		}
 	},
 
