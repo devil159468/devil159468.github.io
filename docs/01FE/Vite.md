@@ -3,6 +3,7 @@
 [Vite官网](https://vitejs.cn/guide/why.html)
 
 优点：开箱即用，不需要读取全部依赖，启动服务很快
+
 缺点：统一的ESM模式，仅关注浏览器端的开发体验
 
 ## create-vite 与 vite
@@ -459,69 +460,6 @@ module.exports = ({
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## vite 常用插件 vite-plugin-html
 
 安装
@@ -613,6 +551,59 @@ fetch('/api/users', {
 }).catch(err => {
 	console.log('err',err)
 })
+```
+
+
+手写 mock 服务器
+```javascript
+const fs = require("fs")
+const path = require('path')
+
+export default (option) => {
+	// 主要工作就是拦截http请求
+
+	// 保证 mock 是目录
+	let mockResult = []
+	const mockStat = fs.statSync("mock");
+	const isDirectory = mockStat.isDirectory();
+	if (isDirectory) {
+		// process.cwd(): 获取工程根目录
+		mockResult = require(path.resolve(process.cwd(), "mock/index.js"));
+		console.log('result!!!', mockResult)
+	}
+
+	return {
+		configureServer (server) {
+			// console.log('server', server)
+
+			server.middlewares.use((req,res, next) => {
+				console.log('req',req.url)
+
+				// 看我们请求的地址在mockResult里有没有
+				const matchItem = mockResult.find(mockDescriptor => mockDescriptor.url === req.url);
+				console.log("matchItem", matchItem);
+
+				if (matchItem) {
+					console.log("进来了",);
+					const responseData = matchItem.response(req);
+					console.log("responseData", responseData);
+					// 强制设置一下他的请求头的格式为json
+					res.setHeader("Content-Type", "application/json");
+					res.end(JSON.stringify(responseData)); // 设置请求头 异步的
+
+
+
+				} else {
+					next(); // 你不调用next 你又不响应 也会响应东西
+				}
+
+
+			})
+
+		}
+	}
+}
+
 ```
 
 
