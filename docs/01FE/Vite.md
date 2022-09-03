@@ -514,7 +514,7 @@ Mock 接口配置
 ```javascript
 // mock/index.js
 
-import mockjs from "mockjs";
+const mockjs = require('mockjs')
 
 const userList = mockjs.mock({
 	'data|100': [{
