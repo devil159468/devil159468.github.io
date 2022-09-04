@@ -52,7 +52,93 @@ yarn global add pm2
 ```
 
 
+## 通用模板
+```javascript
+// 入口文件
+const Koa = require("koa");
+const {router} = require('./routes/index')
 
+
+
+// 实例化
+const app = new Koa();
+
+// 端口
+const {PORT} = require('./config/prot')
+
+// 数据库
+const {mongoose} = require('./database/index')
+
+// 路由
+app.use(router.routes())
+
+
+
+// 启动服务
+app.listen(PORT, () => {
+	console.log(`Server Started on ${PORT}....`);
+});
+
+```
+```javascript
+// 端口
+/*
+ *   端口设置
+ *   production = 5001  生产环境
+ *   predeploy = 5002  测试环境
+ *   development = 5003  本地开发环境
+ */
+let portList = {
+	"production": 5001,
+	"predeploy": 5002,
+	"development": 5003,
+}
+console.log("ENV log", process.env.NODE_ENV, portList[process.env.NODE_ENV]);
+
+let PORT = portList[process.env.NODE_ENV] || 5001
+
+module.exports = {
+	PORT
+}
+
+```
+```javascript
+// 数据库配置
+const mongoose = require("mongoose");
+
+const db = require("./key").mongoURI;
+mongoose.connect(db, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+}).then(() => {
+	console.log("MongoDB Connected");
+}).catch((e) => {
+	console.log("DB Error", e);
+});
+
+module.exports = {
+	mongoose
+}
+
+```
+```javascript
+// 路由
+const KoaRouter = require("koa-router");
+const router = new KoaRouter();
+
+// 路由跳转 index
+router.get("/", async (ctx) => {
+	ctx.body = {msg: "Hello Koa interface~"};
+});
+
+
+
+
+module.exports = {
+	router
+}
+
+```
 
 
 ## 计划发布List
