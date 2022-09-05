@@ -52,7 +52,7 @@ yarn global add pm2
 ```
 
 
-## 通用模板
+## 通用模板(Koa)
 ```javascript
 // 入口文件
 const Koa = require("koa");
