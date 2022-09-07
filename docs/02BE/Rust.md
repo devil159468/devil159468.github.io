@@ -294,6 +294,7 @@ let mut a = [1, 2, 3];
 a[0] = 4; // 正确
 ```
 
+
 ## 注释
 
 ```rust
@@ -316,3 +317,389 @@ a[0] = 4; // 正确
 
 
 ```
+
+
+## 函数
+
+Rust 函数的基本形式
+```rust
+fn <函数名> ( <参数> ) <函数体>
+```
+
+Rust 函数名称的命名风格是小写字母以下划线分割
+```rust
+fn main() {
+    println!("Hello, world!");
+    another_function();
+}
+
+fn another_function() {
+    println!("Hello, runoob!");
+}
+
+// Hello, world!
+// Hello, runoob!
+```
+
+函数参数
+```rust
+fn main() {
+    another_function(5, 6);
+}
+
+fn another_function(x: i32, y: i32) {
+    println!("x 的值为 : {}", x);
+    println!("y 的值为 : {}", y);
+}
+```
+
+Rust 中可以在一个用 {} 包括的块里编写一个较为复杂的表达式：
+```rust
+fn main() {
+    let x = 5;
+
+    let y = {
+        let x = 3;
+        x + 1
+    };
+
+    println!("x 的值为 : {}", x);
+    println!("y 的值为 : {}", y);
+}
+
+```
+
+函数返回值
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    return a + b;
+}
+```
+> Rust 不支持自动返回值类型判断！如果没有明确声明函数返回值的类型，函数将被认为是"纯过程"，不允许产生返回值，return 后面不能有返回值表达式。这样做的目的是为了让公开的函数能够形成可见的公报。
+> 函数体表达式并不能等同于函数体，它不能使用 return 关键字。
+
+
+## 条件语句
+
+条件表达式 number < 5 不需要用小括号（但语法允许），条件表达式必须是 bool 类型
+```rust
+fn main() {
+    let number = 3;
+    if number < 5 {
+        println!("条件为 true");
+    } else {
+        println!("条件为 false");
+    }
+}
+
+```
+```rust
+fn main() {
+    let a = 12;
+    let b;
+    if a > 0 {
+        b = 1;
+    }  
+    else if a < 0 {
+        b = -1;
+    }  
+    else {
+        b = 0;
+    }
+    println!("b is {}", b);
+}
+```
+
+类似于三元条件运算表达式 (A ? B : C) 的效果
+```rust
+fn main() {
+    let a = 3;
+    let number = if a > 0 { 1 } else { -1 };
+    println!("number 为 {}", number);
+}
+```
+
+
+## 循环
+
+### while 循环
+```rust
+fn main() {
+    let mut number = 1;
+    while number != 4 {
+        println!("{}", number);
+        number += 1;
+    }
+    println!("EXIT");
+}
+
+```
+
+### for 循环
+```rust
+fn main() {
+    let a = [10, 20, 30, 40, 50];
+    for i in a.iter() {
+        println!("值为 : {}", i);
+    }
+}
+```
+> a.iter() 代表 a 的迭代器。
+
+通过下标访问数组
+```rust
+fn main() {
+let a = [10, 20, 30, 40, 50];
+    for i in 0..5 {
+        println!("a[{}] = {}", i, a[i]);
+    }
+}
+```
+
+### loop 循环
+
+Rust 语言原生的无限循环结构 —— loop
+```rust
+fn main() {
+    let s = ['R', 'U', 'N', 'O', 'O', 'B'];
+    let mut i = 0;
+    loop {
+        let ch = s[i];
+        if ch == 'O' {
+            break;
+        }
+        println!("\'{}\'", ch);
+        i += 1;
+    }
+}
+```
+可以用来当做查找工具，return 会退出 loop 循环，并返回给外部一个返回值
+```rust
+fn main() {
+    let s = ['R', 'U', 'N', 'O', 'O', 'B'];
+    let mut i = 0;
+    let location = loop {
+        let ch = s[i];
+        if ch == 'O' {
+            break i;
+        }
+        i += 1;
+    };
+    println!(" \'O\' 的索引为 {}", location);
+}
+```
+
+
+## 所有权
+
+### 所有权规则
+- Rust 中的每个值都有一个变量，称为其所有者。 
+- 一次只能有一个所有者。 
+- 当所有者不在程序运行范围时，该值将被删除。
+
+```rust
+// 举例
+{
+    // 在声明以前，变量 s 无效
+    let s = "runoob";
+    // 这里是变量 s 的可用范围
+}
+// 变量范围已经结束，变量 s 无效
+
+```
+
+基本数据类型的数据存储在栈中，仅在栈中的数据的"移动"方式是直接复制，基本数据类型有：
+- 所有整数类型，例如 i32 、 u32 、 i64 等。 
+- 布尔类型 bool，值为 true 或 false 。 
+- 所有浮点类型，f32 和 f64。 
+- 字符类型 char。 
+- 仅包含以上类型数据的元组（Tuples）。
+
+```rust
+let x = 5;
+let y = x;
+```
+
+**s1 的值赋给 s2 以后 s1 将不可用**
+```rust
+let s1 = String::from("hello");
+let s2 = s1; 
+println!("{}, world!", s1); // 错误！s1 已经失效
+```
+
+### 克隆
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1.clone();
+    println!("s1 = {}, s2 = {}", s1, s2);
+}
+```
+
+### 涉及函数的所有权机制
+
+如果将变量当作参数传入函数，那么它和移动的效果是一样的。
+```rust
+fn main() {
+    let s = String::from("hello");
+    // s 被声明有效
+
+    takes_ownership(s);
+    // s 的值被当作参数传入函数
+    // 所以可以当作 s 已经被移动，从这里开始已经无效
+
+    let x = 5;
+    // x 被声明有效
+
+    makes_copy(x);
+    // x 的值被当作参数传入函数
+    // 但 x 是基本类型，依然有效
+    // 在这里依然可以使用 x 却不能使用 s
+
+} // 函数结束, x 无效, 然后是 s. 但 s 已被移动, 所以不用被释放
+
+
+fn takes_ownership(some_string: String) {
+    // 一个 String 参数 some_string 传入，有效
+    println!("{}", some_string);
+} // 函数结束, 参数 some_string 在这里释放
+
+fn makes_copy(some_integer: i32) {
+    // 一个 i32 参数 some_integer 传入，有效
+    println!("{}", some_integer);
+} // 函数结束, 参数 some_integer 是基本类型, 无需释放
+```
+
+### 函数返回值的所有权机制
+
+被当作函数返回值的变量所有权将会被移动出函数并返回到调用函数的地方，而不会直接被无效释放。
+```rust
+fn main() {
+    let s1 = gives_ownership();
+    // gives_ownership 移动它的返回值到 s1
+
+    let s2 = String::from("hello");
+    // s2 被声明有效
+
+    let s3 = takes_and_gives_back(s2);
+    // s2 被当作参数移动, s3 获得返回值所有权
+} // s3 无效被释放, s2 被移动, s1 无效被释放.
+
+fn gives_ownership() -> String {
+    let some_string = String::from("hello");
+    // some_string 被声明有效
+
+    return some_string;
+    // some_string 被当作返回值移动出函数
+}
+
+fn takes_and_gives_back(a_string: String) -> String { 
+    // a_string 被声明有效
+
+    a_string  // a_string 被当作返回值移出函数
+}
+```
+
+### 引用与租借
+
+引用（Reference）可以理解为一种指针
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = &s1;
+    println!("s1 is {}, s2 is {}", s1, s2);
+}
+
+// s1 is hello, s2 is hello
+```
+
+函数参数传递的道理一样
+```rust
+fn main() {
+    let s1 = String::from("hello");
+
+    let len = calculate_length(&s1);
+
+    println!("The length of '{}' is {}.", s1, len);
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
+}
+
+// The length of 'hello' is 5.
+```
+
+引用不会获得值的所有权。
+
+引用只能租借（Borrow）值的所有权。
+
+引用本身也是一个类型并具有一个值，这个值记录的是别的值所在的位置，但引用不具有所指值的所有权：
+
+```rust
+fn main() {
+    let s1 = String::from("hello");
+    let mut s2 = &s1;
+    let s3 = s1;
+    s2 = &s3; // 重新从 s3 租借所有权
+    println!("{}", s2);
+}
+```
+
+租借的数据不能被修改
+```rust
+fn main() {
+    let mut s1 = String::from("run");
+    // s1 是可变的
+
+    let s2 = &mut s1;
+    // s2 是可变的引用
+
+    s2.push_str("oob");
+    println!("{}", s2);
+}
+```
+
+### 垂悬引用（Dangling References）
+
+如果放在有指针概念的编程语言里它就指的是那种没有实际指向一个真正能访问的数据的指针（注意，不一定是空指针，还有可能是已经释放的资源）。它们就像失去悬挂物体的绳子，所以叫"垂悬引用"。"垂悬引用"在 Rust 语言里不允许出现，如果有，编译器会发现它。
+
+```rust
+// 错误示例
+fn main() {
+    let reference_to_nothing = dangle();
+}
+
+fn dangle() -> &String {
+    let s = String::from("hello");
+
+    &s
+}
+
+
+// 输出
+error[E0106]: missing lifetime specifier
+ --> src/main.rs:5:16
+  |
+5 | fn dangle() -> &String {
+  |                ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but there is no value for it to be borrowed from
+help: consider using the `'static` lifetime
+  |
+5 | fn dangle() -> &'static String {
+  |                ~~~~~~~~
+
+For more information about this error, try `rustc --explain E0106`.
+error: could not compile `hello-rust` due to previous error
+
+```
+
+
+
+
+
+
+
+## 参考资料
+[菜鸟教程 Rust](https://www.runoob.com/rust/rust-tutorial.html)
