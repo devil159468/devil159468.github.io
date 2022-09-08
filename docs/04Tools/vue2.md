@@ -204,3 +204,18 @@ export default {
 
 
 ```
+
+## 手机号码格式转化为 344 格式 （188 3886 9199）
+```vue
+phoneSeparated (phoneNumber) {
+  let value = phoneNumber.replace(/[^0-9*]/ig, '');
+  if (value.length > 3 && value.length < 7) {
+    value = value.substring(0, 3) + ' ' + value.substring(3);
+  } else if (value.length == 7) {
+    value = value.substring(0, 3) + ' ' + value.substring(3, 7);
+  } else if (value.length > 7) {
+    value = value.substring(0, 3) + ' ' + value.substring(3, 7) + ' ' + value.substring(7);
+  }
+  return value.substring(0, 13);
+}
+```

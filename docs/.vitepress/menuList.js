@@ -357,15 +357,17 @@ let menuList = {
 	sideBar: _processSidebar()
 }
 
+// 顶部导航
 function _processNav () {
 	return menuDetailList
 }
 
+// 侧边栏导航
 function _processSidebar () {
 
 	let result = {}
 	for (let i of menuDetailList) {
-		console.log('i',i)
+		// console.log('i',i)
 
 		if (i.sidebarName) {
 			result[i.sidebarName] = i.items

@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import { menuList } from "./munuList"; // 导航列表
+import { menuList } from "./menuList"; // 导航列表
 
 
 export default defineConfig({
