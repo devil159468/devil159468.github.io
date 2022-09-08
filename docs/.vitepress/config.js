@@ -1,7 +1,6 @@
-import {defineConfig} from "vitepress";
-import {menuList} from "./munuList";
+import { defineConfig } from "vitepress";
+import { menuList } from "./munuList"; // 导航列表
 
-// console.log('menuList', menuList)
 
 export default defineConfig({
 	// 全局设置
@@ -47,9 +46,6 @@ export default defineConfig({
 		// 侧边栏配置
 		sidebar: menuList['sideBar'],
 
-
-
-
 		// 页脚
 		footer: {
 			message: 'Released under the MIT License.',
@@ -63,6 +59,5 @@ export default defineConfig({
 			indexName: 'ElliotKnightBlog'
 		}
 	},
-
 
 })

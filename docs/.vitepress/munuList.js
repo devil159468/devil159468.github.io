@@ -1,7 +1,6 @@
-let originSidebar = {
-	'/01FE/'
-:
-	[
+// 原始 sidebar 备份
+let originSidebarBackup = {
+	'/01FE/': [
 		{
 			// text: 'JavaScript',
 			items: [
@@ -37,9 +36,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/02BE/'
-:
-	[
+	'/02BE/': [
 		{
 			text: '语言',
 			items: [
@@ -63,9 +60,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/03Server/'
-:
-	[
+	'/03Server/': [
 		{
 			text: '服务器',
 			items: [
@@ -82,9 +77,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/04Tools/'
-:
-	[
+	'/04Tools/': [
 		{
 			text: 'CSS',
 			items: [
@@ -116,9 +109,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/05Skill/'
-:
-	[
+	'/05Skill/': [
 		{
 			// text: '基础技能',
 			items: [
@@ -136,9 +127,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/06Solution/'
-:
-	[
+	'/06Solution/': [
 		{
 			text: 'SDK',
 			items: [
@@ -153,9 +142,7 @@ let originSidebar = {
 			]
 		},
 	],
-		'/07Game/'
-:
-	[
+	'/07Game/': [
 		{
 			// text: '游戏开发',
 			items: [
@@ -177,8 +164,8 @@ let menuDetailList = [
 			// 下拉菜单
 			{
 				text: 'JavaScript',
-				isSowTextNav: true,
-				isSowTextSidebar: true,
+				// isSowTextNav: true,
+				// isSowTextSidebar: true,
 				items: [
 					{text: 'JavaScript', link: '/01FE/JavaScript'},
 					{text: 'TypeScript', link: '/01FE/TypeScript'},
@@ -233,7 +220,12 @@ let menuDetailList = [
 					{text: 'MySQL', link: '/02BE/MySQL'}
 				]
 			},
-			{text: '后端面试题', link: '/02BE/BEQuestions.md'},
+			{
+				// text: '后端面试题',
+				items: [
+					{text: '后端面试题', link: '/02BE/BEQuestions.md'}
+				]
+			},
 		]
 	},
 	{
@@ -337,9 +329,15 @@ let menuDetailList = [
 		text: '游戏开发',
 		sidebarName: '/07Game/',
 		items: [
-			{text: '游戏开发', link: '/07Game/GameDevelopment.md'},
-			{text: '人工智能', link: '/07Game/ArtificialIntelligence.md'},
-			{text: '三维开发', link: '/07Game/ThreeDimensions.md'},
+			{
+				text: '游戏开发',
+				items: [
+					{text: '游戏开发', link: '/07Game/GameDevelopment.md'},
+					{text: '人工智能', link: '/07Game/ArtificialIntelligence.md'},
+					{text: '三维开发', link: '/07Game/ThreeDimensions.md'},
+				]
+			},
+
 		]
 	},
 
@@ -373,7 +371,7 @@ function _processSidebar () {
 			result[i.sidebarName] = i.items
 		}
 	}
-	console.log('result', result)
+	// console.log('result', result)
 
 	return result
 }
