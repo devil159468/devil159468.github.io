@@ -205,6 +205,7 @@ export default {
 
 ```
 
+
 ## 手机号码格式转化为 344 格式 （188 3886 9199）
 ```vue
 phoneSeparated (phoneNumber) {
@@ -218,4 +219,174 @@ phoneSeparated (phoneNumber) {
   }
   return value.substring(0, 13);
 }
+```
+
+
+## 管理后台模板 页面
+```vue
+<template>
+    <div>
+        <!-- 筛选项 及 按钮 -->
+        <div>
+            <!-- 筛选项 -->
+            <div>
+                <el-form :inline="true" :model="searchQuery">
+                    <el-form-item label="左侧展示文字">
+                        <el-input v-model="searchQuery.orderId" placeholder="placeholder" clearable></el-input>
+                    </el-form-item>
+                    <el-form-item label="下来选项">
+                        <el-select clearable v-model="searchQuery.orderType" filterable placeholder="请选择">
+                            <el-option v-for="item in optionsList.orderTypeOptions" :key="item.value" :label="item.label" :value="item.value" />
+                        </el-select>
+                    </el-form-item>
+                    
+                </el-form>
+            </div>
+            
+            <!-- 按钮 -->
+            <el-button type="primary" @click="searchHandler">查询</el-button>
+            <el-button type="primary" @click="resetSearchHandler">重置</el-button>
+        </div>
+        <br>
+        
+        <!-- 表格 -->
+        <div>
+            <el-table :data="dataList" border v-loading="dataListLoading" style="width: 100%;">
+                <el-table-column label="XX" prop="orderId" header-align="center" align="center"/>
+                <el-table-column label="操作" prop="orderId" header-align="center" align="center">
+                    <el-button type="text" size="small" @click="openDetail">查看</el-button>
+                </el-table-column>
+            
+            </el-table>
+        </div>
+    
+        <!-- 分页 -->
+        <el-pagination
+            @size-change="sizeChangeHandle"
+            @current-change="currentChangeHandle"
+            :current-page="pageIndex"
+            :page-sizes="[10, 20, 50, 100]"
+            :page-size="pageSize"
+            :total="totalPage"
+            layout="total, sizes, prev, pager, next, jumper">
+        </el-pagination>
+    
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'xxx',
+  data () {
+    return {
+      // 搜索参数
+      searchQuery: {
+        orderId: '',
+        visitorId: '',
+        orderType: ''
+      },
+
+      // 筛选项集合
+      optionsList: {
+        // 是否实名
+        orderTypeOptions: [
+          {
+            label: '否',
+            value: '0'
+          },
+          {
+            label: '是',
+            value: '1'
+          }
+        ]
+
+      },
+    
+      // 表格展示数据
+      dataList: [],
+      dataListLoading: false,
+      pageIndex: 1,
+      pageSize: 10,
+      totalPage: 0,
+    }
+  },
+  mounted () {
+    this.initPage()
+  },
+  methods: {
+    initPage () {
+      this.getDataList()
+    },
+    // 获取接口数据
+    getDataList () {
+    
+    },
+    
+    // 每页数
+    sizeChangeHandle (val) {
+      this.pageSize = val
+      this.pageIndex = 1
+      this.getDataList()
+    },
+    // 当前页
+    currentChangeHandle (val) {
+      this.pageIndex = val
+      this.getDataList()
+    },
+
+    // 查询
+    searchHandler () {
+    },
+    // 重置查询
+    resetSearchHandler () {
+    },
+    // 查看详情
+    openDetail () {
+    }
+
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+
+```
+
+
+## 管理后台模板 弹窗
+```vue
+<template>
+    <el-dialog title="弹窗名称" :close-on-click-modal="false" :visible.sync="popWindow.isShow">
+        <template>
+        
+        </template>
+    
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="togglePop()">取消</el-button>
+          <el-button type="primary" @click="popSubmit()">确定</el-button>
+        </span>
+    </el-dialog>
+</template>
+
+<script >
+export default {
+    data () {
+        return {
+            popWindow: {
+                isShow: true
+            }
+        }
+    },
+    mounted () {
+        
+    },
+    methods: {
+        togglePop () {},
+        popSubmit () {},
+    }
+}
+
+</script>
 ```
