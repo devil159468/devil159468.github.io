@@ -695,9 +695,255 @@ error: could not compile `hello-rust` due to previous error
 
 ```
 
+## 切片
+
+切片（Slice）是对数据值的部分引用。
+
+```rust
+fn main() {
+    let s = String::from("broadcast");
+
+    let part1 = &s[0..5];
+    let part2 = &s[5..9];
+
+    println!("{}={}+{}", s, part1, part2);
+}
+```
+
+> ..y 等价于 0..y
+>
+> x.. 等价于位置 x 到数据结束
+>
+> .. 等价于位置 0 到结束
+
+被切片引用的字符串禁止更改其值
+
+```rust
+fn main() {
+    let mut s = String::from("runoob");
+    let slice = &s[0..3];
+    s.push_str("yes!"); // 错误
+    println!("slice = {}", slice);
+}
+```
+
+> 在 Rust 中有两种常用的字符串类型：str 和 String。str 是 Rust 核心语言类型，就是本章一直在讲的字符串切片（String Slice），常常以引用的形式出现（&str）。 凡是用双引号包括的字符串常量整体的类型性质都是 &str
+
+切片结果必须是引用类型，且要显示定义
+```rust
+let slice = &s[0..3];
+```
+
+String 转换成 &str：
+```rust
+let s1 = String::from("hello");
+let s2 = &s1[..];
+
+// 运行结果
+// 1
+// 3
+// 5
+```
+
+### 非字符串切片
+```rust
+fn main() {
+    let arr = [1, 3, 5, 7, 9];
+    let part = &arr[0..3];
+    for i in part.iter() {
+        println!("{}", i);
+    }
+}
+```
 
 
+## 结构体
 
+结构体定义：
+```rust
+struct Site {
+    domain: String,
+    name: String,
+    nation: String,
+    found: u32
+}
+```
+
+结构体实例
+```rust
+let runoob = Site {
+    domain: String::from("www.runoob.com"),
+    name: String::from("RUNOOB"),
+    nation: String::from("China"),
+    found: 2013
+};
+```
+
+可以简化书写
+```rust
+let domain = String::from("www.runoob.com");
+let name = String::from("RUNOOB");
+let runoob = Site {
+    domain,  // 等同于 domain : domain,
+    name,    // 等同于 name : name,
+    nation: String::from("China"),
+    traffic: 2013
+};
+```
+
+结构体更新语法：
+```rust
+let site = Site {
+    domain: String::from("www.runoob.com"),
+    name: String::from("RUNOOB"),
+    ..runoob
+};
+```
+> 至少重新设定一个字段的值才能引用其他实例的值。
+
+### 元组结构体。
+
+更简单的定义和使用结构体的方式：元组结构体。
+```rust
+struct Color(u8, u8, u8);
+struct Point(f64, f64);
+
+let black = Color(0, 0, 0);
+let origin = Point(0.0, 0.0);
+
+fn main() {
+    struct Color(u8, u8, u8);
+    struct Point(f64, f64);
+
+    let black = Color(0, 0, 0);
+    let origin = Point(0.0, 0.0);
+
+    println!("black = ({}, {}, {})", black.0, black.1, black.2);
+    println!("origin = ({}, {})", origin.0, origin.1);
+}
+
+// black = (0, 0, 0)
+// origin = (0, 0)
+```
+
+### 结构体所有权
+
+结构体必须掌握字段值所有权，因为结构体失效的时候会释放所有字段。
+
+### 输出结构体
+```rust
+#[derive(Debug)]
+
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn main() {
+    let rect1 = Rectangle { width: 30, height: 50 };
+
+    println!("rect1 is {:?}", rect1);
+}
+```
+
+一定要导入调试库 #[derive(Debug)] ，之后在 println 和 print 宏中就可以用 {:?} 占位符输出一整个结构体：
+```rust
+rect1 is Rectangle { width: 30, height: 50 }
+```
+
+如果属性较多的话可以使用另一个占位符 {:#?} 。
+```rust
+rect1 is Rectangle {
+    width: 30,
+    height: 50
+}
+```
+
+### 结构体方法
+
+方法（Method）和函数（Function）类似，用来操作结构体实例
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+   
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle { width: 30, height: 50 };
+    println!("rect1's area is {}", rect1.area());
+}
+
+// rect1's area is 1500
+```
+
+多参数示例
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+
+    fn wider(&self, rect: &Rectangle) -> bool {
+        self.width > rect.width
+    }
+}
+
+fn main() {
+    let rect1 = Rectangle { width: 30, height: 50 };
+    let rect2 = Rectangle { width: 40, height: 20 };
+
+    println!("{}", rect1.wider(&rect2));
+}
+
+// false
+```
+
+### 结构体关联函数
+
+之所以"结构体方法"不叫"结构体函数"是因为"函数"这个名字留给了这种函数：它在 impl 块中却没有 &self 参数。
+
+这种函数不依赖实例，但是使用它需要声明是在哪个 impl 块中的。
+
+一直使用的 String::from 函数就是一个"关联函数"。
+
+```rust
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    fn create(width: u32, height: u32) -> Rectangle {
+        Rectangle { width, height }
+    }
+}
+
+fn main() {
+    let rect = Rectangle::create(30, 50);
+    println!("{:?}", rect);
+}
+
+// Rectangle { width: 30, height: 50 }
+```
+> 结构体 impl 块可以写几次，效果相当于它们内容的拼接！
+
+### 单元结构体
+没有身体的结构体为单元结构体（Unit Struct）
+```rust
+struct UnitStruct;
+```
 
 
 
