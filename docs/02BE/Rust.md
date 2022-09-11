@@ -695,6 +695,7 @@ error: could not compile `hello-rust` due to previous error
 
 ```
 
+
 ## 切片
 
 切片（Slice）是对数据值的部分引用。
@@ -944,6 +945,218 @@ fn main() {
 ```rust
 struct UnitStruct;
 ```
+
+
+## 枚举类
+
+```rust
+#[derive(Debug)]
+
+enum Book {
+    Papery, Electronic
+}
+
+fn main() {
+    let book = Book::Papery;
+    println!("{:?}", book);
+}
+
+// Papery
+```
+
+```rust
+// 枚举类
+enum Book {
+    Papery(u32),
+    Electronic(String),
+}
+
+let book = Book::Papery(1001);
+let ebook = Book::Electronic(String::from("url://..."));
+
+// 结构体
+enum Book {
+    Papery { index: u32 },
+    Electronic { url: String },
+}
+let book = Book::Papery{index: 1001};
+
+```
+
+### match 语法
+
+```rust
+fn main() {
+    enum Book {
+        Papery {index: u32},
+        Electronic {url: String},
+    }
+   
+    let book = Book::Papery{index: 1001};
+    let ebook = Book::Electronic{url: String::from("url...")};
+   
+    match book {
+        Book::Papery { index } => {
+            println!("Papery book {}", index);
+        },
+        Book::Electronic { url } => {
+            println!("E-book {}", url);
+        }
+    }
+}
+
+// Papery book 1001
+```
+
+match 块也可以当作函数表达式来对待，它可以有返回值
+```rust
+enum Book {
+    Papery(u32),
+    Electronic {url: String},
+}
+let book = Book::Papery(1001);
+
+match book {
+    Book::Papery(i) => {
+        println!("{}", i);
+    },
+    Book::Electronic { url } => {
+        println!("{}", url);
+    }
+}
+```
+
+> match 除了能够对枚举类进行分支选择以外，还可以对整数、浮点数、字符和字符串切片引用（&str）类型的数据进行分支选择。其中，浮点数类型被分支选择虽然合法，但不推荐这样使用，因为精度问题可能会导致分支错误。
+
+> 对非枚举类进行分支选择时必须注意处理例外情况，即使在例外情况下没有任何要做的事 . 例外情况用下划线 _ 表示：
+
+### Option 枚举类
+
+Option 是 Rust 标准库中的枚举类，这个类用于填补 Rust 不支持 null 引用的空白。
+
+Rust 在语言层面彻底不允许空值 null 的存在，但无奈null 可以高效地解决少量的问题，所以 Rust 引入了 Option 枚举类
+
+```rust
+enum Option<T> {
+    Some(T),
+    None,
+}
+```
+
+定义一个可以为空值的类
+```rust
+let opt = Option::Some("Hello");
+```
+
+针对 opt 执行某些操作，你必须先判断它是否是 Option::None：
+```rust
+fn main() {
+    let opt = Option::Some("Hello");
+    match opt {
+        Option::Some(something) => {
+            println!("{}", something);
+        },
+        Option::None => {
+            println!("opt is nothing");
+        }
+    }
+}
+```
+
+初始值为空的 Option 必须明确类型
+```rust
+fn main() {
+    let opt: Option<&str> = Option::None;
+    match opt {
+        Option::Some(something) => {
+            println!("{}", something);
+        },
+        Option::None => {
+            println!("opt is nothing");
+        }
+    }
+}
+
+// opt is nothing
+```
+
+Option 是一种特殊的枚举类，它可以含值分支选择
+```rust
+fn main() {
+        let t = Some(64);
+        match t {
+                Some(64) => println!("Yes"),
+                _ => println!("No"),
+        }
+}
+```
+
+### if let 语法
+```rust
+// match 语法
+let i = 0;
+match i {
+    0 => println!("zero"),
+    _ => {},
+}
+
+// 使用 if let 重写
+let i = 0;
+if let 0 = i {
+    println!("zero");
+}
+
+// zero
+```
+
+if let 语法可以认为是只区分两种情况的 match 语句的"语法糖"（语法糖指的是某种语法的原理相同的便捷替代品）
+```rust
+fn main() {
+    enum Book {
+        Papery(u32),
+        Electronic(String)
+    }
+    let book = Book::Electronic(String::from("url"));
+    if let Book::Papery(index) = book {
+        println!("Papery {}", index);
+    } else {
+        println!("Not papery book");
+    }
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
