@@ -1126,22 +1126,246 @@ fn main() {
 
 ```
 
+## 泛型与特性
+
+泛型示例
+
+```rust
+fn max<T>(array: &[T]) -> T {
+    let mut max_index = 0;
+    let mut i = 1;
+    while i < array.len() {
+        if array[i] > array[max_index] {
+            max_index = i;
+        }
+        i += 1;
+    }
+    array[max_index]
+}
+
+```
+
+结构体与枚举类中的泛型
+
+```rust
+struct Point<T> {
+    x: T,
+    y: T
+}
+
+let p1 = Point {x: 1, y: 2};
+let p2 = Point {x: 1.0, y: 2.0};
+
+let p = Point {x: 1, y: 2.0};
 
 
+struct Point<T1, T2> {
+    x: T1,
+    y: T2
+}
 
 
+enum Option<T> {
+    Some(T),
+    None,
+}
 
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
 
+结构体与枚举类都可以定义方法，那么方法也应该实现泛型的机制，否则泛型的类将无法被有效的方法操作。
 
+```rust
+struct Point<T> {
+    x: T,
+    y: T,
+}
 
+impl<T> Point<T> {
+    fn x(&self) -> &T {
+        &self.x
+    }
+}
 
+fn main() {
+    let p = Point { x: 1, y: 2 };
+    println!("p.x = {}", p.x());
+}
 
+// p.x = 1
+```
 
+impl 关键字的后方必须有 T，因为它后面的 T 是以之为榜样的。但我们也可以为其中的一种泛型添加方法
 
+```rust
+impl Point<f64> {
+    fn x(&self) -> f64 {
+        self.x
+    }
+}
 
+impl<T, U> Point<T, U> {
+    fn mixup<V, W>(self, other: Point<V, W>) -> Point<T, W> {
+        Point {
+            x: self.x,
+            y: other.y,
+        }
+    }
+}
 
+```
 
+### 特性
 
+类似于 接口 的概念
+
+```rust
+trait Descriptive {
+    fn describe(&self) -> String;
+}
+```
+
+> Descriptive 规定了实现者必需有 describe(&self) -> String 方法。
+
+```rust
+struct Person {
+    name: String,
+    age: u8
+}
+
+impl Descriptive for Person {
+    fn describe(&self) -> String {
+        format!("{} {}", self.name, self.age)
+    }
+}
+```
+
+格式
+
+```rust
+impl <特性名> for <所实现的类型名>
+```
+
+### 默认特性
+```rust
+trait Descriptive {
+    fn describe(&self) -> String {
+        String::from("[Object]")
+    }
+}
+
+struct Person {
+    name: String,
+    age: u8
+}
+
+impl Descriptive for Person {
+    fn describe(&self) -> String {
+        format!("{} {}", self.name, self.age)
+    }
+}
+
+fn main() {
+    let cali = Person {
+        name: String::from("Cali"),
+        age: 24
+    };
+    println!("{}", cali.describe());
+}
+
+// Cali 24
+// 去掉 impl Descriptive for Person 输出： [Object]
+```
+
+### 特性做参数
+
+```rust
+fn output(object: impl Descriptive) {
+    println!("{}", object.describe());
+}
+
+fn output<T: Descriptive>(object: T) {
+    println!("{}", object.describe());
+}
+
+fn output_two<T: Descriptive>(arg1: T, arg2: T) {
+    println!("{}", arg1.describe());
+    println!("{}", arg2.describe());
+}
+```
+
+特性作类型表示时如果涉及多个特性，可以用 + 符号表示
+```rust
+fn notify(item: impl Summary + Display)
+fn notify<T: Summary + Display>(item: T)
+```
+> 仅用于表示类型的时候，并不意味着可以在 impl 块中使用
+
+复杂的实现关系可以使用 where 关键字简化
+```rust
+fn some_function<T: Display + Clone, U: Clone + Debug>(t: T, u: U)
+
+// 简写
+fn some_function<T, U>(t: T, u: U) -> i32
+    where T: Display + Clone,
+          U: Clone + Debug
+```
+
+取最大值程序
+```rust
+trait Comparable {
+    fn compare(&self, object: &Self) -> i8;
+}
+
+fn max<T: Comparable>(array: &[T]) -> &T {
+    let mut max_index = 0;
+    let mut i = 1;
+    while i < array.len() {
+        if array[i].compare(&array[max_index]) > 0 {
+            max_index = i;
+        }
+        i += 1;
+    }
+    &array[max_index]
+}
+
+impl Comparable for f64 {
+    fn compare(&self, object: &f64) -> i8 {
+        if &self > &object { 1 }
+        else if &self == &object { 0 }
+        else { -1 }
+    }
+}
+
+fn main() {
+    let arr = [1.0, 3.0, 5.0, 4.0, 2.0];
+    println!("maximum of arr is {}", max(&arr));
+}
+
+// maximum of arr is 5
+```
+
+### 特性做返回值
+```rust
+fn person() -> impl Descriptive {
+    Person {
+        name: String::from("Cali"),
+        age: 24
+    }
+}
+```
+
+### 有条件实现方法
+```rust
+struct A<T> {}
+
+impl<T: B + C> A<T> {
+    fn d(&self) {}
+}
+```
 
 
 
