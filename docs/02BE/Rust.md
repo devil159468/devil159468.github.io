@@ -1126,6 +1126,7 @@ fn main() {
 
 ```
 
+
 ## 泛型与特性
 
 泛型示例
@@ -1368,7 +1369,138 @@ impl<T: B + C> A<T> {
 ```
 
 
+## 错误处理
 
+对于可恢复错误用 Result<T, E> 类来处理，对于不可恢复错误使用 panic! 宏来处理。
+
+```rust
+fn main() {
+    panic!("error occured");
+    println!("Hello, Rust");
+}
+
+// thread 'main' panicked at 'error occured', src\main.rs:3:5
+// note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace.
+```
+
+设置环境变量
+```rust
+RUST_BACKTRACE=1 cargo run
+```
+输出
+```rust
+thread 'main' panicked at 'error occured', src\main.rs:3:5
+stack backtrace:
+  ...
+  11: greeting::main
+             at .\src\main.rs:3
+  ...
+```
+
+> 回溯是不可恢复错误的另一种处理方式，它会展开运行的栈并输出所有的信息，然后程序依然会退出。上面的省略号省略了大量的输出信息，我们可以找到我们编写的 panic! 宏触发的错误。
+
+### 可恢复的错误
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E),
+}
+```
+
+在 Rust 标准库中可能产生异常的函数的返回值都是 Result 类型的。例如：当我们尝试打开一个文件时：
+```rust
+use std::fs::File;
+
+fn main() {
+    let f = File::open("hello.txt");
+    match f {
+        Ok(file) => {
+            println!("File opened successfully.");
+        },
+        Err(err) => {
+            println!("Failed to open the file.");
+        }
+    }
+}
+```
+如果 hello.txt 文件不存在，会打印 "Failed to open the file."。
+
+### 可恢复的错误的传递
+```rust
+fn f(i: i32) -> Result<i32, bool> {
+    if i >= 0 { Ok(i) }
+    else { Err(false) }
+}
+
+fn main() {
+    let r = f(10000);
+    if let Ok(v) = r {
+        println!("Ok: f(-1) = {}", v);
+    } else {
+        println!("Err");
+    }
+}
+
+// Ok: f(-1) = 10000
+```
+
+```rust
+fn f(i: i32) -> Result<i32, bool> {
+    if i >= 0 { Ok(i) }
+    else { Err(false) }
+}
+
+fn g(i: i32) -> Result<i32, bool> {
+    let t = f(i)?;
+    Ok(t) // 因为确定 t 不是 Err, t 在这里已经是 i32 类型
+}
+
+fn main() {
+    let r = g(10000);
+    if let Ok(v) = r {
+        println!("Ok: g(10000) = {}", v);
+    } else {
+        println!("Err");
+    }
+}
+
+// Ok: g(10000) = 10000
+```
+
+### kind 方法
+
+判断 Result 的 Err 类型，获取 Err 类型的函数是 kind()
+```rust
+use std::io;
+use std::io::Read;
+use std::fs::File;
+
+fn read_text_from_file(path: &str) -> Result<String, io::Error> {
+    let mut f = File::open(path)?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?;
+    Ok(s)
+}
+
+fn main() {
+    let str_file = read_text_from_file("hello.txt");
+    match str_file {
+        Ok(s) => println!("{}", s),
+        Err(e) => {
+            match e.kind() {
+                io::ErrorKind::NotFound => {
+                    println!("No such file");
+                },
+                _ => {
+                    println!("Cannot read the file");
+                }
+            }
+        }
+    }
+}
+
+// No such file
+```
 
 
 
