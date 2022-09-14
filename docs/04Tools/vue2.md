@@ -206,19 +206,62 @@ export default {
 ```
 
 
-## 手机号码格式转化为 344 格式 （188 3886 9199）
+## 常用正则
 ```vue
-phoneSeparated (phoneNumber) {
-  let value = phoneNumber.replace(/[^0-9*]/ig, '');
-  if (value.length > 3 && value.length < 7) {
-    value = value.substring(0, 3) + ' ' + value.substring(3);
-  } else if (value.length == 7) {
-    value = value.substring(0, 3) + ' ' + value.substring(3, 7);
-  } else if (value.length > 7) {
-    value = value.substring(0, 3) + ' ' + value.substring(3, 7) + ' ' + value.substring(7);
-  }
-  return value.substring(0, 13);
+watch: {
+    <!-- 仅中文 -->
+    'text1': {
+        handler (n, o) {
+            let reg = /[^\u4E00-\u9FA5]/g;
+            console.log('中文',n.replace(reg,''));
+            this.name = n.replace(reg, '');
+        }
+    },
+    <!-- 仅数字及字字母 -->
+    'text2': {
+        handler (n, o) {
+            let re = /[^\w\/]/ig;
+            console.log('来访身份证校验',n.replace(re,''));
+            this.text2 = n.replace(re, '');
+        }
+    },
+    
+    <!-- 仅 大小写字母及中文 -->
+    'text3': {
+        handler (n, o) {
+            let reg = /[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g;
+            console.log('',n.replace(reg,''));
+            this.text3 = n.replace(reg, '');
+        }
+    }
 }
+```
+
+
+## 电话号码补位成 3 4 4 格式
+```javascript
+/*
+ * phoneNumber: 待格式化字符串
+ * str：this中挂载的变量，this[str] 可动态获取变量
+ */ 
+phoneSeparated (phoneNumber,str) {
+  let value = phoneNumber.replace(/[^0-9*]/ig, '');
+  console.log('phoneSeparated', this.nationCode1, typeof this.nationCode1,this.nationCode2,value);
+
+  if (this[str] === null || this[str] - 0 === 86) {
+    if (value.length > 3 && value.length < 7) {
+      value = value.substring(0, 3) + ' ' + value.substring(3);
+    } else if (value.length == 7) {
+      value = value.substring(0, 3) + ' ' + value.substring(3, 7);
+    } else if (value.length > 7) {
+      value = value.substring(0, 3) + ' ' + value.substring(3, 7) + ' ' + value.substring(7);
+    }
+    return value.substring(0, 13);
+  } else {
+    return value;
+  }
+}
+
 ```
 
 
