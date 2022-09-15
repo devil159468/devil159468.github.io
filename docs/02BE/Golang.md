@@ -121,6 +121,228 @@ println 输出码值，printf 输出内容
 - 逻辑运算时使用
 > Go是强类型语言，不能用 0 或 非0 的整数替代 false 和 true
 
+
+## 条件语句
+### if 循环
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var age int = 23
+    if age == 25 {
+        fmt.Println("true")
+    } else if age < 25 {
+        fmt.Println("too small")
+    } else {
+        fmt.Println("too big")
+    }
+}
+
+// too small
+```
+
+### switch
+```go
+package main
+
+import "fmt"
+
+func main() {
+   /* 定义局部变量 */
+   var grade string = "B"
+   var marks int = 90
+
+   switch marks {
+      case 90: grade = "A"
+      case 80: grade = "B"
+      case 50,60,70 : grade = "C"
+      default: grade = "D"  
+   }
+
+   switch {
+      case grade == "A" :
+         fmt.Printf("优秀!\n" )    
+      case grade == "B", grade == "C" :
+         fmt.Printf("良好\n" )      
+      case grade == "D" :
+         fmt.Printf("及格\n" )      
+      case grade == "F":
+         fmt.Printf("不及格\n" )
+      default:
+         fmt.Printf("差\n" );
+   }
+   fmt.Printf("你的等级是 %s\n", grade );      
+}
+
+// 优秀!
+// 你的等级是 A
+```
+
+### select
+
+select 是 Go 中的一个控制结构，类似于用于通信的 switch 语句。每个 case 必须是一个通信操作，要么是发送要么是接收。
+
+select 随机执行一个可运行的 case。如果没有 case 可运行，它将阻塞，直到有 case 可运行。一个默认的子句应该总是可运行的。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var c1, c2, c3 chan int
+   var i1, i2 int
+   select {
+      case i1 = <-c1:
+         fmt.Printf("received ", i1, " from c1\n")
+      case c2 <- i2:
+         fmt.Printf("sent ", i2, " to c2\n")
+      case i3, ok := (<-c3):  // same as: i3, ok := <-c3
+         if ok {
+            fmt.Printf("received ", i3, " from c3\n")
+         } else {
+            fmt.Printf("c3 is closed\n")
+         }
+      default:
+         fmt.Printf("no communication\n")
+   }    
+}
+
+// no communication
+```
+
+
+## 数组
+```go
+// 数组初始化
+var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+
+// 字面量方式
+balance := [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+
+// 长度不确定时
+balance := [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+
+// 如果设置了数组的长度，我们还可以通过指定下标来初始化元素：将索引为 1 和 3 的元素初始化
+balance := [5]float32{1:2.0,3:7.0}
+
+```
+
+### 访问数组元素
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var n [10]int /* n 是一个长度为 10 的数组 */
+   var i,j int
+
+   /* 为数组 n 初始化元素 */        
+   for i = 0; i < 10; i++ {
+      n[i] = i + 100 /* 设置元素为 i + 100 */
+   }
+
+   /* 输出每个数组元素的值 */
+   for j = 0; j < 10; j++ {
+      fmt.Printf("Element[%d] = %d\n", j, n[j] )
+   }
+}
+
+// 输出
+// Element[0] = 100
+// Element[1] = 101
+// Element[2] = 102
+// Element[3] = 103
+// Element[4] = 104
+// Element[5] = 105
+// Element[6] = 106
+// Element[7] = 107
+// Element[8] = 108
+// Element[9] = 109
+```
+```go
+package main
+
+import "fmt"
+
+func main() {
+   var i,j,k int
+   // 声明数组的同时快速初始化数组
+   balance := [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+
+   /* 输出数组元素 */         ...
+   for i = 0; i < 5; i++ {
+      fmt.Printf("balance[%d] = %f\n", i, balance[i] )
+   }
+   
+   balance2 := [...]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+   /* 输出每个数组元素的值 */
+   for j = 0; j < 5; j++ {
+      fmt.Printf("balance2[%d] = %f\n", j, balance2[j] )
+   }
+
+   //  将索引为 1 和 3 的元素初始化
+   balance3 := [5]float32{1:2.0,3:7.0}  
+   for k = 0; k < 5; k++ {
+      fmt.Printf("balance3[%d] = %f\n", k, balance3[k] )
+   }
+}
+
+// balance[0] = 1000.000000
+// balance[1] = 2.000000
+// balance[2] = 3.400000
+// balance[3] = 7.000000
+// balance[4] = 50.000000
+// balance2[0] = 1000.000000
+// balance2[1] = 2.000000
+// balance2[2] = 3.400000
+// balance2[3] = 7.000000
+// balance2[4] = 50.000000
+// balance3[0] = 0.000000
+// balance3[1] = 2.000000
+// balance3[2] = 0.000000
+// balance3[3] = 7.000000
+// balance3[4] = 0.000000
+```
+
+
+## 结构体
+
+Go 语言中数组可以存储同一类型的数据，但在结构体中我们可以为不同项定义不同的数据类型。
+```go
+package main
+
+import "fmt"
+
+type Books struct {
+   title string
+   author string
+   subject string
+   book_id int
+}
+
+
+func main() {
+
+    // 创建一个新的结构体
+    fmt.Println(Books{"Go 语言", "www.runoob.com", "Go 语言教程", 6495407})
+
+    // 也可以使用 key => value 格式
+    fmt.Println(Books{title: "Go 语言", author: "www.runoob.com", subject: "Go 语言教程", book_id: 6495407})
+
+    // 忽略的字段为 0 或 空
+   fmt.Println(Books{title: "Go 语言", author: "www.runoob.com"})
+}
+
+// {Go 语言 www.runoob.com Go 语言教程 6495407}
+// {Go 语言 www.runoob.com Go 语言教程 6495407}
+// {Go 语言 www.runoob.com  0}
+```
+
+
 ## 框架
 ### Gin
 ### Beego
