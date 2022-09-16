@@ -309,6 +309,107 @@ func main() {
 ```
 
 
+## 类型转换
+```rust
+package main
+
+import "fmt"
+
+func main() {
+   var sum int = 17
+   var count int = 5
+   var mean float32
+   
+   mean = float32(sum)/float32(count)
+   fmt.Printf("mean 的值为: %f\n",mean)
+}
+
+// mean 的值为: 3.400000
+```
+
+go 不支持隐式转换类型，只能显式调用
+```rust
+package main
+import "fmt"
+
+func main() {  
+    var a int64 = 3
+    var b int32
+    b = int32(a)
+    fmt.Printf("b 为 : %d", b)
+}
+```
+
+
+## 接口
+接口它把所有的具有共性的方法定义在一起，任何其他类型只要实现了这些方法就是实现了这个接口。
+```rust
+/* 定义接口 */
+type interface_name interface {
+   method_name1 [return_type]
+   method_name2 [return_type]
+   method_name3 [return_type]
+   ...
+   method_namen [return_type]
+}
+
+/* 定义结构体 */
+type struct_name struct {
+   /* variables */
+}
+
+/* 实现接口方法 */
+func (struct_name_variable struct_name) method_name1() [return_type] {
+   /* 方法实现 */
+}
+...
+func (struct_name_variable struct_name) method_namen() [return_type] {
+   /* 方法实现*/
+}
+```
+
+例子中定义了一个接口Phone，接口里面有一个方法call()。然后我们在main函数里面定义了一个Phone类型变量，并分别为之赋值为NokiaPhone和IPhone。然后调用call()方法，输出结果如下：
+```rust
+package main
+
+import (
+    "fmt"
+)
+
+type Phone interface {
+    call()
+}
+
+type NokiaPhone struct {
+}
+
+func (nokiaPhone NokiaPhone) call() {
+    fmt.Println("I am Nokia, I can call you!")
+}
+
+type IPhone struct {
+}
+
+func (iPhone IPhone) call() {
+    fmt.Println("I am iPhone, I can call you!")
+}
+
+func main() {
+    var phone Phone
+
+    phone = new(NokiaPhone)
+    phone.call()
+
+    phone = new(IPhone)
+    phone.call()
+
+}
+
+// I am Nokia, I can call you!
+// I am iPhone, I can call you!
+```
+
+
 ## 结构体
 
 Go 语言中数组可以存储同一类型的数据，但在结构体中我们可以为不同项定义不同的数据类型。
