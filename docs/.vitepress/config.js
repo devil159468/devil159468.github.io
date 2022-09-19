@@ -54,9 +54,11 @@ export default defineConfig({
 
 		// Algolia 搜索
 		algolia: {
-			appId: 'UGUBAQ6XVW',
-			apiKey: '0ec41bfab5492457fd954866ac78e15e',
-			indexName: 'ElliotKnightBlog'
+			appId: 'FOWT46OZME',
+			apiKey: '001f1a95b14b37a9454dcce7d4795186',
+			indexName: 'devil159468',
+			container: 'div',
+			debug: false
 		}
 	},
 
