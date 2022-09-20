@@ -99,4 +99,27 @@ white-space: pre-line; // 针对 / 换行
 }
 ```
 
+## flex 宽度自适应，文本溢出隐藏
+```vue
+<template>
+    <div class="flexDemo">
+        <div class="left"></div>
+        <div class="singleTextOverFlow right"></div>
+    </div>
+</template>
+
+<style lang="scss">
+.flexDemo {
+    .left {
+        width: 50px;
+    }
+    .right {
+        flex: 1;
+        width: 0; // 方法1
+        overflow: hidden; // 方法2
+    }
+}
+</style>
+```
+
 ## 
