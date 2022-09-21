@@ -323,6 +323,12 @@ let menuDetailList = [
 					{text: '工具库', link: '/06Solution/toolsLibrary.md'},
 				]
 			},
+			{
+				text: '开发心得',
+				items: [
+					{text: '开发心得', link: '/06Solution/DevInsight.md'},
+				]
+			},
 		]
 	},
 	{
