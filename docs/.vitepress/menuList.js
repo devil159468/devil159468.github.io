@@ -261,6 +261,11 @@ let menuDetailList = [
 			},
 			{
 				items: [
+					{text: '公共接口', link: '/04Tools/Interface.md'},
+				]
+			},
+			{
+				items: [
 					{text: '原生JS', link: '/04Tools/pureJavascript.md'},
 					{text: 'vue2', link: '/04Tools/vue2.md'},
 					{text: 'vue3', link: '/04Tools/vue3.md'},

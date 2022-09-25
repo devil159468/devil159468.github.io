@@ -330,3 +330,26 @@ export default (ctx: any, inject: any) => {
   inject('qrcode', $qrcode);
 };
 ```
+
+
+## 判断对象中的键是否有true值
+```javascript
+let hasFalseKeys = Object.keys(this.formData.applyIn.applyCheckBox).some(k => {
+  return _this.formData.applyIn.applyCheckBox[k].active == true;
+});
+if ( !hasFalseKeys ) {
+  _this.$message({type:'error',text: 'XXX'});
+  return
+}
+```
+
+
+## input去掉空格及特殊符号
+```javascript
+clearSpecChar(str){
+  //var regEx=new RegExp("[`~!@#$%^&*()+=|{}':;',//[//].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]/g");
+  var regEx=/[\\`~!@#$%^&*()+=|{}:;_,.<>/?~\-！@#￥%……&*（）——+|{}【】‘；：”“’。，、？\ ]+/g;
+  str = str.replace(regEx,'');
+  return str;
+},
+```

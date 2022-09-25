@@ -265,6 +265,17 @@ phoneSeparated (phoneNumber,str) {
 ```
 
 
+## input IOS 获取焦点
+```vue
+<input ref="input" id="input" autofocus type="text" v-model="searchKeyWord" placeholder="搜索咨询师" @keyup.13="searchHandler">
+
+let input = document.getElementById('input');
+window.addEventListener('click',function(){
+  input.focus();
+});
+```
+
+
 ## 管理后台模板 页面
 ```vue
 <template>
