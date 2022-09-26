@@ -48,7 +48,7 @@ export default defineConfig({
 
 		// 页脚
 		footer: {
-			message: 'Released under the MIT License.',
+			message: 'Released under the MIT License. Thanks to WebStorm software support.',
 			copyright: 'Copyright © Elliot Knight'
 		},
 
