@@ -1031,8 +1031,47 @@ func main() {
 
 
 
-## 框架
-### Gin
-### Beego
+## 框架 Gin
+[Gin文档](https://gin-gonic.com/zh-cn/docs/)
+
+### 安装
+
+1. 下载并安装 gin
+```bash
+$ go get -u github.com/gin-gonic/gin
+```
+2. 将 gin 引入到代码中
+```bash
+import "github.com/gin-gonic/gin"
+```
+3. 如果使用诸如 http.StatusOK 之类的常量，则需要引入 net/http 包（可选）
+```bash
+import "net/http"
+```
+4. 创建你的项目文件夹并 cd 进去
+```bash
+$ mkdir -p $GOPATH/src/github.com/myusername/project && cd "$_"
+```
+5. 拷贝一个初始模板到你的项目里
+```bash
+curl https://raw.githubusercontent.com/gin-gonic/examples/master/basic/main.go > main.go 
+```
+6. 运行你的项目
+```bash
+go run main.go
+```
+
+
+
+
+
+
+
+
+
+
+
+
+## 框架 Beego
 
 
