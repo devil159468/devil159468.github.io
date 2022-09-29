@@ -122,4 +122,57 @@ white-space: pre-line; // 针对 / 换行
 </style>
 ```
 
-## 
+## flex布局
+```css
+.flexCC {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexSC {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexSaC {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.flexST {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.flexLT {
+    display: flex;
+    justify-content: left;
+    align-items: start;
+}
+.flexLC {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.flexRC {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.flexCStretch {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.flexColomn {
+    flex-direction: column;
+}
+.flexStretch {
+    align-items: stretch;
+}
+
+.flex1 {
+    flex: 1;
+}
+```
