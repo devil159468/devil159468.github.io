@@ -154,7 +154,7 @@ background-image: -webkit-gradient(
 4. overflow 的值不是 visible
 
 ## CSS Reset
-	简介	代码	最后提交	star
+
 | Reset方案       | 简介                                | 解释/说明    |
 |:--------------|:----------------------------------|----------|
 | reset.css     | CSS Tools: Reset CSS              | 旧项目	     |

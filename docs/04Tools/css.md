@@ -176,3 +176,67 @@ white-space: pre-line; // 针对 / 换行
     flex: 1;
 }
 ```
+
+
+## Scss动画 - 底部滑入滑出
+```vue
+<template>
+    
+    <div class="animation" :class="{'animationReverse': isClose}"></div>
+    
+</template>
+
+<script>
+export default {
+    data () {
+        return {
+            isClose: false,
+        }
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+// 动画
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+.animation {
+    bottom: 0;
+    animation: move .4s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+@include keyframes(move) {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 90vh;
+    }
+}
+
+.animationReverse {
+    bottom: 0;
+    animation: moveOut .5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+@include keyframes(moveOut) {
+    0% {
+        height: 90vh;
+    }
+    100% {
+        height: 0;
+    }
+}
+</style>
+```
