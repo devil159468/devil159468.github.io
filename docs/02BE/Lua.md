@@ -49,7 +49,6 @@ print(b) # nil
 
 
 ## 数据类型
-
 | 数据类型 | 描述 |
 |:---|:---|
 | nil | 这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false） | u8 |
@@ -62,4 +61,81 @@ print(b) # nil
 | table	 | Lua 中的表（table）其实是一个"关联数组"（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过"构造表达式"来完成，最简单构造表达式是{}，用来创建一个空表 |
 
 
-## 
+## 变量
+三种类型：全局变量、局部变量、表中的域
+
+```lua
+-- test.lua 文件脚本
+a = 5               -- 全局变量
+local b = 5         -- 局部变量
+
+function joke()
+    c = 5           -- 全局变量
+    local d = 6     -- 局部变量
+end
+
+joke()
+print(c,d)          --> 5 nil
+
+do
+    local a = 6     -- 局部变量
+    b = 6           -- 对局部变量重新赋值
+    print(a,b);     --> 6 6
+end
+
+print(a,b)      --> 5 6
+
+$ lua test.lua 
+5    nil
+6    6
+5    6
+```
+
+### 赋值语句
+```lua
+# 定义多个变量
+a, b = 10, 2*x       <-->       a=10; b=2*x
+
+# 交换变量
+x, y = y, x                     -- swap 'x' for 'y'
+a[i], a[j] = a[j], a[i]         -- swap 'a[i]' for 'a[j]'
+
+# 多个赋值特例：要对多个变量赋值必须依次对每个变量赋值
+a, b, c = 0
+print(a,b,c)             --> 0   nil   nil
+
+```
+
+### 索引
+对 table 的索引使用方括号 []。Lua 也提供了 . 操作
+
+```lua
+> site = {}
+> site["key"] = "www.runoob.com"
+> print(site["key"])
+www.runoob.com
+> print(site.key)
+www.runoob.com
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
