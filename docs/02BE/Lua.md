@@ -208,10 +208,100 @@ print(add(3,4,5,6,7))  --->25
 ```
 
 
+## 数组
+```lua
+array = {"Lua", "Tutorial"}
 
+for i= 0, 2 do
+   print(array[i])
+end
 
+# 输出
+nil
+Lua
+Tutorial
+```
 
+在 Lua 索引值是以 1 为起始，但可以指定 0 开始。
+```lua
+array = {}
 
+for i= -2, 2 do
+   array[i] = i *2
+end
+
+for i = -2,2 do
+   print(array[i])
+end
+
+# 输出
+-4
+-2
+0
+2
+4
+```
+
+多维数组
+```lua
+-- 初始化数组
+array = {}
+for i=1,3 do
+   array[i] = {}
+      for j=1,3 do
+         array[i][j] = i*j
+      end
+end
+
+-- 访问数组
+for i=1,3 do
+   for j=1,3 do
+      print(array[i][j])
+   end
+end
+
+# 输出
+1
+2
+3
+2
+4
+6
+3
+6
+9
+```
+
+不同索引键的三行三列阵列多维数组
+```lua
+-- 初始化数组
+array = {}
+maxRows = 3
+maxColumns = 3
+for row=1,maxRows do
+   for col=1,maxColumns do
+      array[row*maxColumns +col] = row*col
+   end
+end
+
+-- 访问数组
+for row=1,maxRows do
+   for col=1,maxColumns do
+      print(array[row*maxColumns +col])
+   end
+end
+
+# 输出
+1
+2
+3
+2
+4
+6
+3
+6
+9
+```
 
 
 
