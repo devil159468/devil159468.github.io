@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 // 路由数组
 let menuDetailList = [
 	{
-		text: '前端',
+		text: 'FE',
 		sidebarName: '/01FE/',
 		items: [
 
@@ -47,7 +47,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: '后端',
+		text: 'BE',
 		sidebarName: '/02BE/',
 		items: [
 			{
@@ -75,7 +75,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: '服务器',
+		text: 'Service',
 		sidebarName: '/03Server/',
 		items: [
 			{
@@ -97,7 +97,7 @@ let menuDetailList = [
 	},
 
 	{
-		text: '常用模板',
+		text: 'Template',
 		sidebarName: '/04Tools/',
 		items: [
 			{
@@ -134,7 +134,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: '基础技能',
+		text: 'Skill',
 		sidebarName: '/05Skill/',
 		items: [
 			{
@@ -158,7 +158,7 @@ let menuDetailList = [
 	},
 
 	{
-		text: '解决方案',
+		text: 'Plan',
 		sidebarName: '/06Solution/',
 		items: [
 			{
@@ -183,7 +183,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: '游戏开发',
+		text: 'Game',
 		sidebarName: '/07Game/',
 		items: [
 			{
