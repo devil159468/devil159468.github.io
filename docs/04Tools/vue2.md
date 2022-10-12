@@ -278,42 +278,121 @@ window.addEventListener('click',function(){
 
 ## 管理后台模板 页面
 ```vue
+
 <template>
     <div>
+        
         <!-- 筛选项 及 按钮 -->
         <div>
             <!-- 筛选项 -->
             <div>
                 <el-form :inline="true" :model="searchQuery">
-                    <el-form-item label="左侧展示文字">
-                        <el-input v-model="searchQuery.orderId" placeholder="placeholder" clearable></el-input>
+                    
+                    <el-form-item label="来访ID">
+                        <el-input v-model="searchQuery.userId" placeholder="来访者ID" clearable></el-input>
                     </el-form-item>
-                    <el-form-item label="下来选项">
-                        <el-select clearable v-model="searchQuery.orderType" filterable placeholder="请选择">
-                            <el-option v-for="item in optionsList.orderTypeOptions" :key="item.value" :label="item.label" :value="item.value" />
+                    
+                    <el-form-item label="用户预约时间">
+                        <el-date-picker
+                            v-model="searchQuery.userTime"
+                            type="daterange"
+                            align="right"
+                            unlink-panels
+                            range-separator="至"
+                            start-placeholder="开始日期"
+                            end-placeholder="结束日期"
+                            value-format="yyyy-MM-dd">
+                        </el-date-picker>
+                    </el-form-item>
+                    
+                    <el-form-item label="节点时间">
+                        <el-date-picker
+                            v-model="searchQuery.nodeTime"
+                            type="daterange"
+                            align="right"
+                            unlink-panels
+                            range-separator="至"
+                            start-placeholder="开始日期"
+                            end-placeholder="结束日期"
+                            value-format="yyyy/MM/dd">
+                        </el-date-picker>
+                    </el-form-item>
+                    
+                    <el-form-item label="分配助理姓名">
+                        <el-input v-model="searchQuery.assistant" placeholder="分配助理姓名" clearable></el-input>
+                    </el-form-item>
+                    
+                    <el-form-item label="联系类型">
+                        <el-select clearable v-model="searchQuery.type" filterable placeholder="请选择状态">
+                            <el-option v-for="item in optionsList.typeList" :key="item.value"
+                                       :label="item.label" :value="item.value"/>
                         </el-select>
                     </el-form-item>
                     
+                    <el-form-item label="状态">
+                        <el-select clearable v-model="searchQuery.status" filterable placeholder="请选择状态">
+                            <el-option v-for="item in optionsList.statusOptions" :key="item.value"
+                                       :label="item.label" :value="item.value"/>
+                        </el-select>
+                    </el-form-item>
+                
                 </el-form>
             </div>
             
             <!-- 按钮 -->
-            <el-button type="primary" @click="searchHandler">查询</el-button>
-            <el-button type="primary" @click="resetSearchHandler">重置</el-button>
+            <div class="flexSC">
+                <div>
+                    <el-button type="primary" @click="searchHandler">查询</el-button>
+                    <el-button type="info" @click="resetSearchHandler">重置</el-button>
+                </div>
+                <div>
+                    <el-button type="success" @click="outFile">导出表单</el-button>
+                </div>
+            </div>
+        
+        
         </div>
         <br>
         
         <!-- 表格 -->
         <div>
             <el-table :data="dataList" border v-loading="dataListLoading" style="width: 100%;">
-                <el-table-column label="XX" prop="orderId" header-align="center" align="center"/>
-                <el-table-column label="操作" prop="orderId" header-align="center" align="center">
-                    <el-button type="text" size="small" @click="openDetail">查看</el-button>
+                
+                <el-table-column label="来访ID" prop="avatar" header-align="center" align="center" width="50"/>
+                <el-table-column label="预约申请单电话" prop="name" header-align="center" align="center"/>
+                <el-table-column label="联系类型" prop="name" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <div v-if="1">主动预约联系</div>
+                        <div v-if="1">第一次咨询结束</div>
+                    </template>
+                </el-table-column>
+                <el-table-column label="用户预约时间" prop="name" header-align="center" align="center"/>
+                <el-table-column label="节点时间" prop="name" header-align="center" align="center"/>
+                <el-table-column label="咨询助理" prop="name" header-align="center" align="center"/>
+                <el-table-column label="用户事由" prop="name" header-align="center" align="center"/>
+                <el-table-column label="回访记录" prop="name" header-align="center" align="center"/>
+                
+                <el-table-column label="状态" prop="list" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <div v-if="1">待联系</div>
+                        <div v-if="1">未联系上</div>
+                        <div v-if="1">已联系</div>
+                    </template>
+                </el-table-column>
+                
+                <el-table-column label="操作" align="center">
+                    <template slot-scope="scope">
+                        <el-button type="warning" size="small" @click="togglePop(1)">修改为未联系上</el-button>
+                        <br><br>
+                        <el-button type="success" size="small" @click="togglePop(2)">修改为已联系</el-button>
+                        <br><br>
+                        <el-button type="info" size="small" @click="toggleEdit(true, scope.row.name)">编辑回访记录</el-button>
+                    </template>
                 </el-table-column>
             
             </el-table>
         </div>
-    
+        
         <!-- 分页 -->
         <el-pagination
             @size-change="sizeChangeHandle"
@@ -324,86 +403,201 @@ window.addEventListener('click',function(){
             :total="totalPage"
             layout="total, sizes, prev, pager, next, jumper">
         </el-pagination>
+        
+        
+        <!-- 弹窗 -->
+        <div>
+            
+            <!-- 变更状态弹窗 -->
+            <el-dialog title="变更状态" :close-on-click-modal="false" :visible.sync="statusPop" :show-close="false">
+                <span v-if="popWindow.statusShow === 1">
+                    是否将该状态变更为 <span style="font-weight: bold">未联系上</span>？变更后该状态可继续更改
+                </span>
+                <span v-else-if="popWindow.statusShow === 2">
+                    是否将该状态变更为 <span style="font-weight: bold">已联系</span>？变更后该状态不可再次更改
+                </span>
+                
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="togglePop()">取消</el-button>
+                  <el-button type="primary" @click="popSubmit(popWindow.statusShow)">确定</el-button>
+                </span>
+            </el-dialog>
+            
+            <!-- 编辑回访记录 -->
+            <el-dialog title="变更状态" :close-on-click-modal="false" :visible.sync="popWindow.editShow"
+                       :show-close="false">
+                <div>
+                    <el-input v-model="popWindow.editContent" type="textarea"></el-input>
+                </div>
+                
+                <span slot="footer" class="dialog-footer">
+                  <el-button @click="toggleEdit()">取消</el-button>
+                  <el-button type="primary" @click="submitEdit(popWindow.statusShow)">确定</el-button>
+                </span>
+            </el-dialog>
+        </div>
     
     </div>
 </template>
 
 <script>
 export default {
-  name: 'xxx',
-  data () {
-    return {
-      // 搜索参数
-      searchQuery: {
-        orderId: '',
-        visitorId: '',
-        orderType: ''
-      },
-
-      // 筛选项集合
-      optionsList: {
-        // 是否实名
-        orderTypeOptions: [
-          {
-            label: '否',
-            value: '0'
-          },
-          {
-            label: '是',
-            value: '1'
-          }
-        ]
-
-      },
+    name: 'feedback',
+    data () {
+        return {
+            // 搜索参数
+            searchQuery: {
+                userId: '',
+                userTime: '',
+                nodeTime: '',
+                assistant: '',
+                type: '',
+                status: ''
+            },
+            resetSearchQuery: {},
+            
+            // 筛选项集合
+            optionsList: {
+                // 联系类型
+                typeList: [
+                    {
+                        label: '主动预约联系',
+                        value: '0'
+                    },
+                    {
+                        label: '第一次咨询结束',
+                        value: '1'
+                    }
+                ],
+                // 状态
+                statusOptions: [
+                    {
+                        label: '待联系',
+                        value: '0'
+                    },
+                    {
+                        label: '未联系上',
+                        value: '1'
+                    },
+                    {
+                        label: '已联系',
+                        value: '2'
+                    }
+                ]
+            },
+            
+            // 表格展示数据
+            dataList: [
+                {
+                    avatar: '1',
+                    name: 'name',
+                    list: [1, 2, 3]
+                }
+            ],
+            dataListLoading: false,
+            pageIndex: 1,
+            pageSize: 10,
+            totalPage: 0,
+            
+            popWindow: {
+                statusShow: 0,
+                editShow: false,
+                editContent: 'editContent'
+            }
+        }
+    },
+    computed: {
+        statusPop () {
+            return Boolean(this.popWindow.statusShow) || false
+        }
+    },
+    mounted () {
+        this.initPage()
+    },
+    methods: {
+        initPage () {
+            // 初始化重置查询对象
+            this.resetSearchQuery = Object.assign({}, this.searchQuery)
+            
+            this.getDataList()
+        },
+        // 获取接口数据
+        getDataList () {
+        
+        },
+        
+        // 每页数
+        sizeChangeHandle (val) {
+            this.pageSize = val
+            this.pageIndex = 1
+            this.getDataList()
+        },
+        // 当前页
+        currentChangeHandle (val) {
+            this.pageIndex = val
+            this.getDataList()
+        },
+        
+        // 查询
+        searchHandler () {
+        },
+        // 重置查询
+        resetSearchHandler () {
+            // 重置搜索参数
+            this.searchQuery = Object.assign({}, this.resetSearchQuery)
+            // 请求初始化数据
+            this.getDataList()
+        },
+        // 导出表单
+        outFile () {
+        
+        },
+        
+        // 变更状态弹窗
+        togglePop (num, edit) {
+            if (num) {
+                this.popWindow.statusShow = num
+            } else {
+                this.popWindow.statusShow = 0
+            }
+        },
+        // 确认变更
+        popSubmit () {
+            console.log('确认更新', this.popWindow.statusShow)
+            // 调用接口请求
+            
+            // 完成后关闭弹窗
+            this.togglePop()
+        },
+        
+        // 编辑 回访
+        toggleEdit (edit, content) {
+            if (edit) {
+                this.popWindow.editShow = true
+                this.popWindow.editContent = content
+            } else {
+                this.popWindow.editShow = false
+                this.popWindow.editContent = ''
+            }
+        },
+        // 提交编辑
+        submitEdit () {
+            console.log('提交编辑')
+            
+            // 完成后关闭弹窗
+            this.toggleEdit()
+        }
     
-      // 表格展示数据
-      dataList: [],
-      dataListLoading: false,
-      pageIndex: 1,
-      pageSize: 10,
-      totalPage: 0,
     }
-  },
-  mounted () {
-    this.initPage()
-  },
-  methods: {
-    initPage () {
-      this.getDataList()
-    },
-    // 获取接口数据
-    getDataList () {
-    
-    },
-    
-    // 每页数
-    sizeChangeHandle (val) {
-      this.pageSize = val
-      this.pageIndex = 1
-      this.getDataList()
-    },
-    // 当前页
-    currentChangeHandle (val) {
-      this.pageIndex = val
-      this.getDataList()
-    },
-
-    // 查询
-    searchHandler () {
-    },
-    // 重置查询
-    resetSearchHandler () {
-    },
-    // 查看详情
-    openDetail () {
-    }
-
-  }
 }
 </script>
 
 <style lang="scss" scoped>
-
+.flexSC {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 </style>
 
 ```
@@ -443,4 +637,30 @@ export default {
 }
 
 </script>
+```
+
+
+## 管理后台 数据请求
+```javascript
+// Get 请求
+this.$http({
+	url: this.$http.adornUrl('xxx'),
+	method: 'get',
+	params: this.$http.adornParams({
+		key: 'value'
+	})
+}).then(({data}) => {
+	console.log('结果', data)
+})
+
+// Post 请求
+this.$http({
+    url: this.$http.adornUrl('xxx'),
+    method: 'post',
+    data: this.$http.adornData({
+      key: 'value'
+    })
+}).then(({data}) => {
+    console.log('结果', data)
+})
 ```
