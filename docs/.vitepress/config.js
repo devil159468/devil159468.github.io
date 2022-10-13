@@ -180,6 +180,13 @@ let menuDetailList = [
 					{text: '开发心得', link: '/06Solution/DevInsight.md'},
 				]
 			},
+			{
+				text: '通用系统',
+				items: [
+					{text: '通用前端', link: '/06Solution/GeneralSystemFE.md'},
+					{text: '通用后端', link: '/06Solution/GeneralSystemBE.md'},
+				]
+			},
 		]
 	},
 	{
