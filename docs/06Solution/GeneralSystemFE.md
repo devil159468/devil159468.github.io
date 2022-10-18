@@ -1,17 +1,14 @@
 # 通用前端系统
 
-框架选型
-- 框架选择
-  - Nuxt3
-- UI框架
-  - PC端：ElementUI
-  - M端：待定
-- 数据请求
-  - Axios
 
 ## 前台（用户端）
 
 ## 后台（管理系统）
+- Node版本：v16
+- 前端框架：Nuxt3 TS
+- UI框架：Ant Design Vue
+- 数据请求：Axios
+- 测试框架：Jest
 
 
 ## 后台（监控系统）
