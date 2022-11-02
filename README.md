@@ -14,3 +14,6 @@
 - icon: 🛠️
   title: 项目实战
   details: 结合项目实战，加深知识理解
+
+- [Github托管博客地址](https://devil159468.github.io/)
+- [Gitee托管博客地址](https://elliot-devil.gitee.io/)
