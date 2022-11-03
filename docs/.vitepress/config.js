@@ -54,6 +54,7 @@ let menuDetailList = [
 				// text: '语言',
 				items: [
 					{text: 'NodeJS', link: '/02BE/NodeJS'},
+					{text: 'NestJS', link: '/02BE/NestJS'},
 					{text: 'Go', link: '/02BE/Golang'},
 					{text: 'Rust', link: '/02BE/Rust'},
 					{text: 'Lua', link: '/02BE/Lua'},
