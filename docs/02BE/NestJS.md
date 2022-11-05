@@ -59,6 +59,21 @@ nest g s demo # 生成名为 demo 的 service
 nest g resource user # 生成名为 user 的一套 CRUD 文件
 ```
 
+### 常用包
+```bash
+# session
+yarn add express-session -D -S
+# session ts 声明
+yarn add @types/express-session -D -S
+
+
+# 图片验证码
+yarn add svg-captcha -S
+
+
+
+ 
+```
 
 
 
