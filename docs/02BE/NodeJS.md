@@ -1,4 +1,25 @@
+---
+outline: deep
+---
+
 # NodeJS
+
+## NPM
+```bash
+# 查看当前镜像地址
+npm config get registry
+
+# npm 原始地址
+npm set registry https://registry.npmjs.org/
+
+# npm 淘宝地址
+npm config set registry https://registry.npm.taobao.org
+
+
+# npm清除缓存
+npm cache clean --force
+```
+
 
 ## Koa
 
