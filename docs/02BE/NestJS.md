@@ -70,8 +70,8 @@ yarn add @types/express-session -D -S
 # 图片验证码
 yarn add svg-captcha -S
 
-
-
+# 添加 swagger 文档
+yarn add @nestjs/swagger swagger-ui-express class-validator
  
 ```
 
