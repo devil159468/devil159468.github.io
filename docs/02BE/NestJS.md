@@ -62,17 +62,22 @@ nest g resource user # 生成名为 user 的一套 CRUD 文件
 ### 常用包
 ```bash
 # session
-yarn add express-session -D -S
+yarn add express-session
 # session ts 声明
-yarn add @types/express-session -D -S
+yarn add @types/express-session
 
 
 # 图片验证码
-yarn add svg-captcha -S
+yarn add svg-captcha
+
+# axios 携带 cookie 配置
+axios.defaults.withCredentials = true
 
 # 添加 swagger 文档
 yarn add @nestjs/swagger swagger-ui-express class-validator
- 
+
+
+
 ```
 
 
