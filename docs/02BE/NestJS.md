@@ -57,6 +57,9 @@ nest g s demo # 生成名为 demo 的 service
 
 # 一次性生成 CRUD 所需文件（一般选择 Restfull API 及 yes）
 nest g resource user # 生成名为 user 的一套 CRUD 文件
+
+# 生成中间件 logger
+nest g mi logger
 ```
 
 ### 常用包
@@ -76,7 +79,18 @@ axios.defaults.withCredentials = true
 # 添加 swagger 文档
 yarn add @nestjs/swagger swagger-ui-express class-validator
 
+# 跨域
+yarn add cors
+yarn add @types/cors
+# 前端请求
+fetch('http://localhost:5005/list').then(res => res.json()).then(res => { console.log(res) })
 
+# 上传需求的包
+yarn add multer
+yarn add @types/multer
+
+# 下载用到的包
+yarn add compressing
 
 ```
 
