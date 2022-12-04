@@ -4,6 +4,8 @@
 
 ::: details 查看详细日志
 
+- 20221204
+  - UniApp引入IconFont
 - 20221203
   - UniApp请求封装
 - 20221202
