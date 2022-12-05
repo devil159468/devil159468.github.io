@@ -4,6 +4,8 @@
 
 ::: details 查看详细日志
 
+- 20221205
+  - UniApp：Uni组件、Swiper轮播图、页面分享设置 及 优化打包设置
 - 20221204
   - UniApp引入IconFont
 - 20221203
