@@ -132,9 +132,9 @@ for (let [index,arrItem] of this.interfaceData.programmeList.entries()) {
  * @property {boolean} ie
  * @property {boolean} firefox
  *
- * 简单心理 App：
- * @property {boolean} app - 是否为简单心理 App
- * @property {number|null} appVersion - 简单心理 App 版本号
+ * App：
+ * @property {boolean} app - 是否为 App
+ * @property {number|null} appVersion - App 版本号
  *
  * 微信：
  * @property {boolean} wechat - 是否为微信浏览器
