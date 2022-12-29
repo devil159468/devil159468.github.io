@@ -240,3 +240,15 @@ export default {
 }
 </style>
 ```
+
+## 文字折行
+```css
+/* 处理文字折断 */
+.breakAll {
+    word-break: break-all;
+}
+/* 处理元素内空白 */
+.whiteSpacePL {
+    white-space: pre-line;
+}
+```
