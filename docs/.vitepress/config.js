@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 // 路由数组
 let menuDetailList = [
 	{
-		text: 'FE',
+		text: '前端',
 		sidebarName: '/01FE/',
 		items: [
 
@@ -47,7 +47,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: 'BE',
+		text: '后端',
 		sidebarName: '/02BE/',
 		items: [
 			{
@@ -76,7 +76,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: 'Service',
+		text: '服务器',
 		sidebarName: '/03Server/',
 		items: [
 			{
@@ -135,7 +135,7 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: 'Skill',
+		text: '技能',
 		sidebarName: '/05Skill/',
 		items: [
 			{
@@ -159,7 +159,7 @@ let menuDetailList = [
 	},
 
 	{
-		text: 'Plan',
+		text: '解决方案',
 		sidebarName: '/06Solution/',
 		items: [
 			{
@@ -191,17 +191,23 @@ let menuDetailList = [
 		]
 	},
 	{
-		text: 'Game',
+		text: 'AI',
 		sidebarName: '/07Game/',
 		items: [
 			{
-				text: '游戏开发',
+				text: '人工智能',
 				items: [
-					{text: '游戏开发', link: '/07Game/GameDevelopment.md'},
-					{text: '人工智能', link: '/07Game/ArtificialIntelligence.md'},
-					{text: '三维开发', link: '/07Game/ThreeDimensions.md'},
+					// {text: '游戏开发', link: '/07Game/GameDevelopment.md'},
+					// {text: '三维开发', link: '/07Game/ThreeDimensions.md'},
+					{text: 'PyTorch', link: '/07Game/ArtificialIntelligence.md'},
 				]
 			},
+            {
+                text: '大模型应用',
+                items: [
+                    {text: 'Mac部署ComfyUI', link: '/07Game/ComfyUI.md'},
+                ]
+            },
 
 		]
 	},
