@@ -216,9 +216,9 @@ let menuDetailList = [
 		text: '关注我',
 		items: [
 			{text: 'Github', link: 'https://github.com/devil159468'},
-			{text: 'Gitee', link: 'https://gitee.com/Elliot-Devil'},
-			{text: '博客国外地址', link: 'https://devil159468.github.io/'},
-			{text: '博客国内地址', link: 'https://elliot-devil.gitee.io/'},
+			// {text: 'Gitee', link: 'https://gitee.com/Elliot-Devil'},
+			{text: '博客地址', link: 'https://devil159468.github.io/'},
+			// {text: '博客国内地址', link: 'https://elliot-devil.gitee.io/'},
 		]
 	},
 ]
