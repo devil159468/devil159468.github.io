@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,d as l}from"./app.1aa9c4fb.js";const A=JSON.parse('{"title":"Rollup","description":"","frontmatter":{},"headers":[],"relativePath":"01FE/Rollup.md","lastUpdated":1661611956000}'),p={name:"01FE/Rollup.md"},o=l("",3),e=[o];function t(c,r,i,D,y,F){return n(),a("div",null,e)}var u=s(p,[["render",t]]);export{A as __pageData,u as default};
