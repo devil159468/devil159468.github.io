@@ -206,6 +206,7 @@ let menuDetailList = [
                 text: '大模型应用',
                 items: [
                     {text: 'Mac部署ComfyUI', link: '/07Game/ComfyUI.md'},
+                    {text: 'Mac部署CosyVoice', link: '/07Game/CosyVoice.md'},
                 ]
             },
 
